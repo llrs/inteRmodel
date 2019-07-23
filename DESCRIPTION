@@ -1,0 +1,20 @@
+Type: Package
+Package: inteRmodel
+Title: Find models of interaction
+Version: 0.1.0
+Description: Search for models to be used by generalized
+    canonical correlation analysis.
+License: MIT + file LICENSE
+Imports: 
+    RGCCA
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+Author@R: person(given = "Lluís", family = "Revilla Sancho",
+    role = c("aut", "cre"), email = "lluis.revilla@gmail.com", comment =
+    c(ORCID = "0000-0001-9747-2570")
+Encoding: UTF-8
+LazyData: true
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
