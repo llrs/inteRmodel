@@ -18,6 +18,7 @@ iterate <- function(...) {
   l <- list(...)
   A <- lapply(l$A, scale2, bias = l$bias)
   diff0 <- which(lower.tri(l$C) & l$C != 0)
+  designs1.2 <-
   out <- sapply(designs1.2, testing, A = l$A, USE.NAMES = FALSE)
   as.data.frame(t(out))
 }
