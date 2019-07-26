@@ -7,6 +7,9 @@
 #' @return The symmetric matrix with the value inserted in the right positions
 #' @seealso \code{\link{symm}}, \code{\link{correct}}
 #' @export
+#' @examples
+#' m <- matrix(0, ncol = 3, nrow = 3)
+#' subSymm(m, 1, 2, 1)
 subSymm <- function(m, x, y, val) {
   dm <- dimnames(m)
   check_names <- dm[[1]] == dm[[2]]
@@ -33,6 +36,9 @@ subSymm <- function(m, x, y, val) {
 #' @seealso \code{\link{subSymm}}, \code{\link{correct}}
 #' @export
 #' @importFrom methods is
+#' @examples
+#' m <- matrix(0, ncol = 5, nrow = 5)
+#' symm(m, c(0, 1, 1, 1, 0, 0.5, 0.2, 0.3, 0.7, 0.1))
 symm <- function(m, data) {
 
   if (!is(data, "numeric")) {

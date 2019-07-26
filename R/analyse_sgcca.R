@@ -7,6 +7,18 @@
 #' and outer), the canonical correlation, the weight in the design matrix, and
 #' the number of interactions that exists.
 #' @export
+#' @examples
+#' data("Russett", package = "RGCCA")
+#' X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+#' X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+#' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+#'                                   "dictator")])
+#' A <- list(X_agric, X_ind, X_polit)
+#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+#' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
+#'                     scale = FALSE, verbose = TRUE)
+#' analyze(out)
 analyze <- function(sgcca) {
   ind <- index(sgcca)
 
@@ -55,6 +67,20 @@ index <- function(x) {
 #' @param x rgcca or sgcca object
 #' @return The same object with AVE_X simplified
 #' @export
+#' @examples
+#' data("Russett", package = "RGCCA")
+#' X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+#' X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+#' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+#'                                   "dictator")])
+#' A <- list(X_agric, X_ind, X_polit)
+#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+#' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
+#'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
+#' out$AVE
+#' out <- aves(out)
+#' out$AVE
 aves <- function(x){
   x$AVE$AVE_X <- simplify2array(x$AVE$AVE_X)
   x
@@ -68,16 +94,31 @@ aves <- function(x){
 #' @param namesA The names of the original data
 #' @return An object of class sgcca
 #' @export
+#' @examples
+#' data("Russett", package = "RGCCA")
+#' X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+#' X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+#' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+#'                                   "dictator")])
+#' A <- list(X_agric, X_ind, X_polit)
+#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+#' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
+#'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
+#' out <- improve(out, c("Agric", "Ind", "Polit"))
+#' out$AVE
 improve <- function(sgcca, namesA) {
   if (is.null(namesA)) {
     stop("namesA shouldn't be NULL\n",
          "Consider adding names to A.")
   }
+
   names(sgcca$Y) <- namesA
   names(sgcca$a) <- namesA
   names(sgcca$astar) <- namesA
   names(sgcca$AVE$AVE_X) <- namesA
   colnames(sgcca$C) <- namesA
   rownames(sgcca$C) <- namesA
-  aves(sgcca)
+  sgcca$AVE$AVE_X <- simplify2array(sgcca$AVE$AVE_X)
+  sgcca
 }

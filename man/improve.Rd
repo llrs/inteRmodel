@@ -17,3 +17,17 @@ An object of class sgcca
 \description{
 Add names to data, simplify AVE output
 }
+\examples{
+data("Russett", package = "RGCCA")
+X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+                                  "dictator")])
+A <- list(X_agric, X_ind, X_polit)
+A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
+                    scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
+out <- improve(out, c("Agric", "Ind", "Polit"))
+out$AVE
+}

@@ -12,6 +12,14 @@
 #' @return A logical value if it is fully connected or not.
 #' @references \url{https://math.stackexchange.com/a/551947}
 #' @export
+#' @examples
+#' C <- matrix(0, nrow = 4, ncol = 4, dimnames = list(LETTERS[1:4], LETTERS[1:4]))
+#' (m1 <- subSymm(C, 1, 2, 1))
+#' correct(m1) # Several blocks wouldn't be connected
+#' (m2 <- subSymm(m1, 3, 4, 1))
+#' correct(m2) # All blocks are connected, but there are two networks.
+#' (m3 <- subSymm(m2, 1, 4, 1))
+#' correct(m3) # All blocks are connected and there is a single network
 correct <- function(x) {
   if (!isSymmetric(x)) {
     return(FALSE)

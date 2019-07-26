@@ -21,6 +21,10 @@ The symmetric matrix with the value inserted in the right positions
 \description{
 Subsitute in a symmetric matrix
 }
+\examples{
+m <- matrix(0, ncol = 3, nrow = 3)
+subSymm(m, 1, 2, 1)
+}
 \seealso{
 \code{\link{symm}}, \code{\link{correct}}
 }

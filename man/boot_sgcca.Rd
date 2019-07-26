@@ -22,3 +22,14 @@ input blocks; and the AVE values, both inner, and outer
 \description{
 Performs the centroid bootstrap
 }
+\examples{
+data("Russett", package = "RGCCA")
+X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+                                  "dictator")])
+A <- list(X_agric, X_ind, X_polit)
+C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+out <- boot_sgcca(A, C, shrinkage = rep(1, 3),  nb_boot = 10)
+head(out$AVE)
+}
