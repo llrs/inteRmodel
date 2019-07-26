@@ -3,6 +3,14 @@
 language: R
 cache: packages
 
+after_success:
+    - Rscript -e 'covr::codecov()'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
