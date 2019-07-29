@@ -9,15 +9,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup}
-library(inteRmodel)
 ```
 
 
@@ -25,6 +21,11 @@ library(inteRmodel)
 
 The goal of inteRmodel is to provide the tools required to search for models in 
 the generalized canonical correlations. 
+
+
+```{r inteRmodel}
+library(inteRmodel)
+```
 
 
 # Prepare
@@ -93,6 +94,7 @@ out_best <- iterate_model(C = model, A = A, c1 = rep(1, 3), scheme = "factorial"
 ```
 
 We can see that usually the models is around 0.4 inner AVE.
+
 ```{r best_plot, echo=FALSE}
 hist(out_best$AVE_inner, xlab = "inner AVE", 
      main = "Histogram of AVE_inner in the models")
@@ -106,14 +108,18 @@ model2
 ```
 
 
-```{r boot, message = FALSE}
+```{r boot, include = FALSE}
+bs2 <- boot_sgcca(A, model2, rep(1, 3), nb_boot = 1000)
+bs0 <- boot_sgcca(A, model0, rep(1, 3), nb_boot = 1000)
+```
+```{r boot2, eval=FALSE}
 bs2 <- boot_sgcca(A, model2, rep(1, 3), nb_boot = 1000)
 bs0 <- boot_sgcca(A, model0, rep(1, 3), nb_boot = 1000)
 ```
 
 We can see that they have different distributions:
 
-```{r boot_plot, echo = FALSE}
+```{r boot_plot, echo=FALSE, message=FALSE}
 plot(c(0, 1), c(0, 1), type = "n", xlab = "inner AVE", ylab = "outer AVE",
      main = "Bootstrap of models")
 points(bs2$AVE, pch = 16)
