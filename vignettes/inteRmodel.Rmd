@@ -3,8 +3,10 @@ title: "inteRmodel"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{inteRmodel}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -17,3 +19,112 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(inteRmodel)
 ```
+
+
+# Introduction
+
+The goal of inteRmodel is to provide the tools required to search for models in 
+the generalized canonical correlations. 
+
+
+# Prepare
+
+We use the data from the [RGCCA](https://cran.r-project.org/package=RGCCA) package.
+
+```{r data}
+data("Russett", package = "RGCCA")
+X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+                                  "dictator")])
+A <- list(Agric = X_agric, Ind = X_ind, Polit = X_polit)
+```
+
+
+# Design
+
+The model is encoded in a design matrix. 
+To ease the design there are several functions available.
+The most important one is subSymm, which make substitutions on symmetric matrices.
+
+```{r design}
+C <- matrix(0, nrow = 3, ncol = 3, dimnames = list(names(A), names(A)))
+model0 <- subSymm(C, "Agric", "Ind", 1)
+model0 <- subSymm(model0, "Agric", "Polit", 1)
+```
+
+Here we hypothesize that the Agriculture and the industry is linked and that the agriculture is linked with the political block.
+
+# Design
+
+Now we look for the model that best relates these data.
+
+```{r search_model}
+out_model <- search_model(A = A, c1 = rep(1, 3), scheme = "factorial",
+               scale = FALSE, verbose = FALSE,
+               ncomp = rep(1, length(A)),
+               bias = TRUE)
+```
+
+This quickly explores over the 20 different models that could be the best ones.
+
+We can see that our hypothesis was on the lower end according to the inner AVE (see the vertical line:
+```{r hypotetical, echo=FALSE}
+hist(out_model$AVE_inner, xlab = "inner AVE", 
+     main = "Histogram of AVE_inner in the models", breaks = 20)
+abline(v = out_model$AVE_inner[out_model$var12 == 1 & 
+                                 out_model$var13 == 1 &  out_model$var23 == 0])
+```
+
+According to this a better model would be then:
+
+```{r best}
+columns <- grep("var", colnames(out_model))
+model <- symm(C, out_model[which.max(out_model$AVE_inner), columns])
+```
+
+A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block. We further explore the relationship on this model:
+
+```{r iterate_model}
+out_best <- iterate_model(C = model, A = A, c1 = rep(1, 3), scheme = "factorial",
+               scale = FALSE, verbose = FALSE,
+               ncomp = rep(1, length(A)),
+               bias = TRUE)
+```
+
+We can see that usually the models is around 0.4 inner AVE.
+```{r best_plot, echo=FALSE}
+hist(out_best$AVE_inner, xlab = "inner AVE", 
+     main = "Histogram of AVE_inner in the models")
+```
+
+The best model would be then:
+
+```{r model2}
+model2 <- symm(C, out_best[which.max(out_best$AVE_inner), columns])
+model2
+```
+
+
+```{r boot, message = FALSE}
+bs2 <- boot_sgcca(A, model2, rep(1, 3), nb_boot = 1000)
+bs0 <- boot_sgcca(A, model0, rep(1, 3), nb_boot = 1000)
+```
+
+We can see that they have different distributions:
+
+```{r boot_plot, echo = FALSE}
+plot(c(0, 1), c(0, 1), type = "n", xlab = "inner AVE", ylab = "outer AVE",
+     main = "Bootstrap of models")
+points(bs2$AVE, pch = 16)
+points(bs0$AVE, pch = 16, col = "red")
+legend("bottomright", legend = c("model2", "model0"), fill = c("black", "red"))
+```
+
+
+# Session Info
+
+```{r sessionInfo}
+sessionInfo()
+```
+
