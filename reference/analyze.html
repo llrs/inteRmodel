@@ -133,6 +133,33 @@ and outer), the canonical correlation, the weight in the design matrix, and
 the number of interactions that exists.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"Russett"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"RGCCA"</span>)
+<span class='no'>X_agric</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"gini"</span>, <span class='st'>"farm"</span>, <span class='st'>"rent"</span>)])
+<span class='no'>X_ind</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
+<span class='no'>X_polit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[ , <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
+                                  <span class='st'>"dictator"</span>)])
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>X_agric</span>, <span class='no'>X_ind</span>, <span class='no'>X_polit</span>)
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>A</span>, <span class='kw'>function</span>(<span class='no'>x</span>) <span class='kw pkg'>RGCCA</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RGCCA/topics/scale2'>scale2</a></span>(<span class='no'>x</span>, <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+<span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RGCCA</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RGCCA/topics/rgcca'>rgcca</a></span>(<span class='no'>A</span>, <span class='no'>C</span>, <span class='kw'>tau</span> <span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
+                    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; Computation of the RGCCA block components based on the factorial scheme 
+#&gt; Shrinkage intensity paramaters are chosen manually 
+#&gt;  Iter:    1  Fit: 1.83005079  Dif:  0.38803933 
+#&gt;  Iter:    2  Fit: 1.92003517  Dif:  0.08998438 
+#&gt;  Iter:    3  Fit: 1.93192442  Dif:  0.01188925 
+#&gt;  Iter:    4  Fit: 1.93354278  Dif:  0.00161836 
+#&gt;  Iter:    5  Fit: 1.93376871  Dif:  0.00022593 
+#&gt;  Iter:    6  Fit: 1.93380060  Dif:  0.00003189 
+#&gt;  Iter:    7  Fit: 1.93380512  Dif:  0.00000452 
+#&gt;  Iter:    8  Fit: 1.93380576  Dif:  0.00000064 
+#&gt;  Iter:    9  Fit: 1.93380585  Dif:  0.00000009 
+#&gt;  Iter:   10  Fit: 1.93380586  Dif:  0.00000001 
+#&gt;  Iter:   11  Fit: 1.93380586  Dif:  0.00000000 
+#&gt; The RGCCA algorithm converged to a stationary point after 10 iterations </div><div class='img'><img src='analyze-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>analyze</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt;       vs12       vs13       vs23  AVE_inner  AVE_outer        cc1      var12 
+#&gt;  0.4875286 -0.6270914 -0.7574030  0.4834515  0.4793766  0.9669029  0.0000000 
+#&gt;      var13      var23    weights 
+#&gt;  1.0000000  1.0000000  2.0000000 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -140,7 +167,9 @@ the number of interactions that exists.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

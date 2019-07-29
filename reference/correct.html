@@ -135,6 +135,21 @@ Without leaving any block not connected or some blocks isolated from the others.
     <p><a href='https://math.stackexchange.com/a/551947'>https://math.stackexchange.com/a/551947</a></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>0</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>4</span>], <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>4</span>]))
+(<span class='no'>m1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='subSymm.html'>subSymm</a></span>(<span class='no'>C</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt;   A B C D
+#&gt; A 0 1 0 0
+#&gt; B 1 0 0 0
+#&gt; C 0 0 0 0
+#&gt; D 0 0 0 0</div><div class='input'><span class='fu'>correct</span>(<span class='no'>m1</span>) <span class='co'># Several blocks wouldn't be connected</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>(<span class='no'>m2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='subSymm.html'>subSymm</a></span>(<span class='no'>m1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt;   A B C D
+#&gt; A 0 1 0 0
+#&gt; B 1 0 0 0
+#&gt; C 0 0 0 1
+#&gt; D 0 0 1 0</div><div class='input'><span class='fu'>correct</span>(<span class='no'>m2</span>) <span class='co'># All blocks are connected, but there are two networks.</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>(<span class='no'>m3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='subSymm.html'>subSymm</a></span>(<span class='no'>m2</span>, <span class='fl'>1</span>, <span class='fl'>4</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt;   A B C D
+#&gt; A 0 1 0 1
+#&gt; B 1 0 0 0
+#&gt; C 0 0 0 1
+#&gt; D 1 0 1 0</div><div class='input'><span class='fu'>correct</span>(<span class='no'>m3</span>) <span class='co'># All blocks are connected and there is a single network</span></div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -144,7 +159,9 @@ Without leaving any block not connected or some blocks isolated from the others.
       <li><a href="#value">Value</a></li>
 
       <li><a href="#references">References</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

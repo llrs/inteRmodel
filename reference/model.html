@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bootstrap sgcca — boot_sgcca • inteRmodel</title>
+<title>Functions related to finding models — iterate_model • inteRmodel</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Bootstrap sgcca — boot_sgcca" />
+<meta property="og:title" content="Functions related to finding models — iterate_model" />
 
-<meta property="og:description" content="Performs the centroid bootstrap" />
+<meta property="og:description" content="Functions related to finding models" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,44 +102,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bootstrap sgcca</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/inteRmodel/blob/master/R/boot_rgcca.R'><code>R/boot_rgcca.R</code></a></small>
-    <div class="hidden name"><code>boot_sgcca.Rd</code></div>
+    <h1>Functions related to finding models</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/inteRmodel/blob/master/R/iterate.R'><code>R/iterate.R</code></a></small>
+    <div class="hidden name"><code>model.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Performs the centroid bootstrap</p>
+    <p>Functions related to finding models</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>boot_sgcca</span>(<span class='no'>A</span>, <span class='no'>C</span>, <span class='no'>shrinkage</span>, <span class='kw'>nb_boot</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</pre>
+    <pre class="usage"><span class='fu'>iterate_model</span>(<span class='no'>...</span>)
+
+<span class='fu'>search_model</span>(<span class='no'>...</span>, <span class='kw'>nWeights</span> <span class='kw'>=</span> <span class='fl'>3</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>A</th>
-      <td><p>The list with the original data</p></td>
+      <th>...</th>
+      <td><p>All the same arguments that would be passed to sggca, pass named arguments.</p></td>
     </tr>
     <tr>
-      <th>C</th>
-      <td><p>The symmetric matrix with the relationships between datsets.</p></td>
-    </tr>
-    <tr>
-      <th>shrinkage</th>
-      <td><p>Shrinkage estimated (use the estimated for the original datastet)</p></td>
-    </tr>
-    <tr>
-      <th>nb_boot</th>
-      <td><p>Number of bootstraps to perform</p></td>
+      <th>nWeights</th>
+      <td><p>The number of weights used to check the possible designs.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
-    <p>A list with two elements: the coefficient of each variable of the
-input blocks; and the AVE values, both inner, and outer</p>
+    <ul>
+<li><p><code>search_model</code>: Search for the right model for the blocks provided.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>[sgcca]</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -148,22 +147,40 @@ input blocks; and the AVE values, both inner, and outer</p>
 <span class='no'>X_ind</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
 <span class='no'>X_polit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[ , <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
                                   <span class='st'>"dictator"</span>)])
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>X_agric</span>, <span class='no'>X_ind</span>, <span class='no'>X_polit</span>)
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>Agric</span> <span class='kw'>=</span> <span class='no'>X_agric</span>, <span class='kw'>Ind</span> <span class='kw'>=</span> <span class='no'>X_ind</span>, <span class='kw'>Polit</span> <span class='kw'>=</span> <span class='no'>X_polit</span>)
 <span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>boot_sgcca</span>(<span class='no'>A</span>, <span class='no'>C</span>, <span class='kw'>shrinkage</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>),  <span class='kw'>nb_boot</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>out</span>$<span class='no'>AVE</span>)</div><div class='output co'>#&gt;          inner     outer
-#&gt; [1,] 0.4037123 0.6377082
-#&gt; [2,] 0.4141027 0.7195481
-#&gt; [3,] 0.4127596 0.6844097
-#&gt; [4,] 0.4755541 0.6865155
-#&gt; [5,] 0.3604672 0.6768108
-#&gt; [6,] 0.3914483 0.6850278</div></pre>
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>search_model</span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>A</span>, <span class='kw'>C</span> <span class='kw'>=</span> <span class='no'>C</span>, <span class='kw'>c1</span> <span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
+               <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+               <span class='kw'>ncomp</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>A</span>)),
+               <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>out</span>)</div><div class='output co'>#&gt;        vs12       vs13       vs23 AVE_inner AVE_outer        cc1 var12 var13
+#&gt; 1 0.3335143 -0.4482373 -0.7487136 0.1560742 0.6642049 0.07803712   0.5   0.5
+#&gt; 2 0.3408726 -0.4523330 -0.7504748 0.1456645 0.6616226 0.16734542   1.0   0.5
+#&gt; 3 0.3263270 -0.4441070 -0.7469427 0.1669838 0.6663604 0.22385331   0.5   1.0
+#&gt; 4 0.3335143 -0.4482373 -0.7487136 0.1560742 0.6642049 0.31214848   1.0   1.0
+#&gt; 5 0.3573687 -0.4484215 -0.7712747 0.3612886 0.6534225 0.18064428   0.5   0.0
+#&gt; 6 0.3570854 -0.4482176 -0.7710939 0.2832019 0.6536408 0.27615645   1.0   0.0
+#&gt;   var23 weights
+#&gt; 1   0.0       2
+#&gt; 2   0.0       2
+#&gt; 3   0.0       2
+#&gt; 4   0.0       2
+#&gt; 5   0.5       2
+#&gt; 6   0.5       2</div><div class='input'><span class='no'>columns</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>grep</a></span>(<span class='st'>"var"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>out</span>))
+<span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='symm.html'>symm</a></span>(<span class='no'>C</span>, <span class='no'>out</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/which.min'>which.max</a></span>(<span class='no'>out</span>$<span class='no'>AVE_inner</span>), <span class='no'>columns</span>])
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>iterate_model</span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>A</span>, <span class='kw'>C</span> <span class='kw'>=</span> <span class='no'>model</span>, <span class='kw'>c1</span> <span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
+               <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+               <span class='kw'>ncomp</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>A</span>)),
+               <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#functions">Functions</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

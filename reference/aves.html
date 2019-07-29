@@ -129,6 +129,48 @@
     <p>The same object with AVE_X simplified</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"Russett"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"RGCCA"</span>)
+<span class='no'>X_agric</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"gini"</span>, <span class='st'>"farm"</span>, <span class='st'>"rent"</span>)])
+<span class='no'>X_ind</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
+<span class='no'>X_polit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Russett</span>[ , <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
+                                  <span class='st'>"dictator"</span>)])
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>X_agric</span>, <span class='no'>X_ind</span>, <span class='no'>X_polit</span>)
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>A</span>, <span class='kw'>function</span>(<span class='no'>x</span>) <span class='kw pkg'>RGCCA</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RGCCA/topics/scale2'>scale2</a></span>(<span class='no'>x</span>, <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+<span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
+<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RGCCA</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RGCCA/topics/rgcca'>rgcca</a></span>(<span class='no'>A</span>, <span class='no'>C</span>, <span class='kw'>tau</span> <span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>0</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
+                    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>ncomp</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>2</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>A</span>)))
+<span class='no'>out</span>$<span class='no'>AVE</span></div><div class='output co'>#&gt; $AVE_X
+#&gt; $AVE_X[[1]]
+#&gt;     comp1     comp2 
+#&gt; 0.2696404 0.5907840 
+#&gt; 
+#&gt; $AVE_X[[2]]
+#&gt;     comp1     comp2 
+#&gt; 0.8956496 0.1043504 
+#&gt; 
+#&gt; $AVE_X[[3]]
+#&gt;     comp1     comp2 
+#&gt; 0.4387091 0.1647263 
+#&gt; 
+#&gt; 
+#&gt; $AVE_outer_model
+#&gt; [1] 0.4793766 0.2804684
+#&gt; 
+#&gt; $AVE_inner_model
+#&gt; [1] 0.4834515 0.1338607
+#&gt; </div><div class='input'><span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>aves</span>(<span class='no'>out</span>)
+<span class='no'>out</span>$<span class='no'>AVE</span></div><div class='output co'>#&gt; $AVE_X
+#&gt;            [,1]      [,2]      [,3]
+#&gt; comp1 0.2696404 0.8956496 0.4387091
+#&gt; comp2 0.5907840 0.1043504 0.1647263
+#&gt; 
+#&gt; $AVE_outer_model
+#&gt; [1] 0.4793766 0.2804684
+#&gt; 
+#&gt; $AVE_inner_model
+#&gt; [1] 0.4834515 0.1338607
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -136,7 +178,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
