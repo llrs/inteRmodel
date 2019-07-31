@@ -110,13 +110,13 @@ model2
 
 
 ```{r boot, include = FALSE}
-iterations <- 500
+iterations <- 250
 bs0 <- boot_sgcca(A, model0, c(.071,.2, 1), nb_boot = iterations)
 bs1 <- boot_sgcca(A, model, c(.071,.2, 1), nb_boot = iterations)
 bs2 <- boot_sgcca(A, model2, c(.071,.2, 1), nb_boot = iterations)
 ```
 ```{r boot2, eval=FALSE}
-iterations <- 500
+iterations <- 250
 bs0 <- boot_sgcca(A, model0, c(.071,.2, 1), nb_boot = iterations)
 bs1 <- boot_sgcca(A, model, c(.071,.2, 1), nb_boot = iterations)
 bs2 <- boot_sgcca(A, model2, c(.071,.2, 1), nb_boot = iterations)
