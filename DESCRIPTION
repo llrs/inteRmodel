@@ -2,6 +2,12 @@ Type: Package
 Package: inteRmodel
 Title: Find models of interaction
 Version: 0.1.0
+Authors@R: 
+    person(given = "Lluís",
+           family = "Revilla Sancho",
+           role = c("aut", "cre"),
+           email = "lluis.revilla@gmail.com",
+           comment = c(ORCID = "0000-0001-9747-2570"))
 Description: Search for models to be used by generalized
     canonical correlation analysis.
 License: MIT + file LICENSE
@@ -19,9 +25,6 @@ Suggests:
     covr
 VignetteBuilder: 
     knitr
-Authors@R: c(person(given = "Lluís", family = "Revilla Sancho",
-    role = c("aut", "cre"), email = "lluis.revilla@gmail.com", 
-    comment = c(ORCID = "0000-0001-9747-2570")))
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
