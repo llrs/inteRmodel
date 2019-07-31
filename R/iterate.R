@@ -58,6 +58,7 @@ search_model <- function(..., nWeights = 3) {
 
 iterate <- function(designs, l, A) {
   out <- sapply(designs, function(x){
+    l$scale <- FALSE
     do.call(testing, c(list(A = A, x = x), l))}, USE.NAMES = FALSE)
   if (is.list(out)) {
     warning("Some errors happened on the iteration.")
