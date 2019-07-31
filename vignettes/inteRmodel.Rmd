@@ -109,22 +109,17 @@ model2
 ```
 
 
-```{r boot, include = FALSE}
-iterations <- 100
-bs0 <- boot_sgcca(A, model0, c(.071,.2, 1), nb_boot = iterations)
-bs1 <- boot_sgcca(A, model, c(.071,.2, 1), nb_boot = iterations)
-bs2 <- boot_sgcca(A, model2, c(.071,.2, 1), nb_boot = iterations)
-```
+A next step would be to see if some models are better than the others, something along these lines
 ```{r boot2, eval=FALSE}
-iterations <- 100
-bs0 <- boot_sgcca(A, model0, c(.071,.2, 1), nb_boot = iterations)
-bs1 <- boot_sgcca(A, model, c(.071,.2, 1), nb_boot = iterations)
-bs2 <- boot_sgcca(A, model2, c(.071,.2, 1), nb_boot = iterations)
+iterations <- 1000
+bs0 <- boot_samples_sgcca(A, model0, c(.071,.2, 1), nb_boot = iterations)
+bs1 <- boot_samples_sgcca(A, model, c(.071,.2, 1), nb_boot = iterations)
+bs2 <- boot_samples_sgcca(A, model2, c(.071,.2, 1), nb_boot = iterations)
 ```
 
 We can see that they have different distributions:
 
-```{r boot_plot, echo=FALSE, message=FALSE}
+```{r boot_plot, echo=FALSE,message=FALSE,eval=FALSE}
 plot(c(0.45, 0.9), c(0.05, 0.2), type = "n", xlab = "inner AVE", ylab = "outer AVE",
      main = "Bootstrap of models")
 points(bs0$AVE, pch = 16, col = "red")
