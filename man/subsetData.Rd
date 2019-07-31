@@ -20,3 +20,7 @@ Given a list and an index subset each element of the list.
 \note{
 It also removes constant variables of the data.
 }
+\examples{
+data(ge_cgh_locIGR)
+A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53))
+}
