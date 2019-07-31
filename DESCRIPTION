@@ -13,6 +13,8 @@ Description: Search for models to be used by generalized
 License: MIT + file LICENSE
 URL: https://github.com/llrs/inteRmodel
 BugReports: https://github.com/llrs/inteRmodel/issues
+Depends:
+    R (>= 2.10)
 Imports: 
     RGCCA,
     methods,
