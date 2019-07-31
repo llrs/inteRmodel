@@ -8,9 +8,12 @@
 #' @return A list with the samples.
 #' @export
 #' @importFrom stats sd
+#' data(ge_cgh_locIGR)
+#' A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53))
 subsetData <- function(A, index) {
   lapply(A, function(x, inde){
     y <- x[inde, , drop = FALSE] # subset
-    y[, apply(y, 2, sd) != 0] # Remove variables that are constant.
+    v <- apply(y, 2, var)
+    y[,  !is.na(v) | v != 0] # Remove variables that are constant.
   }, inde = index)
 }
