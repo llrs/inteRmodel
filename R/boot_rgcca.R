@@ -83,9 +83,8 @@ boot_samples_sgcca <- function(..., nb_boot = 1000) {
 #' boot_i <- boot_index_sgcca(index, A = A, C = C)
 boot_index_sgcca <- function(index, ...) {
   l <- lapply(index, base_boot, ... = ...)
-  browser()
   AVE <- sapply(l, function(x){x$AVE})
-  STAB <- sapply(seq_along(list(...)$A), function(y){
+  STAB <- sapply(seq_along(list(...)$A), function(y) {
     do.call(rbind, lapply(l, function(x){x$STAB[[y]]}))
   })
   list(AVE = t(AVE), STAB = STAB)

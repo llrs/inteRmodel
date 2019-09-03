@@ -13,6 +13,7 @@ testing <- function(x, ...) {
 #' @param nWeights The number of weights used to check the possible designs.
 #' @seealso [sgcca]
 #' @importFrom RGCCA scale2
+#' @return A matrix with the design of the model
 #' @examples
 #' data("Russett", package = "RGCCA")
 #' X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
@@ -34,6 +35,7 @@ testing <- function(x, ...) {
 #'                bias = TRUE)
 #' @rdname model
 #' @export
+#' @import utils
 iterate_model <- function(...) {
   l <- list(...)
   A <- lapply(l$A, scale2, bias = l$bias)

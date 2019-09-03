@@ -14,6 +14,9 @@ search_model(..., nWeights = 3)
 
 \item{nWeights}{The number of weights used to check the possible designs.}
 }
+\value{
+A matrix with the design of the model
+}
 \description{
 Functions related to finding models
 }

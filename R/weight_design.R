@@ -17,7 +17,9 @@ weight_design <- function(weights = 4, size, diff0 = NULL){
 
   p <- size * (size - 1) / 2    # 6
   w <- seq(from = 0, to = 1, length.out = weights)
-  X <- matrix(1:(size*size), size, size) # pattern matrix of indices
+  stopifnot(is.numeric(size))
+  stopifnot(size > 0)
+  X <- matrix(seq_len(size*size), size, size) # pattern matrix of indices
   lt <- lower.tri(X)
 
   if (!is.null(diff0)) {
