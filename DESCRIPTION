@@ -1,6 +1,6 @@
 Type: Package
 Package: inteRmodel
-Title: Find models of interaction
+Title: Find Models of Interaction
 Version: 0.1.0
 Authors@R: 
     person(given = "Lluís",

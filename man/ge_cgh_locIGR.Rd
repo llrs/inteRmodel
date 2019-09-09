@@ -9,7 +9,7 @@
 IGR, Villejuif, France
 }
 \usage{
-ge_cgh_loc
+ge_cgh_locIGR
 }
 \description{
 This data set contains a list of 3 dataframe. On dataframe for

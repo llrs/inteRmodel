@@ -6,7 +6,7 @@
 #' Misclassified patients were excluded and segmentation was re-run excluding
 #' those patients (done july 2012 - C Philippe)
 #' @docType data
-#' @usage ge_cgh_loc
+#' @usage ge_cgh_locIGR
 #' @format one instance, 1 row per patient
 #' @source IGR, Villejuif, France
 #' @author V Frouin, 2012-07-31
