@@ -36,8 +36,8 @@
 
 
 <meta property="og:title" content="Analyze a sgcca object — analyze" />
-<meta property="og:description" content="Calculates the correlation between the first components to reach the
-canonical correlation as well." />
+<meta property="og:description" content="Performs calculations to the output of sgcca to make it easier to retrieve
+the information about the result." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,8 +115,8 @@ canonical correlation as well." />
     </div>
 
     <div class="ref-description">
-    <p>Calculates the correlation between the first components to reach the
-canonical correlation as well.</p>
+    <p>Performs calculations to the output of sgcca to make it easier to retrieve
+the information about the result.</p>
     </div>
 
     <pre class="usage"><span class='fu'>analyze</span>(<span class='no'>sgcca</span>)</pre>
@@ -135,6 +135,12 @@ canonical correlation as well.</p>
     <p>A vector with the correlation between components, AVE (both inner
 and outer), the canonical correlation, the weight in the design matrix, and
 the number of interactions that exists.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Calculates the correlations between the canonical dimensions,
+calculates the canonical correlations,
+returns also the weight of each link of the model used,
+all of this in a tidy way.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Russett"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"RGCCA"</span>)
@@ -169,6 +175,7 @@ the number of interactions that exists.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -182,7 +189,7 @@ the number of interactions that exists.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

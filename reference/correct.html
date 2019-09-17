@@ -126,7 +126,7 @@ Without leaving any block not connected or some blocks isolated from the others.
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Design matrix, a symmetric matrix with</p></td>
+      <td><p>Design matrix, a symmetric matrix with weights between 0 and 1.</p></td>
     </tr>
     </table>
 
@@ -135,7 +135,8 @@ Without leaving any block not connected or some blocks isolated from the others.
     <p>A logical value if it is fully connected or not.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p><a href='https://math.stackexchange.com/a/551947'>https://math.stackexchange.com/a/551947</a></p>
+    <p>See this question and answer about how it is done:
+<a href='https://math.stackexchange.com/a/551947'>https://math.stackexchange.com/a/551947</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>0</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>4</span>], <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>4</span>]))
@@ -172,7 +173,7 @@ Without leaving any block not connected or some blocks isolated from the others.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
