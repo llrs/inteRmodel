@@ -1,6 +1,11 @@
 ---
 title: "inteRmodel"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_document:
+    fig_caption: yes
+    code_folding: show
+    self_contained: yes
+    toc_float: true
 vignette: >
   %\VignetteIndexEntry{inteRmodel}
   %\VignetteEncoding{UTF-8}
@@ -20,7 +25,8 @@ knitr::opts_chunk$set(
 # Introduction
 
 The goal of inteRmodel is to provide the tools required to search for models in 
-the generalized canonical correlations. 
+the generalized canonical correlations as provided by the 
+[RGCCA](https://cran.r-project.org/package=RGCCA) package. 
 
 
 ```{r inteRmodel}
@@ -28,9 +34,14 @@ library(inteRmodel)
 ```
 
 
-# Prepare
+Imagine we want to find the best model to relate the gene expression on a glioma with 
+some repetitions at the DNA level, taking into account that these tumors are at 
+three different locations. Our idea is that the location might influence the tumor.
+
+# Data format
 
 We use the data used on the vignette of the [RGCCA](https://cran.r-project.org/package=RGCCA) package.
+We need the samples in the rows and the variables in the columns:
 
 ```{r data}
 data("ge_cgh_locIGR")
@@ -41,11 +52,14 @@ A[[3]] = A[[3]][, -3]
 names(A)[3] <- "Loc"
 ```
 
+With these steps we read and prepare the data for the `sgcca` and `rgcca` function. 
 
-# Design
+# Workflow
 
-The model is encoded in a design matrix. 
-To ease the design there are several functions available.
+## Null hypothesis
+
+Then we need to encode our hypothesis in a model, which takes the shape of a matrix. 
+To ease the design of these model there are several functions available.
 The most important one is subSymm, which make substitutions on symmetric matrices.
 
 ```{r design}
@@ -55,9 +69,10 @@ model0 <- subSymm(model0, "GE", "Loc", 1)
 model0
 ```
 
-Here we hypothesize that the Agriculture and the industry is linked and that the agriculture is linked with the political block.
+Here we hypothesize that the Agriculture and the industry is linked and that the 
+agriculture is linked with the political block.
 
-# Design
+## Search models
 
 Now we look for the model that best relates these data.
 
@@ -70,7 +85,7 @@ out_model <- search_model(A = A, c1 = c(.071,.2, 1), scheme = "horst",
 
 This quickly explores over the 20 different models that could be the best ones.
 We can see that our hypothesis is on the upper middle:
-```{r hypotetical, echo=FALSE}
+```{r hypotetical, echo=FALSE, fig.cap="Figure 1: Histogram of the different inner AVE values of each model."}
 hist(out_model$AVE_inner, xlab = "inner AVE", 
      main = "Histogram of AVE_inner in the models", breaks = 20)
 abline(v = out_model$AVE_inner[out_model$var12 == 0 & 
@@ -82,9 +97,14 @@ According to this a better model would be then:
 ```{r best}
 columns <- grep("var", colnames(out_model))
 model <- symm(C, out_model[which.max(out_model$AVE_inner), columns])
+model
 ```
 
-A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block. We further explore the relationship on this model:
+A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block. 
+
+## Refinament of the model
+
+We further explore the relationships on this model:
 
 ```{r iterate_model}
 out_best <- iterate_model(C = model, A = A, c1 = c(.071,.2, 1), 
@@ -96,7 +116,7 @@ out_best <- iterate_model(C = model, A = A, c1 = c(.071,.2, 1),
 
 We can see that usually the models is around 0.4 inner AVE.
 
-```{r best_plot, echo=FALSE}
+```{r best_plot, echo=FALSE, fig.cap="Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections."}
 hist(out_best$AVE_inner, xlab = "inner AVE", 
      main = "Histogram of AVE_inner in the models")
 ```
@@ -108,18 +128,21 @@ model2 <- symm(C, out_best[which.max(out_best$AVE_inner), columns])
 model2
 ```
 
+## Evaluate stability
 
 A next step would be to see if some models are better than the others, something along these lines
-```{r boot2, eval=FALSE}
-iterations <- 1000
-bs0 <- boot_samples_sgcca(A, model0, c(.071,.2, 1), nb_boot = iterations)
-bs1 <- boot_samples_sgcca(A, model, c(.071,.2, 1), nb_boot = iterations)
-bs2 <- boot_samples_sgcca(A, model2, c(.071,.2, 1), nb_boot = iterations)
+```{r boot2}
+iterations <- 10
+bs0 <- boot_samples_sgcca(A = A, C = model0, c1 = c(.071,.2, 1), nb_boot = iterations)
+bs1 <- boot_samples_sgcca(A = A, C = model, c1 = c(.071,.2, 1), nb_boot = iterations)
+bs2 <- boot_samples_sgcca(A = A, C = model2, c1 = c(.071,.2, 1), nb_boot = iterations)
 ```
 
-We can see that they have different distributions:
+### Stability
 
-```{r boot_plot, echo=FALSE,message=FALSE,eval=FALSE}
+We could see that they have different distributions:
+
+```{r boot_plot, message=FALSE, fig.cap="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE."}
 plot(c(0.45, 0.9), c(0.05, 0.2), type = "n", xlab = "inner AVE", ylab = "outer AVE",
      main = "Bootstrap of models")
 points(bs0$AVE, pch = 16, col = "red")
@@ -129,7 +152,12 @@ legend("topright", legend = c("model2", "model", "model0"),
        fill = c("black", "green", "red"))
 ```
 
-# Features 
+
+This suggests that the model2 has higher inner AVE than the model0. 
+With more iterations we could see if there is a tendency of a model to be more centered than the others. 
+So, indicating that the model can find better the relationship between the blocks regardless of the input data. 
+
+### Features 
 
 We can now analyze the canonical correlation for the weight of each variable.
 
@@ -144,7 +172,7 @@ m0 <- RGCCA::sgcca(A, model0, c1 = c(.071,.2, 1), scheme = "horst",
 
 We can now explore the position of each sample:
 
-```{r m1}
+```{r m1, fig.cap="Figure 4: Differences on the canonical dimensions of the samples"}
 pars <- par(mfrow = c(1, 2))
 plot(m0$Y[[1]][, 1], m0$Y[[2]][, 1], type = "n", xlab = "Block1 Comp1", 
      ylab = "Block2 Comp1", main = "Initial model")
@@ -155,20 +183,24 @@ plot(m2$Y[[1]][, 1], m2$Y[[2]][, 1], type = "n", xlab = "Block1 Comp1",
      ylab = "Block2 Comp1", main = "Final model")
 abline(h = 0, v = 0)
 text(m2$Y[[1]][, 1], m2$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc)+1)
-par(pars)
 ```
 
 Although the relative difference on the general outcome what have changed more is the 
-importance of each variable. as we can see here:
+importance of each variable. As we can see here:
 
-```{r}
+```{r, fig.cap="Figure 5: Comparison of the weights of the CGH variables"}
+par(pars)
 plot(m0$a$CGH[, 1], m2$a$CGH[, 1], main = "CGH variables importance", 
      xlab = "model0", ylab = "model2", pch = 16)
 ```
 
 Where some variables that had a weight of 0 in model 0 become important and some variables that were important that no longer have any weight on the model 2.
 
-As you can see the design influences on which variables can be used
+# Conclusion
+
+Finding a different model that explains your data better challenges the assumptions about the data.
+By comparing models we can learn which blocks of variables are connected thus showing new relationships.
+This new relationships consider the same variables but with different importance, which with the right model should be more accurate.
 
 # Session Info
 
