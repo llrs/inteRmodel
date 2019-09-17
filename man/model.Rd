@@ -18,7 +18,7 @@ search_model(..., nWeights = 3)
 A matrix with the design of the model
 }
 \description{
-Look for every variation of the models chaning the weights by 0.1.
+Look for every variation of the models changing the weights by 0.1.
 }
 \section{Functions}{
 \itemize{

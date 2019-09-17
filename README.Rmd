@@ -24,7 +24,7 @@ The goal of inteRmodel is to help you with interaction models using [RGCCA](http
 The package assumes that the blocks are all connected.
 
 You can apply bootstraping to the models with `search_model`, 
-then `iterate_model` or bootstap the samples with `boot_samples_sgcca` and `boot_index_sgcca`.
+then `iterate_model` or bootstrap the samples with `boot_samples_sgcca` and `boot_index_sgcca`.
 
 For further information about the regularized canonical correlations and the interpretation read the
 [RGCCA](https://cran.r-project.org/package=RGCCA) vignette and the associated articles.
@@ -62,6 +62,6 @@ We can see the [AVE](https://en.wikipedia.org/wiki/Average_variance_extracted) o
 head(boot_i$AVE)
 ```
 
-The AVE scores is for each bootrap sample, which help to decide which is the stability of the model.
+The AVE scores is for each bootstrap sample, which help to decide which is the stability of the model.
 
 See the vignette for a full example.

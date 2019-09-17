@@ -2,7 +2,7 @@
 % Please edit documentation in R/subSymm.R
 \name{subSymm}
 \alias{subSymm}
-\title{Subsitute in a symmetric matrix}
+\title{Substitute in a symmetric matrix}
 \usage{
 subSymm(m, x, y, val)
 }
@@ -19,7 +19,7 @@ subSymm(m, x, y, val)
 The symmetric matrix with the value inserted in the right positions
 }
 \description{
-Helper to create models, which subsitute in a symmetric matrix for a value.
+Helper to create models, which substitute in a symmetric matrix for a value.
 }
 \examples{
 m <- matrix(0, ncol = 3, nrow = 3)

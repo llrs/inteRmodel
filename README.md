@@ -19,7 +19,7 @@ of the model and the best model possible given the data provided. The
 package assumes that the blocks are all connected.
 
 You can apply bootstraping to the models with `search_model`, then
-`iterate_model` or bootstap the samples with `boot_samples_sgcca` and
+`iterate_model` or bootstrap the samples with `boot_samples_sgcca` and
 `boot_index_sgcca`.
 
 For further information about the regularized canonical correlations and
@@ -75,7 +75,7 @@ head(boot_i$AVE)
 #> [6,] 0.3474681 0.6248818
 ```
 
-The AVE scores is for each bootrap sample, which help to decide which is
-the stability of the model.
+The AVE scores is for each bootstrap sample, which help to decide which
+is the stability of the model.
 
 See the vignette for a full example.

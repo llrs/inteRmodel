@@ -9,13 +9,13 @@ weight_design(weights = 4, size, diff0 = NULL)
 \arguments{
 \item{weights}{A numeric value with the number of weights to be used}
 
-\item{size}{A numveric value with the numer of datasets on the design.}
+\item{size}{A numeric value with the number of datasets on the design.}
 
 \item{diff0}{A Numeric vector of position which should be different from 0
-from the lower.tri}
+from the \code{lower.tri}.}
 }
 \value{
-A list of matrices with the designs with different weights
+A list of matrices with the designs with different weights.
 }
 \description{
 Creates all the possible matrices given a number of blocks and a number of

@@ -8,7 +8,7 @@ testing <- function(x, ...) {
 
 #' Functions related to finding models
 #'
-#' Look for every variation of the models chaning the weights by 0.1.
+#' Look for every variation of the models changing the weights by 0.1.
 #' @param ... All the same arguments that would be passed to sggca, pass named arguments.
 #' @param nWeights The number of weights used to check the possible designs.
 #' @seealso \code{sgcca}
