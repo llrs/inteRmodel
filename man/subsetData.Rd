@@ -23,6 +23,6 @@ It also removes constant variables of the data.
 }
 \examples{
 data(ge_cgh_locIGR)
-A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53, repe))
+A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53, replace = TRUE))
 str(A)
 }
