@@ -13,9 +13,10 @@ coverage](https://codecov.io/gh/llrs/inteRmodel/branch/master/graph/badge.svg)](
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of inteRmodel is to produce interaction models using
-[RGCCA](https://cran.r-project.org/package=RGCCA). The models should be
-link all blocks.
+The goal of inteRmodel is to help you with interaction models using
+[RGCCA](https://cran.r-project.org/package=RGCCA) to asses the stability
+of the model and the best model possible given the data provided. The
+package assumes that the blocks are all connected.
 
 You can apply bootstraping to the models with `search_model`, then
 `iterate_model` or bootstap the samples with `boot_samples_sgcca` and
