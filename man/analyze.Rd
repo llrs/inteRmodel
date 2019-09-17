@@ -15,8 +15,14 @@ and outer), the canonical correlation, the weight in the design matrix, and
 the number of interactions that exists.
 }
 \description{
-Calculates the correlation between the first components to reach the
-canonical correlation as well.
+Performs calculations to the output of sgcca to make it easier to retrieve
+the information about the result.
+}
+\details{
+Calculates the correlations between the canonical dimensions,
+calculates the canonical correlations,
+returns also the weight of each link of the model used,
+all of this in a tidy way.
 }
 \examples{
 data("Russett", package = "RGCCA")

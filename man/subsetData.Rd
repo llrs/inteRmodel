@@ -15,12 +15,14 @@ subsetData(A, index)
 A list with the samples.
 }
 \description{
-Given a list and an index subset each element of the list.
+Given a list and an index subset each element of the list and
+remove the variables that are constant.
 }
 \note{
 It also removes constant variables of the data.
 }
 \examples{
 data(ge_cgh_locIGR)
-A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53))
+A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53, repe))
+str(A)
 }

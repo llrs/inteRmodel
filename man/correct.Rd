@@ -7,7 +7,7 @@
 correct(x)
 }
 \arguments{
-\item{x}{Design matrix, a symmetric matrix with}
+\item{x}{Design matrix, a symmetric matrix with weights between 0 and 1.}
 }
 \value{
 A logical value if it is fully connected or not.
@@ -26,5 +26,6 @@ correct(m2) # All blocks are connected, but there are two networks.
 correct(m3) # All blocks are connected and there is a single network
 }
 \references{
+See this question and answer about how it is done:
 \url{https://math.stackexchange.com/a/551947}
 }

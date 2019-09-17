@@ -3,6 +3,10 @@
 #' Function to perform bootstrap on the samples. \code{boot_samples_sgcca}
 #' bootstrap given original data, while \code{boot_index_sgcca} given some
 #' index of samples it iterates over it.
+#'
+#' \code{boot_index_sgcca} Iterate over the index,
+#' which is a list of vectors with the position of samples to use.
+#' \code{boot_samples_sgcca} Iterate over random samples.
 #' @param ... Named arguments passed to sgcca.
 #' @param nb_boot Number of bootstraps to perform.
 #' @return A list with two elements: the coefficient of each variable of the

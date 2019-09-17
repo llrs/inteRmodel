@@ -18,7 +18,7 @@ search_model(..., nWeights = 3)
 A matrix with the design of the model
 }
 \description{
-Functions related to finding models
+Look for every variation of the models chaning the weights by 0.1.
 }
 \section{Functions}{
 \itemize{
@@ -46,5 +46,5 @@ out <- iterate_model(A = A, C = model, c1 =rep(1, 3), scheme = "factorial",
                bias = TRUE)
 }
 \seealso{
-[sgcca]
+\code{sgcca}
 }

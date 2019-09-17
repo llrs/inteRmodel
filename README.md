@@ -14,7 +14,17 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of inteRmodel is to produce interaction models using
-[RGCCA](https://cran.r-project.org/package=RGCCA).
+[RGCCA](https://cran.r-project.org/package=RGCCA). The models should be
+link all blocks.
+
+You can apply bootstraping to the models with `search_model`, then
+`iterate_model` or bootstap the samples with `boot_samples_sgcca` and
+`boot_index_sgcca`.
+
+For further information about the regularized canonical correlations and
+the interpretation read the
+[RGCCA](https://cran.r-project.org/package=RGCCA) vignette and the
+associated articles.
 
 If the CRAN version is too slow you could try [my
 fork](https://www.github.com/llrs/RGCCA) which has some more
@@ -43,19 +53,28 @@ X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
 X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
                                   "dictator")])
 A <- list(X_agric, X_ind, X_polit)
+set.seed(879138)
+boots <- 10
 C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
-out <- boot_samples_sgcca(A = A, C = C, c1 = rep(1, 3), nb_boot = 10)
+boot_i <- boot_samples_sgcca(A = A, C = C, c1 = rep(1, 3), nb_boot = boots)
 ```
 
-We can see some results simply by using:
+We can see the
+[AVE](https://en.wikipedia.org/wiki/Average_variance_extracted) of the
+bootstraps by using:
 
 ``` r
-head(out$AVE)
+head(boot_i$AVE)
 #>          inner     outer
-#> [1,] 0.3109716 0.7092233
-#> [2,] 0.3316143 0.6345073
-#> [3,] 0.4731394 0.6667931
-#> [4,] 0.4328954 0.6360925
-#> [5,] 0.3979463 0.6598980
-#> [6,] 0.4219517 0.7091110
+#> [1,] 0.3003373 0.6522110
+#> [2,] 0.3871677 0.6821278
+#> [3,] 0.4648659 0.6416236
+#> [4,] 0.4732215 0.7039174
+#> [5,] 0.4903151 0.6333550
+#> [6,] 0.3474681 0.6248818
 ```
+
+The AVE scores is for each bootrap sample, which help to decide which is
+the stability of the model.
+
+See the vignette for a full example.

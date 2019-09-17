@@ -13,7 +13,10 @@ aves(x)
 The same object with AVE_X simplified
 }
 \description{
-This simplifies the AVE_X to make it easier to understand
+This simplifies the AVE_X to make it easier to understand.
+}
+\details{
+It converts to a matrix where each row is a dimension and each column is a block.
 }
 \examples{
 data("Russett", package = "RGCCA")

@@ -8,9 +8,10 @@
 #'
 #' Given the design matrix, checks that all the blocks are connected between them.
 #' Without leaving any block not connected or some blocks isolated from the others.
-#' @param x Design matrix, a symmetric matrix with
+#' @param x Design matrix, a symmetric matrix with weights between 0 and 1.
 #' @return A logical value if it is fully connected or not.
-#' @references \url{https://math.stackexchange.com/a/551947}
+#' @references See this question and answer about how it is done:
+#' \url{https://math.stackexchange.com/a/551947}
 #' @export
 #' @examples
 #' C <- matrix(0, nrow = 4, ncol = 4, dimnames = list(LETTERS[1:4], LETTERS[1:4]))

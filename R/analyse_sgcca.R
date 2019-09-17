@@ -1,7 +1,12 @@
 #' Analyze a sgcca object
 #'
-#' Calculates the correlation between the first components to reach the
-#' canonical correlation as well.
+#' Performs calculations to the output of sgcca to make it easier to retrieve
+#' the information about the result.
+#'
+#' Calculates the correlations between the canonical dimensions,
+#' calculates the canonical correlations,
+#' returns also the weight of each link of the model used,
+#' all of this in a tidy way.
 #' @param sgcca SGCCA object from the RGCCA package
 #' @return A vector with the correlation between components, AVE (both inner
 #' and outer), the canonical correlation, the weight in the design matrix, and
@@ -63,7 +68,9 @@ index <- function(x) {
 
 #' Method to simplify AVE
 #'
-#' This simplifies the AVE_X to make it easier to understand
+#' This simplifies the AVE_X to make it easier to understand.
+#'
+#' It converts to a matrix where each row is a dimension and each column is a block.
 #' @param x rgcca or sgcca object
 #' @return The same object with AVE_X simplified
 #' @export
@@ -89,10 +96,10 @@ aves <- function(x){
 
 #' Improve the information on sgcca classes
 #'
-#' Add names to data, simplify AVE output
-#' @param sgcca An object of class \code{sgcca}.
+#' Add names to data returned by \code{rgcca} or \code{sgcca}, simplify AVE output
+#' @param sgcca An object of class \code{sgcca} or \code{rgcca}.
 #' @param namesA The names of the original data
-#' @return An object of class sgcca
+#' @return An object of class \code{sgcca} or \code{rgcca}
 #' @export
 #' @examples
 #' data("Russett", package = "RGCCA")
@@ -105,6 +112,7 @@ aves <- function(x){
 #' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 #' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
 #'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
+#' out$AVE
 #' out <- improve(out, c("Agric", "Ind", "Polit"))
 #' out$AVE
 improve <- function(sgcca, namesA) {

@@ -1,5 +1,6 @@
 #' Subsitute in a symmetric matrix
 #'
+#' Helper to create models, which subsitute in a symmetric matrix for a value.
 #' @param m The symmetric matrix
 #' @param x Row position
 #' @param y Column position

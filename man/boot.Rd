@@ -25,6 +25,11 @@ Function to perform bootstrap on the samples. \code{boot_samples_sgcca}
 bootstrap given original data, while \code{boot_index_sgcca} given some
 index of samples it iterates over it.
 }
+\details{
+\code{boot_index_sgcca} Iterate over the index,
+which is a list of vectors with the position of samples to use.
+\code{boot_samples_sgcca} Iterate over random samples.
+}
 \examples{
 data("Russett", package = "RGCCA")
 X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])

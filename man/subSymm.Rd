@@ -19,7 +19,7 @@ subSymm(m, x, y, val)
 The symmetric matrix with the value inserted in the right positions
 }
 \description{
-Subsitute in a symmetric matrix
+Helper to create models, which subsitute in a symmetric matrix for a value.
 }
 \examples{
 m <- matrix(0, ncol = 3, nrow = 3)
