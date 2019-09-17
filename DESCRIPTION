@@ -1,31 +1,32 @@
 Type: Package
 Package: inteRmodel
 Title: Find Models of Interaction
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(given = "Lluís",
            family = "Revilla Sancho",
            role = c("aut", "cre"),
            email = "lluis.revilla@gmail.com",
            comment = c(ORCID = "0000-0001-9747-2570"))
-Description: Search for models to be used by generalized
-    canonical correlation analysis.
+Description: Provides functions to be used on generalized
+    canonical correlation analysis. For assessing the stability of the
+    model, finding the right model and evaluating the models.
 License: MIT + file LICENSE
 URL: https://github.com/llrs/inteRmodel
 BugReports: https://github.com/llrs/inteRmodel/issues
 Depends:
     R (>= 3.6)
 Imports: 
-    RGCCA,
-    utils,
+    Matrix,
     methods,
+    RGCCA,
     stats,
-    Matrix
+    utils
 Suggests: 
-    testthat (>= 2.1.0),
+    covr,
     knitr,
     rmarkdown,
-    covr
+    testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
