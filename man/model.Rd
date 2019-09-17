@@ -38,8 +38,10 @@ out <- search_model(A = A, C = C, c1 =rep(1, 3), scheme = "factorial",
                ncomp = rep(1, length(A)),
                bias = TRUE)
 head(out)
+# From all the models, we select that with the higher inner AVE:
 columns <- grep("var", colnames(out))
 model <- symm(C, out[which.max(out$AVE_inner), columns])
+# We then look for a variation of the weights of this model
 out <- iterate_model(A = A, C = model, c1 =rep(1, 3), scheme = "factorial",
                scale = FALSE, verbose = FALSE,
                ncomp = rep(1, length(A)),
