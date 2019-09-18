@@ -17,8 +17,10 @@ editor_options:
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  cache = TRUE
 )
+library("knitcitations")
 ```
 
 
@@ -26,7 +28,9 @@ knitr::opts_chunk$set(
 
 The goal of inteRmodel is to provide the tools required to search for models in 
 the generalized canonical correlations as provided by the 
-[RGCCA](https://cran.r-project.org/package=RGCCA) package. 
+[RGCCA](https://cran.r-project.org/package=RGCCA) package.
+
+You can read more about canonical correlation at `r citep("10.1007/s11336-011-9206-8")` . 
 
 
 ```{r inteRmodel}
@@ -132,7 +136,7 @@ model2
 
 A next step would be to see if some models are better than the others, something along these lines
 ```{r boot2, message=FALSE, results="hide"}
-iterations <- 50
+iterations <- 25
 bs0 <- boot_samples_sgcca(A = A, C = model0, c1 = c(.071,.2, 1), nb_boot = iterations)
 bs1 <- boot_samples_sgcca(A = A, C = model, c1 = c(.071,.2, 1), nb_boot = iterations)
 bs2 <- boot_samples_sgcca(A = A, C = model2, c1 = c(.071,.2, 1), nb_boot = iterations)
@@ -206,5 +210,13 @@ This new relationships consider the same variables but with different importance
 
 ```{r sessionInfo}
 sessionInfo()
+```
+
+
+# Bibliography
+
+
+```{r, echo=FALSE, results="asis"}
+bibliography()
 ```
 
