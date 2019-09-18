@@ -131,8 +131,8 @@ model2
 ## Evaluate stability
 
 A next step would be to see if some models are better than the others, something along these lines
-```{r boot2}
-iterations <- 10
+```{r boot2, message=FALSE, results="hide"}
+iterations <- 50
 bs0 <- boot_samples_sgcca(A = A, C = model0, c1 = c(.071,.2, 1), nb_boot = iterations)
 bs1 <- boot_samples_sgcca(A = A, C = model, c1 = c(.071,.2, 1), nb_boot = iterations)
 bs2 <- boot_samples_sgcca(A = A, C = model2, c1 = c(.071,.2, 1), nb_boot = iterations)

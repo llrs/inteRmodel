@@ -43,7 +43,7 @@ devtools::install_github("llrs/inteRmodel")
 
 This is a basic example which shows you how to apply the bootstraping on this analysis:
 
-```{r example, collapse=TRUE,results='hide'}
+```{r example, collapse=TRUE, results='hide'}
 library(inteRmodel)
 data("Russett", package = "RGCCA")
 X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
