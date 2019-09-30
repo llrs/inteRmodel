@@ -62,20 +62,20 @@ With these steps we read and prepare the data for the `sgcca` and `rgcca` functi
 
 # Workflow
 
-The workflow is the following:
+The workflow is as follows:
 
  1. Selecting the interaction-model
  2. Evaluation of the models
  3. Tuning the weight in the different interaction models
  4. Comparison of the different models after bootstrapping
  
-This steps are explained on the detail on the next sections.
+These steps are explained in detail in the next sections.
 
 ## Null hypothesis
 
 Then we need to encode our hypothesis in a model, which takes the shape of a matrix. 
-To ease the design of these model there are several functions available.
-The most important one is `subSymm`, which make substitutions on symmetric matrices.
+To ease the design of this model there are several functions available.
+The most important one is `subSymm`, which makes substitutions on symmetric matrices.
 
 ```{r design}
 C <- matrix(0, nrow = 3, ncol = 3, dimnames = list(names(A), names(A)))
@@ -84,7 +84,7 @@ model0 <- subSymm(model0, "GE", "Loc", 1)
 model0
 ```
 
-Here we hypothesize that the Agriculture and the industry is linked and that the 
+Here we hypothesize that the Agriculture and the industry are linked and that the 
 agriculture is linked with the political block.
 
 ## Search models
@@ -99,7 +99,7 @@ out_model <- search_model(A = A, c1 = c(.071,.2, 1), scheme = "horst",
 ```
 
 This quickly explores over the 20 different models that could be the best ones.
-We can see that our hypothesis is on the upper middle:
+We can see that our hypothesis is in the upper middle:
 ```{r hypotetical, echo=FALSE, fig.cap="Figure 1: Histogram of the different inner AVE values of each model."}
 hist(out_model$AVE_inner, xlab = "inner AVE", 
      main = "Histogram of AVE_inner in the models", breaks = 20)
@@ -107,7 +107,7 @@ abline(v = out_model$AVE_inner[out_model$var12 == 0 &
                                  out_model$var13 == 1 &  out_model$var23 == 1])
 ```
 
-According to this a better model would be then:
+According to this, a better model would then be:
 
 ```{r best}
 columns <- grep("var", colnames(out_model))
@@ -115,11 +115,11 @@ model <- symm(C, out_model[which.max(out_model$AVE_inner), columns])
 model
 ```
 
-A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block. 
+A model that instead of the expected relation between Agriculture and Industry block, they are both related to the Political block. 
 
 ## Refinement of the model
 
-We further explore the relationships on this model:
+We further explore the relationships in this model:
 
 ```{r iterate_model}
 out_best <- iterate_model(C = model, A = A, c1 = c(.071,.2, 1), 
@@ -129,14 +129,14 @@ out_best <- iterate_model(C = model, A = A, c1 = c(.071,.2, 1),
                           bias = TRUE)
 ```
 
-We can see that usually the models is around 0.4 inner AVE.
+We can see that usually the model is around 0.4 inner AVE.
 
 ```{r best_plot, echo=FALSE, fig.cap="Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections."}
 hist(out_best$AVE_inner, xlab = "inner AVE", 
      main = "Histogram of AVE_inner in the models")
 ```
 
-The best model would be then:
+The best model would then be:
 
 ```{r model2}
 model2 <- symm(C, out_best[which.max(out_best$AVE_inner), columns])
@@ -160,7 +160,7 @@ bs2 <- boot_index_sgcca(index, A = A, C = model2, c1 = c(.071,.2, 1))
 
 ### Stability
 
-We could see that they have different distributions:
+We can see that they have different distributions:
 
 ```{r boot_plot, message=FALSE, fig.cap="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group"}
 plot(c(0.6, 0.9), c(0.05, 0.15), type = "n", xlab = "inner AVE", ylab = "outer AVE",
@@ -180,9 +180,9 @@ points(agg[, 2:3], pch = 17, col = c("red", "green", "black"), cex = 1.5)
 ```
 
 
-This suggests that the model2 has higher inner AVE than the model0. 
+This suggests that the model2 has a higher inner AVE than the model0. 
 With more iterations we could see if there is a tendency of a model to be more centered than the others. 
-So, indicating that the model can find better the relationship between the blocks regardless of the input data. 
+So, indicating that the model can better find the relationship between the blocks regardless of the input data. 
 
 ### Features 
 
@@ -212,8 +212,9 @@ abline(h = 0, v = 0)
 text(m2$Y[[1]][, 1], m2$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc)+1)
 ```
 
-Although the relative difference on the general outcome what have changed more is the 
-importance of each variable. As we can see here:
+
+<!-- Change the sentence--->
+Although there is a relative difference in the general outcome, what has changed more is the importance of each variable. As we can see here:
 
 ```{r, fig.cap="Figure 5: Comparison of the weights of the CGH variables"}
 par(pars)
@@ -226,8 +227,8 @@ Where some variables that had a weight of 0 in model 0 become important and some
 # Conclusion
 
 Finding a different model that explains your data better challenges the assumptions about the data.
-By comparing models we can learn which blocks of variables are connected thus showing new relationships.
-This new relationships consider the same variables but with different importance, which with the right model should be more accurate.
+By comparing models, we can learn which blocks of variables are connected thus showing new relationships.
+These new relationships consider the same variables but with different importance, which, with the right model, should be more accurate.
 
 # Session Info
 
