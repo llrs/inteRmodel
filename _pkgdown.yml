@@ -1,1 +1,7 @@
 destination: docs
+output:
+  blogdown::html_page:
+    number_sections: true
+    toc: true
+    code_download: true
+    toc_float: true
