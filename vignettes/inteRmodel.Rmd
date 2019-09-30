@@ -4,8 +4,8 @@ output:
   rmarkdown::html_document:
     fig_caption: yes
     self_contained: yes
-    toc_float: true
     number_sections: true
+    toc: true
 pkgdown:
   as_is: true
 vignette: >
@@ -62,12 +62,12 @@ With these steps we read and prepare the data for the `sgcca` and `rgcca` functi
 
 # Workflow
 
-The basic workflow proposed is the following:
+The workflow is the following:
 
- 1. Select a model for the data
- 2. Look for different models that could be better
- 3. Change the weight of the model to tune them.
- 4. Compare models with the same bootstrap
+ 1. Selecting the interaction-model
+ 2. Evaluation of the models
+ 3. Tuning the weight in the different interaction models
+ 4. Comparison of the different models after bootstrapping
  
 This steps are explained on the detail on the next sections.
 
@@ -75,7 +75,7 @@ This steps are explained on the detail on the next sections.
 
 Then we need to encode our hypothesis in a model, which takes the shape of a matrix. 
 To ease the design of these model there are several functions available.
-The most important one is subSymm, which make substitutions on symmetric matrices.
+The most important one is `subSymm`, which make substitutions on symmetric matrices.
 
 ```{r design}
 C <- matrix(0, nrow = 3, ncol = 3, dimnames = list(names(A), names(A)))
@@ -117,7 +117,7 @@ model
 
 A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block. 
 
-## Refinament of the model
+## Refinement of the model
 
 We further explore the relationships on this model:
 
