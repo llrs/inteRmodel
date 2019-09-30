@@ -103,18 +103,18 @@
 <div id="workflow" class="section level1">
 <h1 class="hasAnchor">
 <a href="#workflow" class="anchor"></a><span class="header-section-number">3</span> Workflow</h1>
-<p>The basic workflow proposed is the following:</p>
+<p>The workflow is the following:</p>
 <ol style="list-style-type: decimal">
-<li>Select a model for the data</li>
-<li>Look for different models that could be better</li>
-<li>Change the weight of the model to tune them.</li>
-<li>Compare models with the same bootstrap</li>
+<li>Selecting the interaction-model</li>
+<li>Evaluation of the models</li>
+<li>Tuning the weight in the different interaction models</li>
+<li>Comparison of the different models after bootstrapping</li>
 </ol>
 <p>This steps are explained on the detail on the next sections.</p>
 <div id="null-hypothesis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#null-hypothesis" class="anchor"></a><span class="header-section-number">3.1</span> Null hypothesis</h2>
-<p>Then we need to encode our hypothesis in a model, which takes the shape of a matrix. To ease the design of these model there are several functions available. The most important one is subSymm, which make substitutions on symmetric matrices.</p>
+<p>Then we need to encode our hypothesis in a model, which takes the shape of a matrix. To ease the design of these model there are several functions available. The most important one is <code>subSymm</code>, which make substitutions on symmetric matrices.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">C &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(A), <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(A)))</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">model0 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/subSymm.html">subSymm</a></span>(C, <span class="st">"GE"</span>, <span class="st">"CGH"</span>, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">model0 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/subSymm.html">subSymm</a></span>(model0, <span class="st">"GE"</span>, <span class="st">"Loc"</span>, <span class="dv">1</span>)</a>
@@ -149,9 +149,9 @@ Figure 1: Histogram of the different inner AVE values of each model.
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Loc  1 0.5 0.0</span></a></code></pre></div>
 <p>A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block.</p>
 </div>
-<div id="refinament-of-the-model" class="section level2">
+<div id="refinement-of-the-model" class="section level2">
 <h2 class="hasAnchor">
-<a href="#refinament-of-the-model" class="anchor"></a><span class="header-section-number">3.3</span> Refinament of the model</h2>
+<a href="#refinement-of-the-model" class="anchor"></a><span class="header-section-number">3.3</span> Refinement of the model</h2>
 <p>We further explore the relationships on this model:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">out_best &lt;-<span class="st"> </span><span class="kw"><a href="../reference/model.html">iterate_model</a></span>(<span class="dt">C =</span> model, <span class="dt">A =</span> A, <span class="dt">c1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">071</span>,.<span class="dv">2</span>, <span class="dv">1</span>), </a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">                          <span class="dt">scheme =</span> <span class="st">"horst"</span>,</a>
@@ -300,6 +300,30 @@ Figure 5: Comparison of the weights of the CGH variables
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+      <li><a href="#data-format"><span class="toc-section-number">2</span> Data format</a></li>
+      <li>
+<a href="#workflow"><span class="toc-section-number">3</span> Workflow</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#null-hypothesis"><span class="toc-section-number">3.1</span> Null hypothesis</a></li>
+      <li><a href="#search-models"><span class="toc-section-number">3.2</span> Search models</a></li>
+      <li><a href="#refinement-of-the-model"><span class="toc-section-number">3.3</span> Refinement of the model</a></li>
+      <li>
+<a href="#evaluate-stability"><span class="toc-section-number">3.4</span> Evaluate stability</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#stability"><span class="toc-section-number">3.4.1</span> Stability</a></li>
+      <li><a href="#features"><span class="toc-section-number">3.4.2</span> Features</a></li>
+      </ul>
+</li>
+      </ul>
+</li>
+      <li><a href="#conclusion"><span class="toc-section-number">4</span> Conclusion</a></li>
+      <li><a href="#session-info"><span class="toc-section-number">5</span> Session Info</a></li>
+      <li><a href="#bibliography"><span class="toc-section-number">6</span> Bibliography</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
