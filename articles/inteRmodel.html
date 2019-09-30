@@ -103,18 +103,18 @@
 <div id="workflow" class="section level1">
 <h1 class="hasAnchor">
 <a href="#workflow" class="anchor"></a><span class="header-section-number">3</span> Workflow</h1>
-<p>The workflow is the following:</p>
+<p>The workflow is as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Selecting the interaction-model</li>
 <li>Evaluation of the models</li>
 <li>Tuning the weight in the different interaction models</li>
 <li>Comparison of the different models after bootstrapping</li>
 </ol>
-<p>This steps are explained on the detail on the next sections.</p>
+<p>These steps are explained in detail in the next sections.</p>
 <div id="null-hypothesis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#null-hypothesis" class="anchor"></a><span class="header-section-number">3.1</span> Null hypothesis</h2>
-<p>Then we need to encode our hypothesis in a model, which takes the shape of a matrix. To ease the design of these model there are several functions available. The most important one is <code>subSymm</code>, which make substitutions on symmetric matrices.</p>
+<p>Then we need to encode our hypothesis in a model, which takes the shape of a matrix. To ease the design of this model there are several functions available. The most important one is <code>subSymm</code>, which makes substitutions on symmetric matrices.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">C &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(A), <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(A)))</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">model0 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/subSymm.html">subSymm</a></span>(C, <span class="st">"GE"</span>, <span class="st">"CGH"</span>, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">model0 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/subSymm.html">subSymm</a></span>(model0, <span class="st">"GE"</span>, <span class="st">"Loc"</span>, <span class="dv">1</span>)</a>
@@ -123,7 +123,7 @@
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; GE   0   1   1</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; CGH  1   0   0</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Loc  1   0   0</span></a></code></pre></div>
-<p>Here we hypothesize that the Agriculture and the industry is linked and that the agriculture is linked with the political block.</p>
+<p>Here we hypothesize that the Agriculture and the industry are linked and that the agriculture is linked with the political block.</p>
 </div>
 <div id="search-models" class="section level2">
 <h2 class="hasAnchor">
@@ -133,13 +133,13 @@
 <a class="sourceLine" id="cb4-2" data-line-number="2">               <span class="dt">scale =</span> <span class="ot">FALSE</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">               <span class="dt">ncomp =</span> <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">1</span>, <span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(A)),</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">               <span class="dt">bias =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-This quickly explores over the 20 different models that could be the best ones. We can see that our hypothesis is on the upper middle:
+This quickly explores over the 20 different models that could be the best ones. We can see that our hypothesis is in the upper middle:
 <div class="figure">
 <img src="inteRmodel_files/figure-html/hypotetical-1.png" alt="Figure 1: Histogram of the different inner AVE values of each model." width="672"><p class="caption">
 Figure 1: Histogram of the different inner AVE values of each model.
 </p>
 </div>
-<p>According to this a better model would be then:</p>
+<p>According to this, a better model would then be:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">columns &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"var"</span>, <span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(out_model))</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">model &lt;-<span class="st"> </span><span class="kw"><a href="../reference/symm.html">symm</a></span>(C, out_model[<span class="kw"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span>(out_model<span class="op">$</span>AVE_inner), columns])</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">model</a>
@@ -147,24 +147,24 @@ Figure 1: Histogram of the different inner AVE values of each model.
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; GE   0 0.0 1.0</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; CGH  0 0.0 0.5</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Loc  1 0.5 0.0</span></a></code></pre></div>
-<p>A model that instead of the expected relation between Agriculture and Industry block they are both related to the Political block.</p>
+<p>A model that instead of the expected relation between Agriculture and Industry block, they are both related to the Political block.</p>
 </div>
 <div id="refinement-of-the-model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#refinement-of-the-model" class="anchor"></a><span class="header-section-number">3.3</span> Refinement of the model</h2>
-<p>We further explore the relationships on this model:</p>
+<p>We further explore the relationships in this model:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">out_best &lt;-<span class="st"> </span><span class="kw"><a href="../reference/model.html">iterate_model</a></span>(<span class="dt">C =</span> model, <span class="dt">A =</span> A, <span class="dt">c1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">071</span>,.<span class="dv">2</span>, <span class="dv">1</span>), </a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">                          <span class="dt">scheme =</span> <span class="st">"horst"</span>,</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">                          <span class="dt">scale =</span> <span class="ot">FALSE</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">                          <span class="dt">ncomp =</span> <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">1</span>, <span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(A)),</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">                          <span class="dt">bias =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>We can see that usually the models is around 0.4 inner AVE.</p>
+<p>We can see that usually the model is around 0.4 inner AVE.</p>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/best_plot-1.png" alt="Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections." width="672"><p class="caption">
 Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections.
 </p>
 </div>
-<p>The best model would be then:</p>
+<p>The best model would then be:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">model2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/symm.html">symm</a></span>(C, out_best[<span class="kw"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span>(out_best<span class="op">$</span>AVE_inner), columns])</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">model2</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;     GE CGH Loc</span></a>
@@ -187,7 +187,7 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 <div id="stability" class="section level3">
 <h3 class="hasAnchor">
 <a href="#stability" class="anchor"></a><span class="header-section-number">3.4.1</span> Stability</h3>
-<p>We could see that they have different distributions:</p>
+<p>We can see that they have different distributions:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.6</span>, <span class="fl">0.9</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.05</span>, <span class="fl">0.15</span>), <span class="dt">type =</span> <span class="st">"n"</span>, <span class="dt">xlab =</span> <span class="st">"inner AVE"</span>, <span class="dt">ylab =</span> <span class="st">"outer AVE"</span>,</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">     <span class="dt">main =</span> <span class="st">"Bootstrap of models"</span>)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(bs0<span class="op">$</span>AVE, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> <span class="st">"red"</span>)</a>
@@ -207,7 +207,7 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group
 </p>
 </div>
-<p>This suggests that the model2 has higher inner AVE than the model0. With more iterations we could see if there is a tendency of a model to be more centered than the others. So, indicating that the model can find better the relationship between the blocks regardless of the input data.</p>
+<p>This suggests that the model2 has a higher inner AVE than the model0. With more iterations we could see if there is a tendency of a model to be more centered than the others. So, indicating that the model can better find the relationship between the blocks regardless of the input data.</p>
 </div>
 <div id="features" class="section level3">
 <h3 class="hasAnchor">
@@ -235,7 +235,8 @@ Figure 3: Comparison of the models, our null hypothesis along the model with hig
 Figure 4: Differences on the canonical dimensions of the samples
 </p>
 </div>
-<p>Although the relative difference on the general outcome what have changed more is the importance of each variable. As we can see here:</p>
+<!-- Change the sentence--->
+<p>Although there is a relative difference in the general outcome, what has changed more is the importance of each variable. As we can see here:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(pars)</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(m0<span class="op">$</span>a<span class="op">$</span>CGH[, <span class="dv">1</span>], m2<span class="op">$</span>a<span class="op">$</span>CGH[, <span class="dv">1</span>], <span class="dt">main =</span> <span class="st">"CGH variables importance"</span>, </a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">     <span class="dt">xlab =</span> <span class="st">"model0"</span>, <span class="dt">ylab =</span> <span class="st">"model2"</span>, <span class="dt">pch =</span> <span class="dv">16</span>)</a></code></pre></div>
@@ -251,7 +252,7 @@ Figure 5: Comparison of the weights of the CGH variables
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a><span class="header-section-number">4</span> Conclusion</h1>
-<p>Finding a different model that explains your data better challenges the assumptions about the data. By comparing models we can learn which blocks of variables are connected thus showing new relationships. This new relationships consider the same variables but with different importance, which with the right model should be more accurate.</p>
+<p>Finding a different model that explains your data better challenges the assumptions about the data. By comparing models, we can learn which blocks of variables are connected thus showing new relationships. These new relationships consider the same variables but with different importance, which, with the right model, should be more accurate.</p>
 </div>
 <div id="session-info" class="section level1">
 <h1 class="hasAnchor">
