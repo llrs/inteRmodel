@@ -82,7 +82,7 @@
     
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
+<a href="#introduction" class="anchor"></a><span class="header-section-number">1</span> Introduction</h1>
 <p>The goal of inteRmodel is to provide the tools required to search for models in the generalized canonical correlations as provided by the <a href="https://cran.r-project.org/package=RGCCA">RGCCA</a> package.</p>
 <p>You can read more about canonical correlation at (Tenenhaus and Tenenhaus, 2011) .</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(inteRmodel)</a></code></pre></div>
@@ -90,7 +90,7 @@
 </div>
 <div id="data-format" class="section level1">
 <h1 class="hasAnchor">
-<a href="#data-format" class="anchor"></a>Data format</h1>
+<a href="#data-format" class="anchor"></a><span class="header-section-number">2</span> Data format</h1>
 <p>We use the data used on the vignette of the <a href="https://cran.r-project.org/package=RGCCA">RGCCA</a> package. We need the samples in the rows and the variables in the columns:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"ge_cgh_locIGR"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">A &lt;-<span class="st"> </span>ge_cgh_locIGR<span class="op">$</span>multiblocks</a>
@@ -102,7 +102,7 @@
 </div>
 <div id="workflow" class="section level1">
 <h1 class="hasAnchor">
-<a href="#workflow" class="anchor"></a>Workflow</h1>
+<a href="#workflow" class="anchor"></a><span class="header-section-number">3</span> Workflow</h1>
 <p>The basic workflow proposed is the following:</p>
 <ol style="list-style-type: decimal">
 <li>Select a model for the data</li>
@@ -113,7 +113,7 @@
 <p>This steps are explained on the detail on the next sections.</p>
 <div id="null-hypothesis" class="section level2">
 <h2 class="hasAnchor">
-<a href="#null-hypothesis" class="anchor"></a>Null hypothesis</h2>
+<a href="#null-hypothesis" class="anchor"></a><span class="header-section-number">3.1</span> Null hypothesis</h2>
 <p>Then we need to encode our hypothesis in a model, which takes the shape of a matrix. To ease the design of these model there are several functions available. The most important one is subSymm, which make substitutions on symmetric matrices.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">C &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(A), <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(A)))</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">model0 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/subSymm.html">subSymm</a></span>(C, <span class="st">"GE"</span>, <span class="st">"CGH"</span>, <span class="dv">1</span>)</a>
@@ -127,7 +127,7 @@
 </div>
 <div id="search-models" class="section level2">
 <h2 class="hasAnchor">
-<a href="#search-models" class="anchor"></a>Search models</h2>
+<a href="#search-models" class="anchor"></a><span class="header-section-number">3.2</span> Search models</h2>
 <p>Now we look for the model that best relates these data.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">out_model &lt;-<span class="st"> </span><span class="kw"><a href="../reference/model.html">search_model</a></span>(<span class="dt">A =</span> A, <span class="dt">c1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">071</span>,.<span class="dv">2</span>, <span class="dv">1</span>), <span class="dt">scheme =</span> <span class="st">"horst"</span>,</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">               <span class="dt">scale =</span> <span class="ot">FALSE</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>,</a>
@@ -135,7 +135,7 @@
 <a class="sourceLine" id="cb4-4" data-line-number="4">               <span class="dt">bias =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 This quickly explores over the 20 different models that could be the best ones. We can see that our hypothesis is on the upper middle:
 <div class="figure">
-<img src="inteRmodel_files/figure-html/hypotetical-1.png" alt="Figure 1: Histogram of the different inner AVE values of each model." width="700"><p class="caption">
+<img src="inteRmodel_files/figure-html/hypotetical-1.png" alt="Figure 1: Histogram of the different inner AVE values of each model." width="672"><p class="caption">
 Figure 1: Histogram of the different inner AVE values of each model.
 </p>
 </div>
@@ -151,7 +151,7 @@ Figure 1: Histogram of the different inner AVE values of each model.
 </div>
 <div id="refinament-of-the-model" class="section level2">
 <h2 class="hasAnchor">
-<a href="#refinament-of-the-model" class="anchor"></a>Refinament of the model</h2>
+<a href="#refinament-of-the-model" class="anchor"></a><span class="header-section-number">3.3</span> Refinament of the model</h2>
 <p>We further explore the relationships on this model:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">out_best &lt;-<span class="st"> </span><span class="kw"><a href="../reference/model.html">iterate_model</a></span>(<span class="dt">C =</span> model, <span class="dt">A =</span> A, <span class="dt">c1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">071</span>,.<span class="dv">2</span>, <span class="dv">1</span>), </a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">                          <span class="dt">scheme =</span> <span class="st">"horst"</span>,</a>
@@ -160,7 +160,7 @@ Figure 1: Histogram of the different inner AVE values of each model.
 <a class="sourceLine" id="cb6-5" data-line-number="5">                          <span class="dt">bias =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>We can see that usually the models is around 0.4 inner AVE.</p>
 <div class="figure">
-<img src="inteRmodel_files/figure-html/best_plot-1.png" alt="Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections." width="700"><p class="caption">
+<img src="inteRmodel_files/figure-html/best_plot-1.png" alt="Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections." width="672"><p class="caption">
 Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections.
 </p>
 </div>
@@ -174,7 +174,7 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 </div>
 <div id="evaluate-stability" class="section level2">
 <h2 class="hasAnchor">
-<a href="#evaluate-stability" class="anchor"></a>Evaluate stability</h2>
+<a href="#evaluate-stability" class="anchor"></a><span class="header-section-number">3.4</span> Evaluate stability</h2>
 <p>A next step would be to see if some models are better than the others, something along these lines but with more iterations.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">iterations &lt;-<span class="st"> </span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">index &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/vector.html">vector</a></span>(<span class="st">"list"</span>, <span class="dt">length =</span> iterations)</a>
@@ -186,7 +186,7 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 <a class="sourceLine" id="cb8-8" data-line-number="8">bs2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/boot.html">boot_index_sgcca</a></span>(index, <span class="dt">A =</span> A, <span class="dt">C =</span> model2, <span class="dt">c1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">071</span>,.<span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
 <div id="stability" class="section level3">
 <h3 class="hasAnchor">
-<a href="#stability" class="anchor"></a>Stability</h3>
+<a href="#stability" class="anchor"></a><span class="header-section-number">3.4.1</span> Stability</h3>
 <p>We could see that they have different distributions:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.6</span>, <span class="fl">0.9</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.05</span>, <span class="fl">0.15</span>), <span class="dt">type =</span> <span class="st">"n"</span>, <span class="dt">xlab =</span> <span class="st">"inner AVE"</span>, <span class="dt">ylab =</span> <span class="st">"outer AVE"</span>,</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">     <span class="dt">main =</span> <span class="st">"Bootstrap of models"</span>)</a>
@@ -203,7 +203,7 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 <a class="sourceLine" id="cb9-13" data-line-number="13">agg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(df[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">Model =</span> df<span class="op">$</span>Model), mean)</a>
 <a class="sourceLine" id="cb9-14" data-line-number="14"><span class="kw"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(agg[, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>], <span class="dt">pch =</span> <span class="dv">17</span>, <span class="dt">col =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"black"</span>))</a></code></pre></div>
 <div class="figure">
-<img src="inteRmodel_files/figure-html/boot_plot-1.png" alt="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group" width="700"><p class="caption">
+<img src="inteRmodel_files/figure-html/boot_plot-1.png" alt="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group" width="672"><p class="caption">
 Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group
 </p>
 </div>
@@ -211,7 +211,7 @@ Figure 3: Comparison of the models, our null hypothesis along the model with hig
 </div>
 <div id="features" class="section level3">
 <h3 class="hasAnchor">
-<a href="#features" class="anchor"></a>Features</h3>
+<a href="#features" class="anchor"></a><span class="header-section-number">3.4.2</span> Features</h3>
 <p>We can now analyze the canonical correlation for the weight of each variable.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">m2 &lt;-<span class="st"> </span>RGCCA<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RGCCA/man/sgcca.html">sgcca</a></span>(A, model2, <span class="dt">c1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">071</span>,.<span class="dv">2</span>, <span class="dv">1</span>), <span class="dt">scheme =</span> <span class="st">"horst"</span>,</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">               <span class="dt">scale =</span> <span class="ot">TRUE</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>, <span class="dt">ncomp =</span> <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">1</span>, <span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(A)),</a>
@@ -231,7 +231,7 @@ Figure 3: Comparison of the models, our null hypothesis along the model with hig
 <a class="sourceLine" id="cb11-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>)</a>
 <a class="sourceLine" id="cb11-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(m2<span class="op">$</span>Y[[<span class="dv">1</span>]][, <span class="dv">1</span>], m2<span class="op">$</span>Y[[<span class="dv">2</span>]][, <span class="dv">1</span>], <span class="dt">labels =</span> Loc, <span class="dt">col =</span> <span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(Loc)<span class="op">+</span><span class="dv">1</span>)</a></code></pre></div>
 <div class="figure">
-<img src="inteRmodel_files/figure-html/m1-1.png" alt="Figure 4: Differences on the canonical dimensions of the samples" width="700"><p class="caption">
+<img src="inteRmodel_files/figure-html/m1-1.png" alt="Figure 4: Differences on the canonical dimensions of the samples" width="672"><p class="caption">
 Figure 4: Differences on the canonical dimensions of the samples
 </p>
 </div>
@@ -240,7 +240,7 @@ Figure 4: Differences on the canonical dimensions of the samples
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(m0<span class="op">$</span>a<span class="op">$</span>CGH[, <span class="dv">1</span>], m2<span class="op">$</span>a<span class="op">$</span>CGH[, <span class="dv">1</span>], <span class="dt">main =</span> <span class="st">"CGH variables importance"</span>, </a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">     <span class="dt">xlab =</span> <span class="st">"model0"</span>, <span class="dt">ylab =</span> <span class="st">"model2"</span>, <span class="dt">pch =</span> <span class="dv">16</span>)</a></code></pre></div>
 <div class="figure">
-<img src="inteRmodel_files/figure-html/unnamed-chunk-1-1.png" alt="Figure 5: Comparison of the weights of the CGH variables" width="700"><p class="caption">
+<img src="inteRmodel_files/figure-html/unnamed-chunk-1-1.png" alt="Figure 5: Comparison of the weights of the CGH variables" width="672"><p class="caption">
 Figure 5: Comparison of the weights of the CGH variables
 </p>
 </div>
@@ -250,12 +250,12 @@ Figure 5: Comparison of the weights of the CGH variables
 </div>
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h1>
+<a href="#conclusion" class="anchor"></a><span class="header-section-number">4</span> Conclusion</h1>
 <p>Finding a different model that explains your data better challenges the assumptions about the data. By comparing models we can learn which blocks of variables are connected thus showing new relationships. This new relationships consider the same variables but with different importance, which with the right model should be more accurate.</p>
 </div>
 <div id="session-info" class="section level1">
 <h1 class="hasAnchor">
-<a href="#session-info" class="anchor"></a>Session Info</h1>
+<a href="#session-info" class="anchor"></a><span class="header-section-number">5</span> Session Info</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; R version 3.6.1 (2017-01-27)</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></a>
@@ -280,48 +280,26 @@ Figure 5: Comparison of the weights of the CGH variables
 <a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt; [1] inteRmodel_0.1.1     knitcitations_1.0.10</span></a>
 <a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt; loaded via a namespace (and not attached):</span></a>
-<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt;  [1] Rcpp_1.0.2        xml2_1.2.2        knitr_1.25       </span></a>
+<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt;  [1] Rcpp_1.0.2        knitr_1.25        xml2_1.2.2       </span></a>
 <a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt;  [4] magrittr_1.5      MASS_7.3-51.4     lattice_0.20-38  </span></a>
-<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="co">#&gt;  [7] R6_2.4.0          rlang_0.4.0       bibtex_0.4.2     </span></a>
-<a class="sourceLine" id="cb13-28" data-line-number="28"><span class="co">#&gt; [10] highr_0.8         plyr_1.8.4        stringr_1.4.0    </span></a>
-<a class="sourceLine" id="cb13-29" data-line-number="29"><span class="co">#&gt; [13] httr_1.4.1        tools_3.6.1       grid_3.6.1       </span></a>
-<a class="sourceLine" id="cb13-30" data-line-number="30"><span class="co">#&gt; [16] xfun_0.9          RGCCA_2.1.2       htmltools_0.3.6  </span></a>
-<a class="sourceLine" id="cb13-31" data-line-number="31"><span class="co">#&gt; [19] yaml_2.2.0        assertthat_0.2.1  digest_0.6.21    </span></a>
-<a class="sourceLine" id="cb13-32" data-line-number="32"><span class="co">#&gt; [22] rprojroot_1.3-2   pkgdown_1.4.1     crayon_1.3.4     </span></a>
-<a class="sourceLine" id="cb13-33" data-line-number="33"><span class="co">#&gt; [25] Matrix_1.2-17     RefManageR_1.2.12 codetools_0.2-16 </span></a>
-<a class="sourceLine" id="cb13-34" data-line-number="34"><span class="co">#&gt; [28] base64enc_0.1-3   fs_1.3.1          curl_4.2         </span></a>
-<a class="sourceLine" id="cb13-35" data-line-number="35"><span class="co">#&gt; [31] memoise_1.1.0     evaluate_0.14     rmarkdown_1.15   </span></a>
-<a class="sourceLine" id="cb13-36" data-line-number="36"><span class="co">#&gt; [34] stringi_1.4.3     compiler_3.6.1    desc_1.2.0       </span></a>
-<a class="sourceLine" id="cb13-37" data-line-number="37"><span class="co">#&gt; [37] backports_1.1.4   lubridate_1.7.4   jsonlite_1.6</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="co">#&gt;  [7] R6_2.4.0          bibtex_0.4.2      stringr_1.4.0    </span></a>
+<a class="sourceLine" id="cb13-28" data-line-number="28"><span class="co">#&gt; [10] httr_1.4.1        highr_0.8         plyr_1.8.4       </span></a>
+<a class="sourceLine" id="cb13-29" data-line-number="29"><span class="co">#&gt; [13] tools_3.6.1       grid_3.6.1        xfun_0.9         </span></a>
+<a class="sourceLine" id="cb13-30" data-line-number="30"><span class="co">#&gt; [16] RGCCA_2.1.2       htmltools_0.3.6   yaml_2.2.0       </span></a>
+<a class="sourceLine" id="cb13-31" data-line-number="31"><span class="co">#&gt; [19] digest_0.6.21     Matrix_1.2-17     RefManageR_1.2.12</span></a>
+<a class="sourceLine" id="cb13-32" data-line-number="32"><span class="co">#&gt; [22] codetools_0.2-16  curl_4.2          evaluate_0.14    </span></a>
+<a class="sourceLine" id="cb13-33" data-line-number="33"><span class="co">#&gt; [25] rmarkdown_1.15    stringi_1.4.3     compiler_3.6.1   </span></a>
+<a class="sourceLine" id="cb13-34" data-line-number="34"><span class="co">#&gt; [28] jsonlite_1.6      lubridate_1.7.4</span></a></code></pre></div>
 </div>
 <div id="bibliography" class="section level1">
 <h1 class="hasAnchor">
-<a href="#bibliography" class="anchor"></a>Bibliography</h1>
+<a href="#bibliography" class="anchor"></a><span class="header-section-number">6</span> Bibliography</h1>
 <p>[1] A. Tenenhaus and M. Tenenhaus. “Regularized Generalized Canonical Correlation Analysis”. In: <em>Psychometrika</em> 76.2 ( Mar. 2011), pp. 257-284. DOI: 10.1007/s11336-011-9206-8. &lt;URL: <a href="https://doi.org/10.1007/s11336-011-9206-8" class="uri">https://doi.org/10.1007/s11336-011-9206-8</a>&gt;.</p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#introduction">Introduction</a></li>
-      <li><a href="#data-format">Data format</a></li>
-      <li>
-<a href="#workflow">Workflow</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#null-hypothesis">Null hypothesis</a></li>
-      <li><a href="#search-models">Search models</a></li>
-      <li><a href="#refinament-of-the-model">Refinament of the model</a></li>
-      <li><a href="#evaluate-stability">Evaluate stability</a></li>
-      </ul>
-</li>
-      <li><a href="#conclusion">Conclusion</a></li>
-      <li><a href="#session-info">Session Info</a></li>
-      <li><a href="#bibliography">Bibliography</a></li>
-      </ul>
-</div>
       </div>
 
 </div>
