@@ -176,7 +176,7 @@ df <- rbind(
   cbind.data.frame(bs1$AVE, Model = "model 1"),
   cbind.data.frame(bs2$AVE, Model = "model 2"))
 agg <- aggregate(df[, 1:2], list(Model = df$Model), mean)
-points(agg[, 2:3], pch = 17, col = c("red", "green", "black"))
+points(agg[, 2:3], pch = 17, col = c("red", "green", "black"), cex = 1.5)
 ```
 
 
