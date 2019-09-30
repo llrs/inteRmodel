@@ -5,7 +5,9 @@ output:
     fig_caption: yes
     code_folding: show
     self_contained: yes
+    code_download: true
     toc_float: true
+    number_sections: true
 vignette: >
   %\VignetteIndexEntry{inteRmodel}
   %\VignetteEncoding{UTF-8}
@@ -38,7 +40,7 @@ library(inteRmodel)
 ```
 
 
-Imagine we want to find the best model to relate the gene expression on a glioma with 
+In this use case we want to find the best model to relate the gene expression on a glioma with 
 some repetitions at the DNA level, taking into account that these tumors are at 
 three different locations. Our idea is that the location might influence the tumor.
 
@@ -59,6 +61,15 @@ names(A)[3] <- "Loc"
 With these steps we read and prepare the data for the `sgcca` and `rgcca` function. 
 
 # Workflow
+
+The basic workflow proposed is the following:
+
+ 1. Select a model for the data
+ 2. Look for different models that could be better
+ 3. Change the weight of the model to tune them.
+ 4. Compare models with the same bootstrap
+ 
+This steps are explained on the detail on the next sections.
 
 ## Null hypothesis
 
@@ -134,26 +145,38 @@ model2
 
 ## Evaluate stability
 
-A next step would be to see if some models are better than the others, something along these lines
+A next step would be to see if some models are better than the others, something along these lines but with more iterations.
+
 ```{r boot2, message=FALSE, results="hide"}
 iterations <- 10
-bs0 <- boot_samples_sgcca(A = A, C = model0, c1 = c(.071,.2, 1), nb_boot = iterations)
-bs1 <- boot_samples_sgcca(A = A, C = model, c1 = c(.071,.2, 1), nb_boot = iterations)
-bs2 <- boot_samples_sgcca(A = A, C = model2, c1 = c(.071,.2, 1), nb_boot = iterations)
+index <- vector("list", length = iterations)
+for (i in seq_len(iterations)) {
+  index[[i]] <- sample(nrow(A[[1]]), replace = TRUE)
+}
+bs0 <- boot_index_sgcca(index, A = A, C = model0, c1 = c(.071,.2, 1))
+bs1 <- boot_index_sgcca(index, A = A, C = model, c1 = c(.071,.2, 1))
+bs2 <- boot_index_sgcca(index, A = A, C = model2, c1 = c(.071,.2, 1))
 ```
 
 ### Stability
 
 We could see that they have different distributions:
 
-```{r boot_plot, message=FALSE, fig.cap="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE."}
-plot(c(0.45, 0.9), c(0.05, 0.2), type = "n", xlab = "inner AVE", ylab = "outer AVE",
+```{r boot_plot, message=FALSE, fig.cap="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group"}
+plot(c(0.6, 0.9), c(0.05, 0.15), type = "n", xlab = "inner AVE", ylab = "outer AVE",
      main = "Bootstrap of models")
 points(bs0$AVE, pch = 16, col = "red")
 points(bs1$AVE, pch = 16, col = "green")
 points(bs2$AVE, pch = 16)
 legend("topright", legend = c("model2", "model", "model0"), 
        fill = c("black", "green", "red"))
+
+df <- rbind(
+  cbind.data.frame(bs0$AVE, Model = "model 0"),
+  cbind.data.frame(bs1$AVE, Model = "model 1"),
+  cbind.data.frame(bs2$AVE, Model = "model 2"))
+agg <- aggregate(df[, 1:2], list(Model = df$Model), mean)
+points(agg[, 2:3], pch = 17, col = c("red", "green", "black"))
 ```
 
 
