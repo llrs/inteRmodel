@@ -3,11 +3,11 @@ title: "inteRmodel"
 output: 
   rmarkdown::html_document:
     fig_caption: yes
-    code_folding: show
     self_contained: yes
-    code_download: true
     toc_float: true
     number_sections: true
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{inteRmodel}
   %\VignetteEncoding{UTF-8}
