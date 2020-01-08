@@ -2,8 +2,8 @@
 #'
 #' Calculates the canonical correlation and canonical covariates.
 #' @param rgcca The output of SGCCA or RGCCA
-#' @return A list of matrix with the correlation and covariation between CCA
-#' dimensions
+#' @return A data.frame with the correlation and covariation between CCA
+#' components
 #' @export
 #' @importFrom stats cor
 #' @importFrom stats cov
@@ -19,25 +19,20 @@
 #' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
 #'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
 #' out <- improve(out, c("Agric", "Ind", "Polit"))
-#' cca_rgcca(out)
+#' ccas <- cca_rgcca(out)
 cca_rgcca <- function(rgcca) {
-
-  l <- vector("list", length(rgcca$Y))
-  named <- !is.null(names(rgcca$Y))
-  if (named) {
-    names(l) <- names(rgcca$Y)
+  vars <- names(rgcca$Y)
+  comp <- seq_along(rgcca$AVE$AVE_inner_model)
+  df <- expand.grid(Var1 = vars, Var2 = vars,
+                    Comp1 = comp, Comp2 = comp,
+                    stringsAsFactors = FALSE)
+  df <- cbind(df, cor = NA, cov = NA)
+  for (i in seq_len(nrow(df))) {
+    df[i, "cor"] <- cor(rgcca$Y[[df[i, 1]]][, df[i, 3]],
+                        rgcca$Y[[df[i, 2]]][, df[i, 4]])
+    df[i, "cov"] <- cov(rgcca$Y[[df[i, 1]]][, df[i, 3]],
+                        rgcca$Y[[df[i, 2]]][, df[i, 4]])
   }
-  for (i in seq_along(rgcca$Y)) {
-    l[[i]] <- vector("list", length(rgcca$Y))
-    if (named) {
-      names(l[[i]]) <- names(rgcca$Y)
-    }
-    for (j in seq_along(rgcca$Y)) {
-      l[[i]][[j]] <- list(
-        "cor" = cor(rgcca$Y[[i]], rgcca$Y[[j]]),
-        "cov" = cov(rgcca$Y[[i]], rgcca$Y[[j]])
-      )
-    }
-  }
-  l
+  df
 }
+

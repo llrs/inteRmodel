@@ -9,6 +9,7 @@
 #' \code{boot_samples_sgcca} Iterate over random samples.
 #' @param ... Named arguments passed to sgcca.
 #' @param nb_boot Number of bootstraps to perform.
+#' @param verbose Logical, should it print a progress bar (default) or not?
 #' @return A list with two elements: the coefficient of each variable of the
 #' input blocks; and the AVE values, both inner, and outer
 #' @export
@@ -25,7 +26,7 @@
 #' out <- boot_samples_sgcca(A = A, C = C, c1 = rep(1, 3),  nb_boot = 10)
 #' head(out$AVE)
 #' @rdname boot
-boot_samples_sgcca <- function(..., nb_boot = 1000) {
+boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
 
   l <- list(...)
   A <- l$A
@@ -42,10 +43,14 @@ boot_samples_sgcca <- function(..., nb_boot = 1000) {
     colnames(STAB[[j]]) <- colnames(l$A[[j]])
   }
   names(STAB) <- names(l$A)
-  pb <-  txtProgressBar(min = 0, max = nb_boot, initial = 0, style = 3)
+  if (verbose){
+    pb <-  txtProgressBar(min = 0, max = nb_boot, initial = 0, style = 3)
+  }
   # Bootstrap the data
   for (i in seq_len(nb_boot)) {
-    setTxtProgressBar(pb, i)
+    if (verbose) {
+      setTxtProgressBar(pb, i)
+    }
     ind <- sample(nrow(A[[1]]), replace = TRUE)
 
     Bscr <- subsetData(A, ind)

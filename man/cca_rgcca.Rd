@@ -10,8 +10,8 @@ cca_rgcca(rgcca)
 \item{rgcca}{The output of SGCCA or RGCCA}
 }
 \value{
-A list of matrix with the correlation and covariation between CCA
-dimensions
+A data.frame with the correlation and covariation between CCA
+components
 }
 \description{
 Calculates the canonical correlation and canonical covariates.
@@ -28,5 +28,5 @@ C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
 out <- improve(out, c("Agric", "Ind", "Polit"))
-cca_rgcca(out)
+ccas <- cca_rgcca(out)
 }

@@ -127,6 +127,5 @@ improve <- function(sgcca, namesA) {
   names(sgcca$AVE$AVE_X) <- namesA
   colnames(sgcca$C) <- namesA
   rownames(sgcca$C) <- namesA
-  sgcca$AVE$AVE_X <- simplify2array(sgcca$AVE$AVE_X)
-  sgcca
+  aves(sgcca)
 }

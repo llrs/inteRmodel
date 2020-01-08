@@ -5,7 +5,7 @@
 \alias{boot_index_sgcca}
 \title{Bootstrap sgcca}
 \usage{
-boot_samples_sgcca(..., nb_boot = 1000)
+boot_samples_sgcca(..., nb_boot = 1000, verbose = TRUE)
 
 boot_index_sgcca(index, ...)
 }
@@ -13,6 +13,8 @@ boot_index_sgcca(index, ...)
 \item{...}{Named arguments passed to sgcca.}
 
 \item{nb_boot}{Number of bootstraps to perform.}
+
+\item{verbose}{Logical, should it print a progress bar (default) or not?}
 
 \item{index}{A list of numeric values for selecting values}
 }
