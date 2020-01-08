@@ -121,7 +121,7 @@ bootstrap given original data, while <code>boot_index_sgcca</code> given some
 index of samples it iterates over it.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>boot_samples_sgcca</span>(<span class='no'>...</span>, <span class='kw'>nb_boot</span> <span class='kw'>=</span> <span class='fl'>1000</span>)
+    <pre class="usage"><span class='fu'>boot_samples_sgcca</span>(<span class='no'>...</span>, <span class='kw'>nb_boot</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>boot_index_sgcca</span>(<span class='no'>index</span>, <span class='no'>...</span>)</pre>
 
@@ -135,6 +135,10 @@ index of samples it iterates over it.</p>
     <tr>
       <th>nb_boot</th>
       <td><p>Number of bootstraps to perform.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical, should it print a progress bar (default) or not?</p></td>
     </tr>
     <tr>
       <th>index</th>
