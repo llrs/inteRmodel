@@ -14,9 +14,11 @@
 #' A <- subsetData(ge_cgh_locIGR$multiblocks, sample(53, replace = TRUE))
 #' str(A)
 subsetData <- function(A, index) {
-  lapply(A, function(x, inde){
+  l <- lapply(A, function(x, inde){
     y <- x[inde, , drop = FALSE] # subset
     v <- apply(y, 2, var)
-    y[,  !is.na(v) | v != 0] # Remove variables that are constant.
+    y[,  !is.na(v) | v != 0, drop = FALSE] # Remove variables that are constant.
   }, inde = index)
+  names(l) <- names(A)
+  l
 }
