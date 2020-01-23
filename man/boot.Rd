@@ -29,7 +29,8 @@ index of samples it iterates over it.
 }
 \details{
 \code{boot_index_sgcca} Iterate over the index,
-which is a list of vectors with the position of samples to use.
+which is a list of vectors with the position of samples to use and use sgcca
+with the arguments provided.
 \code{boot_samples_sgcca} Iterate over random samples.
 }
 \examples{
