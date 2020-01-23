@@ -17,7 +17,7 @@ subsetData <- function(A, index) {
   l <- lapply(A, function(x, inde){
     y <- x[inde, , drop = FALSE] # subset
     v <- apply(y, 2, var)
-    y[,  !is.na(v) | v != 0, drop = FALSE] # Remove variables that are constant.
+    y[,  !is.na(v) & v != 0, drop = FALSE] # Remove variables that are constant.
   }, inde = index)
   names(l) <- names(A)
   l
