@@ -2,6 +2,9 @@ context("test-correct")
 
 test_that("correct works", {
   C <- matrix(0, ncol = 5, nrow = 5)
+  Ci <- C
+  Ci[1, 3] <- 1
+  expect_false(correct(Ci))
   model0 <- subSymm(C, 1, 3, 1)
   expect_false(correct(model0))
   model1 <- subSymm(C, 1, 2, 1)

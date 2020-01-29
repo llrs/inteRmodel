@@ -15,7 +15,7 @@ subSymm <- function(m, x, y, val) {
   dm <- dimnames(m)
   check_names <- dm[[1]] == dm[[2]]
   check_size <- nrow(m) != ncol(m)
-  if (all(check_names) && check_size) {
+  if (!all(check_names) || check_size) {
     stop("m should be a symmetric matrix.")
   }
 
