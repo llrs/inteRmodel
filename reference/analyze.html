@@ -122,7 +122,7 @@ the information about the result." />
 the information about the result.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>analyze</span>(<span class='no'>sgcca</span>)</pre>
+    <pre class="usage"><span class='fu'>analyze</span>(<span class='kw'>sgcca</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,16 +146,17 @@ returns also the weight of each link of the model used,
 all of this in a tidy way.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Russett"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"RGCCA"</span>)
-<span class='no'>X_agric</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gini"</span>, <span class='st'>"farm"</span>, <span class='st'>"rent"</span>)])
-<span class='no'>X_ind</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
-<span class='no'>X_polit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>Russett</span>[ , <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Russett"</span>, package = <span class='st'>"RGCCA"</span>)
+<span class='kw'>X_agric</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gini"</span>, <span class='st'>"farm"</span>, <span class='st'>"rent"</span>)])
+<span class='kw'>X_ind</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
+<span class='kw'>X_polit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw'>Russett</span>[ , <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
                                   <span class='st'>"dictator"</span>)])
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>X_agric</span>, <span class='no'>X_ind</span>, <span class='no'>X_polit</span>)
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>A</span>, <span class='kw'>function</span>(<span class='no'>x</span>) <span class='kw pkg'>RGCCA</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RGCCA/man/scale2.html'>scale2</a></span>(<span class='no'>x</span>, <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RGCCA</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RGCCA/man/rgcca.html'>rgcca</a></span>(<span class='no'>A</span>, <span class='no'>C</span>, <span class='kw'>tau</span> <span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
-                    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; Computation of the RGCCA block components based on the factorial scheme 
+<span class='kw'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>X_agric</span>, <span class='kw'>X_ind</span>, <span class='kw'>X_polit</span>)
+<span class='kw'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='kw'>A</span>, <span class='fu'>function</span>(<span class='kw'>x</span>) <span class='kw'>RGCCA</span>::<span class='fu'><a href='https://rdrr.io/pkg/RGCCA/man/scale2.html'>scale2</a></span>(<span class='kw'>x</span>, bias = <span class='fl'>TRUE</span>))
+<span class='kw'>C</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
+<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='kw'>RGCCA</span>::<span class='fu'><a href='https://rdrr.io/pkg/RGCCA/man/rgcca.html'>rgcca</a></span>(<span class='kw'>A</span>, <span class='kw'>C</span>, tau =<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fl'>3</span>), scheme = <span class='st'>"factorial"</span>,
+                    scale = <span class='fl'>FALSE</span>, verbose = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; Computation of the RGCCA block components based on the factorial scheme 
 #&gt; Shrinkage intensity paramaters are chosen manually 
 #&gt;  Iter:    1  Fit: 1.83005079  Dif:  0.38803933 
 #&gt;  Iter:    2  Fit: 1.92003517  Dif:  0.08998438 
@@ -168,7 +169,8 @@ all of this in a tidy way.</p>
 #&gt;  Iter:    9  Fit: 1.93380585  Dif:  0.00000009 
 #&gt;  Iter:   10  Fit: 1.93380586  Dif:  0.00000001 
 #&gt;  Iter:   11  Fit: 1.93380586  Dif:  0.00000000 
-#&gt; The RGCCA algorithm converged to a stationary point after 10 iterations </div><div class='img'><img src='analyze-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>analyze</span>(<span class='no'>out</span>)</div><div class='output co'>#&gt;       vs12       vs13       vs23  AVE_inner  AVE_outer        cc1      var12 
+#&gt; The RGCCA algorithm converged to a stationary point after 10 iterations </div><div class='img'><img src='analyze-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>analyze</span>(<span class='kw'>out</span>)
+</div><div class='output co'>#&gt;       vs12       vs13       vs23  AVE_inner  AVE_outer        cc1      var12 
 #&gt;  0.4875286 -0.6270914 -0.7574030  0.4834515  0.4793766  0.9669029  0.0000000 
 #&gt;      var13      var23    weights 
 #&gt;  1.0000000  1.0000000  2.0000000 </div></pre>
@@ -187,7 +189,7 @@ all of this in a tidy way.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

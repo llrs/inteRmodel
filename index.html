@@ -84,33 +84,39 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the released version of inteRmodel from <a href="https://www.github.com/llrs/inteRmodel">Github</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"llrs/inteRmodel"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"llrs/inteRmodel"</span>)
+</pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example which shows you how to apply the bootstraping on this analysis:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">inteRmodel</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/llrs/inteRmodel">inteRmodel</a></span>)
 <span class="co">#&gt; </span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"Russett"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"RGCCA"</span>)
-<span class="no">X_agric</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="no">Russett</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gini"</span>, <span class="st">"farm"</span>, <span class="st">"rent"</span>)])
-<span class="no">X_ind</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="no">Russett</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gnpr"</span>, <span class="st">"labo"</span>)])
-<span class="no">X_polit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="no">Russett</span>[ , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"inst"</span>, <span class="st">"ecks"</span>,  <span class="st">"death"</span>, <span class="st">"demostab"</span>,
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"Russett"</span>, package = <span class="st">"RGCCA"</span>)
+<span class="kw">X_agric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw">Russett</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gini"</span>, <span class="st">"farm"</span>, <span class="st">"rent"</span>)])
+<span class="kw">X_ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw">Russett</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gnpr"</span>, <span class="st">"labo"</span>)])
+<span class="kw">X_polit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw">Russett</span>[ , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"inst"</span>, <span class="st">"ecks"</span>,  <span class="st">"death"</span>, <span class="st">"demostab"</span>,
                                   <span class="st">"dictator"</span>)])
-<span class="no">A</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">X_agric</span>, <span class="no">X_ind</span>, <span class="no">X_polit</span>)
+<span class="kw">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">X_agric</span>, <span class="kw">X_ind</span>, <span class="kw">X_polit</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">879138</span>)
-<span class="no">boots</span> <span class="kw">&lt;-</span> <span class="fl">10</span>
-<span class="no">C</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>), <span class="fl">3</span>, <span class="fl">3</span>)
-<span class="no">boot_i</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/boot.html">boot_samples_sgcca</a></span>(<span class="kw">A</span> <span class="kw">=</span> <span class="no">A</span>, <span class="kw">C</span> <span class="kw">=</span> <span class="no">C</span>, <span class="kw">c1</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fl">3</span>), <span class="kw">nb_boot</span> <span class="kw">=</span> <span class="no">boots</span>)</pre></div>
+<span class="kw">boots</span> <span class="op">&lt;-</span> <span class="fl">10</span>
+<span class="kw">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>), <span class="fl">3</span>, <span class="fl">3</span>)
+<span class="kw">boot_i</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/boot_samples_sgcca.html">boot_samples_sgcca</a></span>(A = <span class="kw">A</span>, C = <span class="kw">C</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fl">3</span>), nb_boot = <span class="kw">boots</span>)
+</pre></div>
 <p>We can see the <a href="https://en.wikipedia.org/wiki/Average_variance_extracted">AVE</a> of the bootstraps by using:</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">boot_i</span>$<span class="no">AVE</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">boot_i</span><span class="op">$</span><span class="kw">AVE</span>)
 <span class="co">#&gt;          inner     outer</span>
 <span class="co">#&gt; [1,] 0.3003373 0.6522110</span>
 <span class="co">#&gt; [2,] 0.3871677 0.6821278</span>
 <span class="co">#&gt; [3,] 0.4648659 0.6416236</span>
 <span class="co">#&gt; [4,] 0.4732215 0.7039174</span>
 <span class="co">#&gt; [5,] 0.4903151 0.6333550</span>
-<span class="co">#&gt; [6,] 0.3474681 0.6248818</span></pre></div>
+<span class="co">#&gt; [6,] 0.3474681 0.6248818</span>
+</pre></div>
 <p>The AVE scores is for each bootstrap sample, which help to decide which is the stability of the model.</p>
 <p>See the vignette for a full example.</p>
 </div>
@@ -158,7 +164,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

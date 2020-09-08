@@ -120,7 +120,7 @@
     <p>Helper to create models, which substitute in a symmetric matrix for a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>subSymm</span>(<span class='no'>m</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>val</span>)</pre>
+    <pre class="usage"><span class='fu'>subSymm</span>(<span class='kw'>m</span>, <span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>val</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,8 +151,9 @@
     <div class='dont-index'><p><code><a href='symm.html'>symm</a></code>, <code><a href='correct.html'>correct</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>0</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='fu'>subSymm</span>(<span class='no'>m</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt;      [,1] [,2] [,3]
+    <pre class="examples"><div class='input'><span class='kw'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>0</span>, ncol = <span class='fl'>3</span>, nrow = <span class='fl'>3</span>)
+<span class='fu'>subSymm</span>(<span class='kw'>m</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>)
+</div><div class='output co'>#&gt;      [,1] [,2] [,3]
 #&gt; [1,]    0    1    0
 #&gt; [2,]    1    0    0
 #&gt; [3,]    0    0    0</div></pre>
@@ -171,7 +172,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

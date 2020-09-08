@@ -120,9 +120,9 @@
     <p>Look for every variation of the models changing the weights by 0.1.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>iterate_model</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>iterate_model</span>(<span class='kw'>...</span>)
 
-<span class='fu'>search_model</span>(<span class='no'>...</span>, <span class='kw'>nWeights</span> <span class='kw'>=</span> <span class='fl'>3</span>)</pre>
+<span class='fu'>search_model</span>(<span class='kw'>...</span>, nWeights = <span class='fl'>3</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,18 +151,19 @@
     <div class='dont-index'><p><code>sgcca</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Russett"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"RGCCA"</span>)
-<span class='no'>X_agric</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gini"</span>, <span class='st'>"farm"</span>, <span class='st'>"rent"</span>)])
-<span class='no'>X_ind</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
-<span class='no'>X_polit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>Russett</span>[ , <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Russett"</span>, package = <span class='st'>"RGCCA"</span>)
+<span class='kw'>X_agric</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gini"</span>, <span class='st'>"farm"</span>, <span class='st'>"rent"</span>)])
+<span class='kw'>X_ind</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw'>Russett</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gnpr"</span>, <span class='st'>"labo"</span>)])
+<span class='kw'>X_polit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='kw'>Russett</span>[ , <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"inst"</span>, <span class='st'>"ecks"</span>,  <span class='st'>"death"</span>, <span class='st'>"demostab"</span>,
                                   <span class='st'>"dictator"</span>)])
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>Agric</span> <span class='kw'>=</span> <span class='no'>X_agric</span>, <span class='kw'>Ind</span> <span class='kw'>=</span> <span class='no'>X_ind</span>, <span class='kw'>Polit</span> <span class='kw'>=</span> <span class='no'>X_polit</span>)
-<span class='no'>C</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>search_model</span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>A</span>, <span class='kw'>C</span> <span class='kw'>=</span> <span class='no'>C</span>, <span class='kw'>c1</span> <span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
-               <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-               <span class='kw'>ncomp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>A</span>)),
-               <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>out</span>)</div><div class='output co'>#&gt;        vs12       vs13       vs23 AVE_inner AVE_outer        cc1 var12 var13
+<span class='kw'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(Agric = <span class='kw'>X_agric</span>, Ind = <span class='kw'>X_ind</span>, Polit = <span class='kw'>X_polit</span>)
+<span class='kw'>C</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>), <span class='fl'>3</span>, <span class='fl'>3</span>)
+<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'>search_model</span>(A = <span class='kw'>A</span>, C = <span class='kw'>C</span>, c1 =<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), scheme = <span class='st'>"factorial"</span>,
+               scale = <span class='fl'>FALSE</span>, verbose = <span class='fl'>FALSE</span>,
+               ncomp = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>A</span>)),
+               bias = <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>out</span>)
+</div><div class='output co'>#&gt;        vs12       vs13       vs23 AVE_inner AVE_outer        cc1 var12 var13
 #&gt; 1 0.3243244 -0.4429347 -0.7464389 0.1506887 0.6668992 0.07534437   0.5   0.5
 #&gt; 2 0.3310923 -0.4468592 -0.7481229 0.1396425 0.6649707 0.15954291   1.0   0.5
 #&gt; 3 0.3194449 -0.4400412 -0.7451902 0.1631059 0.6681027 0.21914752   0.5   1.0
@@ -176,13 +177,14 @@
 #&gt; 4   0.0       2
 #&gt; 5   0.5       2
 #&gt; 6   0.5       2</div><div class='input'><span class='co'># From all the models, we select that with the higher inner AVE:</span>
-<span class='no'>columns</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span>(<span class='st'>"var"</span>, <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>out</span>))
-<span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='symm.html'>symm</a></span>(<span class='no'>C</span>, <span class='no'>out</span>[<span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.max</a></span>(<span class='no'>out</span>$<span class='no'>AVE_inner</span>), <span class='no'>columns</span>])
+<span class='kw'>columns</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span>(<span class='st'>"var"</span>, <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='kw'>out</span>))
+<span class='kw'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='symm.html'>symm</a></span>(<span class='kw'>C</span>, <span class='kw'>out</span>[<span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.max</a></span>(<span class='kw'>out</span><span class='op'>$</span><span class='kw'>AVE_inner</span>), <span class='kw'>columns</span>])
 <span class='co'># We then look for a variation of the weights of this model</span>
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>iterate_model</span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>A</span>, <span class='kw'>C</span> <span class='kw'>=</span> <span class='no'>model</span>, <span class='kw'>c1</span> <span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='st'>"factorial"</span>,
-               <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-               <span class='kw'>ncomp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>A</span>)),
-               <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
+<span class='kw'>out</span> <span class='op'>&lt;-</span> <span class='fu'>iterate_model</span>(A = <span class='kw'>A</span>, C = <span class='kw'>model</span>, c1 =<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), scheme = <span class='st'>"factorial"</span>,
+               scale = <span class='fl'>FALSE</span>, verbose = <span class='fl'>FALSE</span>,
+               ncomp = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>A</span>)),
+               bias = <span class='fl'>TRUE</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -198,7 +200,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
