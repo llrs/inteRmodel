@@ -94,7 +94,6 @@
 <p>This is a basic example which shows you how to apply the bootstraping on this analysis:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/llrs/inteRmodel">inteRmodel</a></span>)
-<span class="co">#&gt; </span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"Russett"</span>, package = <span class="st">"RGCCA"</span>)
 <span class="kw">X_agric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw">Russett</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gini"</span>, <span class="st">"farm"</span>, <span class="st">"rent"</span>)])
 <span class="kw">X_ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw">Russett</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gnpr"</span>, <span class="st">"labo"</span>)])
@@ -150,6 +149,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://github.com/llrs/inteRmodel/actions"><img src="https://github.com/llrs/inteRmodel/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://travis-ci.org/llrs/inteRmodel"><img src="https://travis-ci.org/llrs/inteRmodel.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/gh/llrs/inteRmodel?branch=master"><img src="https://codecov.io/gh/llrs/inteRmodel/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
