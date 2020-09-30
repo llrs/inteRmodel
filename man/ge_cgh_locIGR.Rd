@@ -4,7 +4,9 @@
 \name{ge_cgh_locIGR}
 \alias{ge_cgh_locIGR}
 \title{Data from GE CGH and location}
-\format{one instance, 1 row per patient}
+\format{
+one instance, 1 row per patient
+}
 \source{
 IGR, Villejuif, France
 }
