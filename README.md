@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/llrs/inteRmodel/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/inteRmodel/actions)
 [![Travis build
 status](https://travis-ci.org/llrs/inteRmodel.svg?branch=master)](https://travis-ci.org/llrs/inteRmodel)
 [![Codecov test
@@ -47,7 +49,6 @@ this analysis:
 
 ``` r
 library(inteRmodel)
-#> 
 data("Russett", package = "RGCCA")
 X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
 X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
