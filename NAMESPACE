@@ -2,6 +2,7 @@
 
 export(analyze)
 export(aves)
+export(boot_index)
 export(boot_index_sgcca)
 export(boot_samples_sgcca)
 export(cca_rgcca)

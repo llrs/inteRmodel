@@ -148,11 +148,7 @@ model2
 A next step would be to see if some models are better than the others, something along these lines but with more iterations.
 
 ```{r boot2, message=FALSE, results="hide"}
-iterations <- 10
-index <- vector("list", length = iterations)
-for (i in seq_len(iterations)) {
-  index[[i]] <- sample(nrow(A[[1]]), replace = TRUE)
-}
+index <- boot_index(nrow(A[[1]]), 10)
 bs0 <- boot_index_sgcca(index, A = A, C = model0, c1 = c(.071,.2, 1))
 bs1 <- boot_index_sgcca(index, A = A, C = model, c1 = c(.071,.2, 1))
 bs2 <- boot_index_sgcca(index, A = A, C = model2, c1 = c(.071,.2, 1))
@@ -204,12 +200,12 @@ pars <- par(mfrow = c(1, 2))
 plot(m0$Y[[1]][, 1], m0$Y[[2]][, 1], type = "n", xlab = "Block1 Comp1", 
      ylab = "Block2 Comp1", main = "Initial model")
 abline(h = 0, v = 0)
-text(m0$Y[[1]][, 1], m0$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc)+1)
+text(m0$Y[[1]][, 1], m0$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc) + 1)
 
 plot(m2$Y[[1]][, 1], m2$Y[[2]][, 1], type = "n", xlab = "Block1 Comp1", 
      ylab = "Block2 Comp1", main = "Final model")
 abline(h = 0, v = 0)
-text(m2$Y[[1]][, 1], m2$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc)+1)
+text(m2$Y[[1]][, 1], m2$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc) + 1)
 ```
 
 
@@ -241,6 +237,6 @@ sessionInfo()
 
 
 ```{r, echo=FALSE, results="asis"}
-bibliography()
+bibliography(style = "html")
 ```
 

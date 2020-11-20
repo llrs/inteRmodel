@@ -29,9 +29,12 @@ index of samples it iterates over it.
 }
 \details{
 \code{boot_index_sgcca} Iterate over the index,
-which is a list of vectors with the position of samples to use and use sgcca
+which is a list of vectors with the position of samples to use and use [sgcca]
 with the arguments provided.
-\code{boot_samples_sgcca} Iterate over random samples.
+\code{boot_samples_sgcca} Iterate over random samples without recording which samples where used.
+}
+\note{
+Recommended to provide scaled data and the argument [scale = FALSE]
 }
 \examples{
 data("Russett", package = "RGCCA")
@@ -44,9 +47,6 @@ C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 out <- boot_samples_sgcca(A = A, C = C, c1 = rep(1, 3),  nb_boot = 10)
 head(out$AVE)
 boots <- 10
-index <- vector("list", length = boots)
-for (i in seq_len(boots)) {
-  index[[i]] <- sample(nrow(A[[1]]), replace = TRUE)
-}
+index <- boot_index(nrow(A[[1]]), boots)
 boot_i <- boot_index_sgcca(index, A = A, C = C)
 }

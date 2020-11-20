@@ -5,9 +5,10 @@
 #' index of samples it iterates over it.
 #'
 #' \code{boot_index_sgcca} Iterate over the index,
-#' which is a list of vectors with the position of samples to use and use sgcca
+#' which is a list of vectors with the position of samples to use and use [sgcca]
 #' with the arguments provided.
-#' \code{boot_samples_sgcca} Iterate over random samples.
+#' \code{boot_samples_sgcca} Iterate over random samples without recording which samples where used.
+#' @note Recommended to provide scaled data and the argument [scale = FALSE]
 #' @param ... Named arguments passed to sgcca.
 #' @param nb_boot Number of bootstraps to perform.
 #' @param verbose Logical, should it print a progress bar (default) or not?
@@ -44,7 +45,7 @@ boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
     colnames(STAB[[j]]) <- colnames(l$A[[j]])
   }
   names(STAB) <- names(l$A)
-  if (verbose){
+  if (verbose) {
     pb <-  txtProgressBar(min = 0, max = nb_boot, initial = 0, style = 3)
   }
   # Bootstrap the data
@@ -81,15 +82,33 @@ boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
   return(list("STAB" = STAB, "AVE" = AVE))
 }
 
+
+#' Create index for the samples
+#'
+#' Helper function for the easy creation of an index to bootstrap.
+#' Each element has the same number of samples.
+#' @param samples A numeric value of samples.
+#' @param boots A numeric value of bootstraps you want.
+#' @seealso [boot_index_sgcca()]
+#' @export
+#' @return A list of length [boots] with indices for the samples.
+#' @examples
+#' boot_index(10, 3)
+boot_index <- function(samples, boots) {
+  stopifnot(samples >= 2)
+  stopifnot(boots >= 2)
+  index <- vector("list", length = boots)
+  for (i in seq_len(boots)) {
+    index[[i]] <- sample(samples, replace = TRUE)
+  }
+  index
+}
 #' @rdname boot
 #' @param index A list of numeric values for selecting values
 #' @export
 #' @examples
 #' boots <- 10
-#' index <- vector("list", length = boots)
-#' for (i in seq_len(boots)) {
-#'   index[[i]] <- sample(nrow(A[[1]]), replace = TRUE)
-#' }
+#' index <- boot_index(nrow(A[[1]]), boots)
 #' boot_i <- boot_index_sgcca(index, A = A, C = C)
 boot_index_sgcca <- function(index, ...) {
   l <- lapply(index, base_boot, ... = ...)
