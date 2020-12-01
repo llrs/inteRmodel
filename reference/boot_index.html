@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • inteRmodel</title>
+<title>Create index for the samples — boot_index • inteRmodel</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Create index for the samples — boot_index" />
+<meta property="og:description" content="Helper function for the easy creation of an index to bootstrap.
+Each element has the same number of samples." />
 
 
 
@@ -58,7 +60,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -108,126 +110,52 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Create index for the samples</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/inteRmodel/blob/master/R/boot_rgcca.R'><code>R/boot_rgcca.R</code></a></small>
+    <div class="hidden name"><code>boot_index.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Helper function for the easy creation of an index to bootstrap.
+Each element has the same number of samples.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>boot_index</span>(<span class='kw'>samples</span>, <span class='kw'>boots</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="analyze.html">analyze()</a></code> </p>
-        </td>
-        <td><p>Analyze a sgcca object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aves.html">aves()</a></code> </p>
-        </td>
-        <td><p>Method to simplify AVE</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="boot.html">boot_samples_sgcca()</a></code> <code><a href="boot.html">boot_index_sgcca()</a></code> </p>
-        </td>
-        <td><p>Bootstrap sgcca</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="boot_index.html">boot_index()</a></code> </p>
-        </td>
-        <td><p>Create index for the samples</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cca_rgcca.html">cca_rgcca()</a></code> </p>
-        </td>
-        <td><p>Canonical correlations and covariates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="correct.html">correct()</a></code> </p>
-        </td>
-        <td><p>Check that the design is fully connected</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ge_cgh_locIGR.html">ge_cgh_locIGR</a></code> </p>
-        </td>
-        <td><p>Data from GE CGH and location</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="improve.html">improve()</a></code> </p>
-        </td>
-        <td><p>Improve the information on sgcca classes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="looIndex.html">looIndex()</a></code> </p>
-        </td>
-        <td><p>Indexes without one sample</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="model.html">iterate_model()</a></code> <code><a href="model.html">search_model()</a></code> </p>
-        </td>
-        <td><p>Functions related to finding models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="model_RGCCA.html">model_RGCCA()</a></code> </p>
-        </td>
-        <td><p>Prepare metadata data for RGCCA.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subSymm.html">subSymm()</a></code> </p>
-        </td>
-        <td><p>Substitute in a symmetric matrix</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="subsetData.html">subsetData()</a></code> </p>
-        </td>
-        <td><p>Subset a list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="symm.html">symm()</a></code> </p>
-        </td>
-        <td><p>Create symmetric matrix</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="weight_design.html">weight_design()</a></code> </p>
-        </td>
-        <td><p>Create design matrices with different weights</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>samples</th>
+      <td><p>A numeric value of samples.</p></td>
+    </tr>
+    <tr>
+      <th>boots</th>
+      <td><p>A numeric value of bootstraps you want.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list of length [boots] with indices for the samples.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>[boot_index_sgcca()]</p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>boot_index</span>(<span class='fl'>10</span>, <span class='fl'>3</span>)
+</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1]  7  5  6  8  7  6 10  8  2  2
+#&gt; 
+#&gt; [[2]]
+#&gt;  [1]  5  5 10  3  5  2  4  9  9  4
+#&gt; 
+#&gt; [[3]]
+#&gt;  [1]  4  8  3  5  7  5 10  6  7 10
+#&gt; </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

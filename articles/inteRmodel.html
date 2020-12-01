@@ -194,11 +194,7 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 <a href="#evaluate-stability" class="anchor"></a><span class="header-section-number">3.4</span> Evaluate stability</h2>
 <p>A next step would be to see if some models are better than the others, something along these lines but with more iterations.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">iterations</span> <span class="op">&lt;-</span> <span class="fl">10</span>
-<span class="kw">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span>(<span class="st">"list"</span>, length = <span class="kw">iterations</span>)
-<span class="co">for</span> (<span class="kw">i</span> <span class="co">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="kw">iterations</span>)) {
-  <span class="kw">index</span>[[<span class="kw">i</span>]] <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">A</span>[[<span class="fl">1</span>]]), replace = <span class="fl">TRUE</span>)
-}
+<span class="kw">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_index.html">boot_index</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">A</span>[[<span class="fl">1</span>]]), <span class="fl">10</span>)
 <span class="kw">bs0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_samples_sgcca.html">boot_index_sgcca</a></span>(<span class="kw">index</span>, A = <span class="kw">A</span>, C = <span class="kw">model0</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>))
 <span class="kw">bs1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_samples_sgcca.html">boot_index_sgcca</a></span>(<span class="kw">index</span>, A = <span class="kw">A</span>, C = <span class="kw">model</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>))
 <span class="kw">bs2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_samples_sgcca.html">boot_index_sgcca</a></span>(<span class="kw">index</span>, A = <span class="kw">A</span>, C = <span class="kw">model2</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>))
@@ -248,12 +244,12 @@ Figure 3: Comparison of the models, our null hypothesis along the model with hig
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], type = <span class="st">"n"</span>, xlab = <span class="st">"Block1 Comp1"</span>, 
      ylab = <span class="st">"Block2 Comp1"</span>, main = <span class="st">"Initial model"</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(h = <span class="fl">0</span>, v = <span class="fl">0</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(<span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], labels = <span class="kw">Loc</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">Loc</span>)<span class="op">+</span><span class="fl">1</span>)
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(<span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], labels = <span class="kw">Loc</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">Loc</span>) <span class="op">+</span> <span class="fl">1</span>)
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], type = <span class="st">"n"</span>, xlab = <span class="st">"Block1 Comp1"</span>, 
      ylab = <span class="st">"Block2 Comp1"</span>, main = <span class="st">"Final model"</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(h = <span class="fl">0</span>, v = <span class="fl">0</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(<span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], labels = <span class="kw">Loc</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">Loc</span>)<span class="op">+</span><span class="fl">1</span>)
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(<span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], labels = <span class="kw">Loc</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">Loc</span>) <span class="op">+</span> <span class="fl">1</span>)
 </pre></div>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/m1-1.png" alt="Figure 4: Differences on the canonical dimensions of the samples" width="672"><p class="caption">
@@ -309,8 +305,8 @@ Figure 5: Comparison of the weights of the CGH variables
 <span class="co">#&gt; [1] inteRmodel_0.1.1     knitcitations_1.0.10</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] Rcpp_1.0.5        knitr_1.30        xml2_1.3.2        magrittr_1.5     </span>
-<span class="co">#&gt;  [5] MASS_7.3-51.6     lattice_0.20-41   R6_2.5.0          rlang_0.4.8      </span>
+<span class="co">#&gt;  [1] Rcpp_1.0.5        knitr_1.30        xml2_1.3.2        magrittr_2.0.1   </span>
+<span class="co">#&gt;  [5] MASS_7.3-51.6     lattice_0.20-41   R6_2.5.0          rlang_0.4.9      </span>
 <span class="co">#&gt;  [9] bibtex_0.4.2.3    stringr_1.4.0     httr_1.4.2        highr_0.8        </span>
 <span class="co">#&gt; [13] plyr_1.8.6        tools_4.0.2       grid_4.0.2        xfun_0.19        </span>
 <span class="co">#&gt; [17] RGCCA_2.1.2       htmltools_0.5.0   yaml_2.2.1        digest_0.6.27    </span>
@@ -322,7 +318,9 @@ Figure 5: Comparison of the weights of the CGH variables
 <div id="bibliography" class="section level1">
 <h1 class="hasAnchor">
 <a href="#bibliography" class="anchor"></a><span class="header-section-number">6</span> Bibliography</h1>
-<p>[1] A. Tenenhaus and M. Tenenhaus. “Regularized Generalized Canonical Correlation Analysis”. In: <em>Psychometrika</em> 76.2 (Mar. 2011), pp. 257-284. DOI: 10.1007/s11336-011-9206-8. &lt;URL: <a href="https://doi.org/10.1007/s11336-011-9206-8" class="uri">https://doi.org/10.1007/s11336-011-9206-8</a>&gt;.</p>
+<p>
+<a id="bib-Tenenhaus_2011"></a><a href="#cite-Tenenhaus_2011">[1]</a><cite> A. Tenenhaus and M. Tenenhaus. “Regularized Generalized Canonical Correlation Analysis”. In: <em>Psychometrika</em> 76.2 (Mar. 2011), pp. 257–284. DOI: <a href="https://doi.org/10.1007/s11336-011-9206-8">10.1007/s11336-011-9206-8</a>. URL: <a href="https://doi.org/10.1007/s11336-011-9206-8">https://doi.org/10.1007/s11336-011-9206-8</a>.</cite>
+</p>
 </div>
   </div>
 

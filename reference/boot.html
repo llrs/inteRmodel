@@ -156,9 +156,12 @@ input blocks; and the AVE values, both inner, and outer</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>boot_index_sgcca</code> Iterate over the index,
-which is a list of vectors with the position of samples to use and use sgcca
+which is a list of vectors with the position of samples to use and use [sgcca]
 with the arguments provided.
-<code>boot_samples_sgcca</code> Iterate over random samples.</p>
+<code>boot_samples_sgcca</code> Iterate over random samples without recording which samples where used.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Recommended to provide scaled data and the argument [scale = FALSE]</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"Russett"</span>, package = <span class='st'>"RGCCA"</span>)
@@ -177,10 +180,7 @@ with the arguments provided.
 #&gt; [4,] 0.4755541 0.6865155
 #&gt; [5,] 0.3604672 0.6768108
 #&gt; [6,] 0.3914483 0.6850278</div><div class='input'><span class='kw'>boots</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
-<span class='kw'>index</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>vector</a></span>(<span class='st'>"list"</span>, length = <span class='kw'>boots</span>)
-<span class='co'>for</span> (<span class='kw'>i</span> <span class='co'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='kw'>boots</span>)) {
-  <span class='kw'>index</span>[[<span class='kw'>i</span>]] <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='kw'>A</span>[[<span class='fl'>1</span>]]), replace = <span class='fl'>TRUE</span>)
-}
+<span class='kw'>index</span> <span class='op'>&lt;-</span> <span class='fu'><a href='boot_index.html'>boot_index</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='kw'>A</span>[[<span class='fl'>1</span>]]), <span class='kw'>boots</span>)
 <span class='kw'>boot_i</span> <span class='op'>&lt;-</span> <span class='fu'>boot_index_sgcca</span>(<span class='kw'>index</span>, A = <span class='kw'>A</span>, C = <span class='kw'>C</span>)
 </div></pre>
   </div>
