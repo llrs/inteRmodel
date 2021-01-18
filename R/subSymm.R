@@ -6,7 +6,7 @@
 #' @param y Column position
 #' @param val Value to insert in the given position
 #' @return The symmetric matrix with the value inserted in the right positions
-#' @seealso \code{\link{symm}}, \code{\link{correct}}
+#' @seealso \code{\link{symm}}, \code{\link{correct}}, \code{\link{weight_design}}
 #' @export
 #' @examples
 #' m <- matrix(0, ncol = 3, nrow = 3)
