@@ -14,6 +14,9 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
+  markdown: 
+    wrap: sentence
+bibliography: references.bib
 ---
 
 ```{r setup, include = FALSE}
@@ -25,24 +28,18 @@ knitr::opts_chunk$set(
 library("knitcitations")
 ```
 
-
 # Introduction
 
-The goal of inteRmodel is to provide the tools required to search for models in 
-the generalized canonical correlations as provided by the 
-[RGCCA](https://cran.r-project.org/package=RGCCA) package.
+The goal of inteRmodel is to provide the tools required to search for models in the generalized canonical correlations as provided by the [RGCCA](https://cran.r-project.org/package=RGCCA) package.
 
-You can read more about canonical correlation at `r citep("10.1007/s11336-011-9206-8")` . 
-
+You can read more about canonical correlation at [@tenenhaus2011].
 
 ```{r inteRmodel}
 library(inteRmodel)
 ```
 
-
-In this use case we want to find the best model to relate the gene expression on a glioma with 
-some repetitions at the DNA level, taking into account that these tumors are at 
-three different locations. Our idea is that the location might influence the tumor.
+In this use case we want to find the best model to relate the gene expression on a glioma with some repetitions at the DNA level, taking into account that these tumors are at three different locations.
+Our idea is that the location might influence the tumor.
 
 # Data format
 
@@ -58,22 +55,22 @@ A[[3]] = A[[3]][, -3]
 names(A)[3] <- "Loc"
 ```
 
-With these steps we read and prepare the data for the `sgcca` and `rgcca` function. 
+With these steps we read and prepare the data for the `sgcca` and `rgcca` function.
 
 # Workflow
 
 The workflow is as follows:
 
- 1. Selecting the interaction-model
- 2. Evaluation of the models
- 3. Tuning the weight in the different interaction models
- 4. Comparison of the different models after bootstrapping
- 
+1.  Selecting the interaction-model
+2.  Evaluation of the models
+3.  Tuning the weight in the different interaction models
+4.  Comparison of the different models after bootstrapping
+
 These steps are explained in detail in the next sections.
 
 ## Null hypothesis
 
-Then we need to encode our hypothesis in a model, which takes the shape of a matrix. 
+Then we need to encode our hypothesis in a model, which takes the shape of a matrix.
 To ease the design of this model there are several functions available.
 The most important one is `subSymm`, which makes substitutions on symmetric matrices.
 
@@ -84,8 +81,7 @@ model0 <- subSymm(model0, "GE", "Loc", 1)
 model0
 ```
 
-Here we hypothesize that the Agriculture and the industry are linked and that the 
-agriculture is linked with the political block.
+Here we hypothesize that the Agriculture and the industry are linked and that the agriculture is linked with the political block.
 
 ## Search models
 
@@ -100,6 +96,7 @@ out_model <- search_model(A = A, c1 = c(.071,.2, 1), scheme = "horst",
 
 This quickly explores over the 20 different models that could be the best ones.
 We can see that our hypothesis is in the upper middle:
+
 ```{r hypotetical, echo=FALSE, fig.cap="Figure 1: Histogram of the different inner AVE values of each model."}
 hist(out_model$AVE_inner, xlab = "inner AVE", 
      main = "Histogram of AVE_inner in the models", breaks = 20)
@@ -115,7 +112,7 @@ model <- symm(C, out_model[which.max(out_model$AVE_inner), columns])
 model
 ```
 
-A model that instead of the expected relation between Agriculture and Industry block, they are both related to the Political block. 
+A model that instead of the expected relation between Agriculture and Industry block, they are both related to the Political block.
 
 ## Refinement of the model
 
@@ -175,12 +172,11 @@ agg <- aggregate(df[, 1:2], list(Model = df$Model), mean)
 points(agg[, 2:3], pch = 17, col = c("red", "green", "black"), cex = 1.5)
 ```
 
+This suggests that the model2 has a higher inner AVE than the model0.
+With more iterations we could see if there is a tendency of a model to be more centered than the others.
+So, indicating that the model can better find the relationship between the blocks regardless of the input data.
 
-This suggests that the model2 has a higher inner AVE than the model0. 
-With more iterations we could see if there is a tendency of a model to be more centered than the others. 
-So, indicating that the model can better find the relationship between the blocks regardless of the input data. 
-
-### Features 
+### Features
 
 We can now analyze the canonical correlation for the weight of each variable.
 
@@ -208,9 +204,10 @@ abline(h = 0, v = 0)
 text(m2$Y[[1]][, 1], m2$Y[[2]][, 1], labels = Loc, col = as.numeric(Loc) + 1)
 ```
 
-
 <!-- Change the sentence--->
-Although there is a relative difference in the general outcome, what has changed more is the importance of each variable. As we can see here:
+
+Although there is a relative difference in the general outcome, what has changed more is the importance of each variable.
+As we can see here:
 
 ```{r, fig.cap="Figure 5: Comparison of the weights of the CGH variables"}
 par(pars)
@@ -232,11 +229,4 @@ These new relationships consider the same variables but with different importanc
 sessionInfo()
 ```
 
-
 # Bibliography
-
-
-```{r, echo=FALSE, results="asis"}
-bibliography(style = "html")
-```
-

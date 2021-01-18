@@ -24,7 +24,6 @@ Imports:
     utils
 Suggests: 
     covr,
-    knitcitations,
     knitr,
     rmarkdown,
     testthat (>= 2.1.0)
