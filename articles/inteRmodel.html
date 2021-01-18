@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">inteRmodel</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a><span class="header-section-number">1</span> Introduction</h1>
 <p>The goal of inteRmodel is to provide the tools required to search for models in the generalized canonical correlations as provided by the <a href="https://cran.r-project.org/package=RGCCA">RGCCA</a> package.</p>
-<p>You can read more about canonical correlation at (Tenenhaus and Tenenhaus, 2011) .</p>
+<p>You can read more about canonical correlation at <span class="citation">(Tenenhaus and Tenenhaus 2011)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/llrs/inteRmodel">inteRmodel</a></span>)
 </pre></div>
@@ -143,7 +143,7 @@
                ncomp = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">A</span>)),
                bias = <span class="fl">TRUE</span>)
 </pre></div>
-This quickly explores over the 20 different models that could be the best ones. We can see that our hypothesis is in the upper middle:
+<p>This quickly explores over the 20 different models that could be the best ones. We can see that our hypothesis is in the upper middle:</p>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/hypotetical-1.png" alt="Figure 1: Histogram of the different inner AVE values of each model." width="672"><p class="caption">
 Figure 1: Histogram of the different inner AVE values of each model.
@@ -301,25 +301,24 @@ Figure 5: Comparison of the weights of the CGH variables
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] inteRmodel_0.1.1     knitcitations_1.0.10</span>
+<span class="co">#&gt; [1] inteRmodel_0.1.1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] Rcpp_1.0.5        knitr_1.30        xml2_1.3.2        magrittr_2.0.1   </span>
-<span class="co">#&gt;  [5] MASS_7.3-51.6     lattice_0.20-41   R6_2.5.0          rlang_0.4.10     </span>
-<span class="co">#&gt;  [9] bibtex_0.4.2.3    stringr_1.4.0     httr_1.4.2        highr_0.8        </span>
-<span class="co">#&gt; [13] plyr_1.8.6        tools_4.0.2       grid_4.0.2        xfun_0.19        </span>
-<span class="co">#&gt; [17] RGCCA_2.1.2       htmltools_0.5.0   yaml_2.2.1        digest_0.6.27    </span>
-<span class="co">#&gt; [21] Matrix_1.2-18     RefManageR_1.2.12 curl_4.3          evaluate_0.14    </span>
-<span class="co">#&gt; [25] rmarkdown_2.6     stringi_1.5.3     compiler_4.0.2    generics_0.0.2   </span>
-<span class="co">#&gt; [29] jsonlite_1.7.2    lubridate_1.7.9</span>
+<span class="co">#&gt;  [1] lattice_0.20-41 digest_0.6.27   MASS_7.3-51.6   grid_4.0.2     </span>
+<span class="co">#&gt;  [5] magrittr_2.0.1  evaluate_0.14   highr_0.8       rlang_0.4.10   </span>
+<span class="co">#&gt;  [9] stringi_1.5.3   Matrix_1.2-18   rmarkdown_2.6   tools_4.0.2    </span>
+<span class="co">#&gt; [13] stringr_1.4.0   RGCCA_2.1.2     xfun_0.20       yaml_2.2.1     </span>
+<span class="co">#&gt; [17] compiler_4.0.2  htmltools_0.5.1 knitr_1.30</span>
 </pre></div>
 </div>
-<div id="bibliography" class="section level1">
+<div id="bibliography" class="section level1 unnumbered">
 <h1 class="hasAnchor">
-<a href="#bibliography" class="anchor"></a><span class="header-section-number">6</span> Bibliography</h1>
-<p>
-<a id="bib-Tenenhaus_2011"></a><a href="#cite-Tenenhaus_2011">[1]</a><cite> A. Tenenhaus and M. Tenenhaus. “Regularized Generalized Canonical Correlation Analysis”. In: <em>Psychometrika</em> 76.2 (Mar. 2011), pp. 257–284. DOI: <a href="https://doi.org/10.1007/s11336-011-9206-8">10.1007/s11336-011-9206-8</a>. URL: <a href="https://doi.org/10.1007/s11336-011-9206-8">https://doi.org/10.1007/s11336-011-9206-8</a>.</cite>
-</p>
+<a href="#bibliography" class="anchor"></a>Bibliography</h1>
+<div id="refs" class="references">
+<div id="ref-tenenhaus2011">
+<p>Tenenhaus, Arthur, and Michel Tenenhaus. 2011. “Regularized Generalized Canonical Correlation Analysis.” <em>Psychometrika</em> 76 (2): 257–84. <a href="https://doi.org/10.1007/s11336-011-9206-8" class="uri">https://doi.org/10.1007/s11336-011-9206-8</a>.</p>
+</div>
+</div>
 </div>
   </div>
 
