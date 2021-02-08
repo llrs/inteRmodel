@@ -11,6 +11,7 @@ testing <- function(x, ...) {
 #' Look for every variation of the models changing the weights by 0.1.
 #' @param ... All the same arguments that would be passed to sggca, pass named arguments.
 #' @param nWeights The number of weights used to check the possible designs.
+#' @param BPPARAM Set up parallel backend (see BiocParallel documentation).
 #' @seealso \code{sgcca}
 #' @importFrom RGCCA scale2
 #' @return A matrix with the design of the model
@@ -25,7 +26,7 @@ testing <- function(x, ...) {
 #' out <- search_model(A = A, C = C, c1 =rep(1, 3), scheme = "factorial",
 #'                scale = FALSE, verbose = FALSE,
 #'                ncomp = rep(1, length(A)),
-#'                bias = TRUE)
+#'                bias = TRUE, BPPARAM = BiocParallel::SerialParam())
 #' head(out)
 #' # From all the models, we select that with the higher inner AVE:
 #' columns <- grep("var", colnames(out))
@@ -38,7 +39,7 @@ testing <- function(x, ...) {
 #' @rdname model
 #' @export
 #' @import utils
-iterate_model <- function(...) {
+iterate_model <- function(..., BPPARAM = BiocParallel::SerialParam()) {
   l <- list(...)
   A <- lapply(l$A, scale2, bias = l$bias)
   diff0 <- which(lower.tri(l$C) & l$C != 0)
@@ -49,24 +50,21 @@ iterate_model <- function(...) {
 
 #' @export
 #' @describeIn model Search for the right model for the blocks provided.
-search_model <- function(..., nWeights = 3) {
+search_model <- function(..., nWeights = 3, BPPARAM = BiocParallel::SerialParam()) {
   l <- list(...)
   A <- lapply(l$A, scale2, bias = l$bias)
   designs <- weight_design(weights = nWeights, size = length(l$A))
   k <- vapply(designs, correct, logical(1L))
   designs <- designs[k]
   l <- l[!names(l)  %in% c("A", "C", "scale")]
-  iterate(designs, l, A)
+  iterate(designs, l, A, BPPARAM)
 }
 
 
-iterate <- function(designs, l, A) {
-  out <- sapply(designs, function(x){
+iterate <- function(designs, l, A, BPPARAM = BiocParallel::SerialParam()) {
+  out <- BiocParallel::bplapply(designs, function(x){
     l$scale <- FALSE
-    do.call(testing, c(list(A = A, x = x), l))}, USE.NAMES = FALSE)
-  if (is.list(out)) {
-    warning("Some errors happened on the iteration.")
-    out <- simplify2array(out[lengths(out) != 1])
-  }
+    do.call(testing, c(list(A = A, x = x), l))}, BPPARAM = BPPARAM)
+  out <- simplify2array(out[lengths(out) != 1])
   as.data.frame(t(out))
 }

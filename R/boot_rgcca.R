@@ -105,13 +105,15 @@ boot_index <- function(samples, boots) {
 }
 #' @rdname boot
 #' @param index A list of numeric values for selecting values
+#' @inheritParams iterate_model
+#' @importFrom BiocParallel SerialParam bplapply
 #' @export
 #' @examples
 #' boots <- 10
 #' index <- boot_index(nrow(A[[1]]), boots)
 #' boot_i <- boot_index_sgcca(index, A = A, C = C)
-boot_index_sgcca <- function(index, ...) {
-  l <- lapply(index, base_boot, ... = ...)
+boot_index_sgcca <- function(index, ..., BPPARAM = BiocParallel::SerialParam()) {
+  l <- BiocParallel::bplapply(index, base_boot, ... = ..., BPPARAM = BPPARAM)
   AVE <- sapply(l, function(x){x$AVE})
   STAB <- sapply(seq_along(list(...)$A), function(y) {
     do.call(rbind, lapply(l, function(x){x$STAB[[y]]}))

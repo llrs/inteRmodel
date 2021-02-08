@@ -21,7 +21,8 @@ Imports:
     methods,
     RGCCA,
     stats,
-    utils
+    utils,
+    BiocParallel (>= 1.18.1)
 Suggests: 
     covr,
     knitr,

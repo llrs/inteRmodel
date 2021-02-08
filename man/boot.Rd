@@ -7,7 +7,7 @@
 \usage{
 boot_samples_sgcca(..., nb_boot = 1000, verbose = TRUE)
 
-boot_index_sgcca(index, ...)
+boot_index_sgcca(index, ..., BPPARAM = BiocParallel::SerialParam())
 }
 \arguments{
 \item{...}{Named arguments passed to sgcca.}
@@ -17,6 +17,8 @@ boot_index_sgcca(index, ...)
 \item{verbose}{Logical, should it print a progress bar (default) or not?}
 
 \item{index}{A list of numeric values for selecting values}
+
+\item{BPPARAM}{Set up parallel backend (see BiocParallel documentation).}
 }
 \value{
 A list with two elements: the coefficient of each variable of the
