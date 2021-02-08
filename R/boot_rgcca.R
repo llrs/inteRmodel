@@ -107,6 +107,7 @@ boot_index <- function(samples, boots) {
 #' @param index A list of numeric values for selecting values
 #' @inheritParams iterate_model
 #' @importFrom BiocParallel SerialParam bplapply
+#' @seealso [boot_index()]
 #' @export
 #' @examples
 #' boots <- 10

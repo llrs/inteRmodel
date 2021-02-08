@@ -52,3 +52,6 @@ boots <- 10
 index <- boot_index(nrow(A[[1]]), boots)
 boot_i <- boot_index_sgcca(index, A = A, C = C)
 }
+\seealso{
+[boot_index()]
+}

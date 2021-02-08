@@ -54,8 +54,8 @@ search_model <- function(..., nWeights = 3, BPPARAM = BiocParallel::SerialParam(
   l <- list(...)
   A <- lapply(l$A, scale2, bias = l$bias)
   designs <- weight_design(weights = nWeights, size = length(l$A))
-  k <- vapply(designs, correct, logical(1L))
-  designs <- designs[k]
+  k <- BiocParallel::bplapply(designs, correct, BPPARAM = BPPARAM)
+  designs <- designs[unlist(k)]
   l <- l[!names(l)  %in% c("A", "C", "scale")]
   iterate(designs, l, A, BPPARAM)
 }
