@@ -75,10 +75,10 @@ variables_contribution <- function(A, res, scale = TRUE, bias = TRUE){
 #' result.sgcca = sgcca(A, C, c1 = c(.071,.2, 1), ncomp = c(1, 1, 1),
 #'                      scheme = "centroid", verbose = FALSE)
 #' weights <- variables_contribution(A, result.sgcca)
-#' rel <- varibales_relations(weights)
+#' rel <- variables_relations(weights)
 #' rel[1:15, 1:5]
 #' }
-varibales_relations <- function(rel, comp = c(1, 2)) {
+variables_relations <- function(rel, comp = c(1, 2)) {
   stopifnot(length(comp) == 2, is.numeric(comp), all(comp <= length(rel)))
   x <- t(rel[[comp[1]]])
   y <- t(rel[[comp[2]]])
