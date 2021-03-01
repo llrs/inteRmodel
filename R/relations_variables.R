@@ -32,7 +32,6 @@
 #' weights <- variables_contribution(A, result.sgcca)
 #' }
 variables_contribution <- function(A, res, scale = TRUE, bias = TRUE){
-  stopifnot(length(A) == length(res$Y))
   A2 <- vector("list", length(A))
   names(A2) <- names(A)
   for (i in seq_along(A)) {
