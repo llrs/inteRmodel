@@ -82,6 +82,17 @@ variables_relations <- function(rel, comp = c(1, 2)) {
   x <- t(rel[[comp[1]]])
   y <- t(rel[[comp[2]]])
 
-  cor(x[, apply(x, 2, function(x){any(x != 0)}), drop = FALSE],
-      y[, apply(y, 2, function(x){any(x != 0)}), drop = FALSE])
+  cor(x[, apply(x, 2, filter), drop = FALSE],
+      y[, apply(y, 2, filter), drop = FALSE])
+}
+
+# Filter empty values and those who have many values concentrated
+filter <- function(x) {
+  any(x != 0) && entropy(rank(x)) > 0.5
+}
+
+
+entropy <- function(x) {
+  pt <- prop.table(table(x))
+  sum(-pt*log(pt, max(2, length(pt))))
 }
