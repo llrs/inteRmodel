@@ -18,10 +18,3 @@ test_that("variables_contribution works", {
   expect_is(w, "list")
   expect_length(w, 3L)
 })
-
-test_that("variables_relations works", {
-  w <- variables_contribution(A, result.sgcca)
-  rel <- variables_relations(w)
-  expect_is(rel, "matrix")
-  expect_equal(dim(rel), c(145, 92))
-})
