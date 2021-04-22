@@ -11,7 +11,7 @@ one instance, 1 row per patient
 IGR, Villejuif, France
 }
 \usage{
-ge_cgh_locIGR
+data(ge_cgh_locIGR)
 }
 \description{
 This data set contains a list of 3 dataframe. On dataframe for
