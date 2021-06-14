@@ -8,7 +8,7 @@ on:
     branches:
       - master
   schedule:
-    - cron:  '0 8 * * 1' # Once a week
+    - cron:  '0 9 1 * * # Once a week
 
 name: R-CMD-check
 
