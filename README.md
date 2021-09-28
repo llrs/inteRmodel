@@ -7,12 +7,12 @@
 
 [![R build
 status](https://github.com/llrs/inteRmodel/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/inteRmodel/actions)
-[![Travis build
-status](https://travis-ci.org/llrs/inteRmodel.svg?branch=master)](https://travis-ci.org/llrs/inteRmodel)
 [![Codecov test
 coverage](https://codecov.io/gh/llrs/inteRmodel/branch/master/graph/badge.svg)](https://codecov.io/gh/llrs/inteRmodel?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![DOI](https://zenodo.org/badge/198424052.svg)](https://zenodo.org/badge/latestdoi/198424052)
+
 <!-- badges: end -->
 
 The goal of inteRmodel is to help you with interaction models using
