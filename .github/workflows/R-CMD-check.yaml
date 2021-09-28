@@ -27,6 +27,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: rcmdcheck
+      - name: Install deps
         run: |
           BiocManager::install('BiocParallel')
           remotes::install_deps(dependencies = TRUE)
