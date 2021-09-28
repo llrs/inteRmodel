@@ -30,6 +30,7 @@ jobs:
       - name: Install deps
         run: |
           install.packages("BiocManager")
+          install.packages("remotes")
           BiocManager::install('BiocParallel')
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
