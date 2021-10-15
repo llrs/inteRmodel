@@ -20,12 +20,13 @@ export(variables_contribution)
 export(weight_design)
 if (!packageVersion("RGCCA") >= "3") {
   importFrom(RGCCA, scale2)
+} else {
+  importFrom(RGCCA, sgcca)
 }
 import(utils)
 importFrom(BiocParallel,SerialParam)
 importFrom(BiocParallel,bplapply)
 importFrom(RGCCA,rgcca)
-importFrom(RGCCA,sgcca)
 importFrom(methods,is)
 importFrom(stats,cor)
 importFrom(stats,cov)

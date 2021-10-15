@@ -13,57 +13,71 @@ repl_vec <- function(x, old, new){
 #' @importFrom RGCCA rgcca
 #' @rawNamespace if (!packageVersion("RGCCA") >= "3") {
 #'   importFrom(RGCCA, scale2)
+#' } else {
+#'   importFrom(RGCCA, sgcca)
 #' }
-if (!new_rgcca_version()) {
-  scale2 <- RGCCA::scale2
-} else {
-  sgcca <- function(...) {
+NULL
+
+# For reverse dependency
+#' @export
+#' @noRd
+scale2 <- function(...) {
+  if (!new_rgcca_version()) {
+    scale2 <- RGCCA::scale2
+  } else {
+    cov2 <- function(x, y = NULL, bias = TRUE) {
+
+      if (is.null(y)) {
+        x <- as.matrix(x)
+        y <- x
+      }
+
+      suppressWarnings({C <- cov(x, y, use = "pairwise.complete.obs")})
+      if (bias) {
+        n <- NROW(x)
+        C <- ((n - 1) / n) * C
+      }
+      return(C)
+    }
+
+
+    scale2 <- function(A, center = TRUE, scale = TRUE, bias = TRUE) {
+      if (center == TRUE & scale == TRUE) {
+        A <- scale(A, center = TRUE, scale = FALSE)
+        std <- sqrt(apply(A, 2, cov2, bias = bias))
+        if (any(std == 0)) {
+          sprintf("there were %d constant variables", sum(std == 0))
+          std[std == 0] <- 1
+        }
+        A <- A / matrix(rep(std, NROW(A)), NROW(A), NCOL(A), byrow = TRUE)
+        attr(A, "scaled:scale") <- std
+        return(A)
+      }
+      if (center == TRUE & scale == FALSE) {
+        A <- scale(A, center = TRUE, scale = FALSE)
+        return(A)
+      }
+      if (center == FALSE & scale == TRUE) {
+        std <- apply(A, 2, cov2, bias = bias)
+        A <- A / matrix(rep(std, NROW(A)), NROW(A), NCOL(A), byrow = TRUE)
+        attr(A, "scaled:scale") <- std
+        return(A)
+      }
+    }
+  }
+  scale2(...)
+}
+
+sgcca <- function(...) {
+  if (!new_rgcca_version()) {
     l <- as.list(...)
     l$method <- "sgcca"
 
     l <- repl_vec(l, "c1", "sparsity")
     l <- repl_vec(l, "A", "blocks")
     l <- repl_vec(l, "C", "connection")
-    do.call(rgcca, l)
-  }
-
-  cov2 <- function(x, y = NULL, bias = TRUE) {
-
-    if (is.null(y)) {
-      x <- as.matrix(x)
-      y <- x
-    }
-
-    suppressWarnings({C <- cov(x, y, use = "pairwise.complete.obs")})
-    if (bias) {
-      n <- NROW(x)
-      C <- ((n - 1) / n) * C
-    }
-    return(C)
-  }
-
-
-  scale2 <- function(A, center = TRUE, scale = TRUE, bias = TRUE) {
-    if (center == TRUE & scale == TRUE) {
-      A <- scale(A, center = TRUE, scale = FALSE)
-      std <- sqrt(apply(A, 2, cov2, bias = bias))
-      if (any(std == 0)) {
-        sprintf("there were %d constant variables", sum(std == 0))
-        std[std == 0] <- 1
-      }
-      A <- A / matrix(rep(std, NROW(A)), NROW(A), NCOL(A), byrow = TRUE)
-      attr(A, "scaled:scale") <- std
-      return(A)
-    }
-    if (center == TRUE & scale == FALSE) {
-      A <- scale(A, center = TRUE, scale = FALSE)
-      return(A)
-    }
-    if (center == FALSE & scale == TRUE) {
-      std <- apply(A, 2, cov2, bias = bias)
-      A <- A / matrix(rep(std, NROW(A)), NROW(A), NCOL(A), byrow = TRUE)
-      attr(A, "scaled:scale") <- std
-      return(A)
-    }
+    do.call(RGCCA::rgcca, l)
+  } else {
+    RGCCA::sgcca(...)
   }
 }

@@ -16,7 +16,6 @@
 #' input blocks; and the AVE values, both inner, and outer
 #' @export
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @importFrom RGCCA sgcca
 #' @examples
 #' data("Russett", package = "RGCCA")
 #' X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
