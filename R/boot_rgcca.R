@@ -31,20 +31,21 @@
 boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
 
   l <- list(...)
+
   A <- l$A
   shrinkage <- l$c1
   if (is.null(shrinkage)) {
     shrinkage <- rep(1, length(A))
   }
-  STAB <- vector("list", length = length(l$A))
+  STAB <- vector("list", length = length(A))
   AVE <- matrix(NA, ncol = 2, nrow = nb_boot)
   colnames(AVE) <- c("inner", "outer")
 
-  for (j in seq_along(l$A)) {
-    STAB[[j]] <- matrix(NA, nb_boot, ncol(l$A[[j]]))
-    colnames(STAB[[j]]) <- colnames(l$A[[j]])
+  for (j in seq_along(A)) {
+    STAB[[j]] <- matrix(NA, nb_boot, ncol(A[[j]]))
+    colnames(STAB[[j]]) <- colnames(A[[j]])
   }
-  names(STAB) <- names(l$A)
+  names(STAB) <- names(A)
   if (verbose) {
     pb <-  txtProgressBar(min = 0, max = nb_boot, initial = 0, style = 3)
   }
@@ -68,7 +69,6 @@ boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
     try( # Prevents the error from LAPACK subroutine
       {
         res <- do.call(sgcca, l)
-
         AVE[i, "inner"] <- res$AVE$AVE_inner
         AVE[i, "outer"] <- res$AVE$AVE_outer
 

@@ -13,7 +13,6 @@ testing <- function(x, ...) {
 #' @param nWeights The number of weights used to check the possible designs.
 #' @param BPPARAM Set up parallel backend (see BiocParallel documentation).
 #' @seealso \code{sgcca}
-#' @importFrom RGCCA scale2
 #' @return A matrix with the design of the model
 #' @examples
 #' data("Russett", package = "RGCCA")
