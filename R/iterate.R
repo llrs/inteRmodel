@@ -1,9 +1,5 @@
 testing <- function(x, ...) {
-  try({
-    result.sgcca <- RGCCA::sgcca(C = x,
-                                 ...)
-    analyze(result.sgcca)},
-    silent = TRUE)
+  try({analyze(sgcca(C = x, ...))}, silent = TRUE)
 }
 
 #' Functions related to finding models
