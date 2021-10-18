@@ -25,6 +25,7 @@ scale2 <- function(...) {
   if (!new_rgcca_version()) {
     scale2 <- RGCCA::scale2
   } else {
+    # code copied from RGCCA package
     cov2 <- function(x, y = NULL, bias = TRUE) {
 
       if (is.null(y)) {
@@ -40,7 +41,7 @@ scale2 <- function(...) {
       return(C)
     }
 
-
+    # code copied from RGCCA package
     scale2 <- function(A, center = TRUE, scale = TRUE, bias = TRUE) {
       if (center == TRUE & scale == TRUE) {
         A <- scale(A, center = TRUE, scale = FALSE)
@@ -69,14 +70,14 @@ scale2 <- function(...) {
 }
 
 sgcca <- function(...) {
-  if (!new_rgcca_version()) {
-    l <- as.list(...)
-    l$method <- "sgcca"
+  if (new_rgcca_version()) {
+    l2 <- list(...)
+    l2$method <- "sgcca"
 
-    l <- repl_vec(l, "c1", "sparsity")
-    l <- repl_vec(l, "A", "blocks")
-    l <- repl_vec(l, "C", "connection")
-    do.call(RGCCA::rgcca, l)
+    l2 <- repl_vec(l2, "c1", "sparsity")
+    l2 <- repl_vec(l2, "A", "blocks")
+    l2 <- repl_vec(l2, "C", "connection")
+    do.call(RGCCA::rgcca, l2)
   } else {
     RGCCA::sgcca(...)
   }
