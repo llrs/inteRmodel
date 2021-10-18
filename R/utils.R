@@ -19,8 +19,11 @@ repl_vec <- function(x, old, new){
 NULL
 
 # For reverse dependency
+#' Scale2
+#'
+#' If possible reexport scale2 of RGCCA, if not make it available to users.
+#' @param ... Named arguments for scale2, A (Matrix), center, scale, bias (logical).
 #' @export
-#' @noRd
 scale2 <- function(...) {
   if (!new_rgcca_version()) {
     scale2 <- RGCCA::scale2
@@ -69,6 +72,7 @@ scale2 <- function(...) {
   scale2(...)
 }
 
+# Adapt sgcca to the new version
 sgcca <- function(...) {
   if (new_rgcca_version()) {
     l2 <- list(...)
@@ -80,5 +84,24 @@ sgcca <- function(...) {
     do.call(RGCCA::rgcca, l2)
   } else {
     RGCCA::sgcca(...)
+  }
+}
+
+# Find the connections used
+connections <- function(x) {
+  if (new_rgcca_version()) {
+    con <- x$call$connection
+  } else {
+    con <- x$C
+  }
+  con
+}
+
+# Find the scheme used
+scheme <- function(x) {
+  if (new_rgcca_version()) {
+    x$call$scheme
+  } else {
+    x$scheme
   }
 }
