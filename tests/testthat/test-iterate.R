@@ -1,15 +1,15 @@
-data("Russett", package = "RGCCA")
-X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
-X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
-X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
-                                  "dictator")])
-A <- list(Agric = X_agric, Ind = X_ind, Polit = X_polit)
-C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
-
-
 test_that("search_model works", {
+
+  data("Russett", package = "RGCCA")
+  X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+  X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+  X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+                                    "dictator")])
+  A <- list(Agric = X_agric, Ind = X_ind, Polit = X_polit)
+  C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+
   if (new_rgcca_version()) {
-    out <- search_model(A = A, C = C, tau =rep(1, 3), scheme = "factorial", method = "rgcca", scale_block = FALSE,
+    out <- search_model(A = A, C = C, tau = rep(1, 3), scheme = "factorial", method = "rgcca", scale_block = FALSE,
                         scale = FALSE, verbose = FALSE,
                         ncomp = rep(1, length(A)),
                         bias = TRUE)
@@ -23,8 +23,16 @@ test_that("search_model works", {
   expect_equal(dim(out), c(20L, 10L))
 })
 
-
 test_that("iterate_model works", {
+
+  data("Russett", package = "RGCCA")
+  X_agric <- as.matrix(Russett[, c("gini", "farm", "rent")])
+  X_ind <- as.matrix(Russett[, c("gnpr", "labo")])
+  X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
+                                    "dictator")])
+  A <- list(Agric = X_agric, Ind = X_ind, Polit = X_polit)
+  C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
+
   if (new_rgcca_version()) {
     out <- search_model(A = A, C = C, tau =rep(1, 3), scheme = "factorial", method = "rgcca", scale_block = FALSE,
                         scale = FALSE, verbose = FALSE,
