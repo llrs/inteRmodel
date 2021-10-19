@@ -9,7 +9,7 @@ test_that("search_model works", {
   C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 
   if (new_rgcca_version()) {
-    out <- search_model(A = A, C = C, tau = rep(1, 3), scheme = "factorial", method = "rgcca", scale_block = FALSE,
+    out <- search_model(A = A, C = C, c1 = rep(1, 3), scheme = "factorial", method = "sgcca", scale_block = FALSE,
                         scale = FALSE, verbose = FALSE,
                         ncomp = rep(1, length(A)),
                         bias = TRUE)
@@ -34,7 +34,7 @@ test_that("iterate_model works", {
   C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 
   if (new_rgcca_version()) {
-    out <- search_model(A = A, C = C, tau =rep(1, 3), scheme = "factorial", method = "rgcca", scale_block = FALSE,
+    out <- search_model(A = A, C = C, c1 =rep(1, 3), scheme = "factorial", method = "sgcca", scale_block = FALSE,
                         scale = FALSE, verbose = FALSE,
                         ncomp = rep(1, length(A)),
                         bias = TRUE)
@@ -48,7 +48,7 @@ test_that("iterate_model works", {
   model <- symm(C, out[which.max(out$AVE_inner), columns])
   # We then look for a variation of the weights of this model
   if (new_rgcca_version()) {
-    out <- iterate_model(A = A, C = model, tau =rep(1, 3), scheme = "factorial", method = "rgcca", scale_block = FALSE,
+    out <- iterate_model(A = A, C = model, c1 =rep(1, 3), scheme = "factorial", method = "sgcca", scale_block = FALSE,
                         scale = FALSE, verbose = FALSE,
                         ncomp = rep(1, length(A)),
                         bias = TRUE)
