@@ -22,7 +22,11 @@
 #' ccas <- cca_rgcca(out)
 cca_rgcca <- function(rgcca) {
   vars <- names(rgcca$Y)
-  comp <- seq_along(rgcca$AVE$AVE_inner)
+  if (new_rgcca_version()) {
+    comp <- seq_along(rgcca$AVE$AVE_inner)
+  } else {
+    comp <- seq_along(rgcca$AVE$AVE_inner_model)
+  }
   df <- expand.grid(Var1 = vars, Var2 = vars,
                     Comp1 = comp, Comp2 = comp,
                     stringsAsFactors = FALSE)
