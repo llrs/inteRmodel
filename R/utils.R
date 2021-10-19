@@ -78,6 +78,9 @@ sgcca <- function(...) {
     l2 <- list(...)
     l2$method <- "sgcca"
 
+    if ("tau" %in% names(l2)) {
+      stop("Specify method = 'sgcca'")
+    }
     l2 <- repl_vec(l2, "c1", "sparsity")
     l2 <- repl_vec(l2, "A", "blocks")
     l2 <- repl_vec(l2, "C", "connection")
