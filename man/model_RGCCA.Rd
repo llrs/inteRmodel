@@ -25,5 +25,5 @@ to a column, numeric columns are left as is.
 block <- model_RGCCA(iris, c("Petal.Width", "Species"))
 }
 \seealso{
-[fastDummies::dummy_cols()]
+\code{\link[fastDummies:dummy_cols]{fastDummies::dummy_cols()}}
 }

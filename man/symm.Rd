@@ -26,5 +26,5 @@ m <- matrix(0, ncol = 5, nrow = 5)
 symm(m, c(0, 1, 1, 1, 0, 0.5, 0.2, 0.3, 0.7, 0.1))
 }
 \seealso{
-\code{\link{subSymm}}, \code{\link{correct}}
+\code{subSymm()}, \code{correct()}
 }

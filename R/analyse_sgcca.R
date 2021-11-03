@@ -94,10 +94,10 @@ aves <- function(x){
 
 #' Improve the information on sgcca classes
 #'
-#' Add names to data returned by \code{rgcca} or \code{sgcca}, simplify AVE output
-#' @param sgcca An object of class \code{sgcca} or \code{rgcca}.
+#' Add names to data returned by `rgcca` or `sgcca`, simplify AVE output
+#' @param sgcca An object of class `sgcca` or `rgcca`.
 #' @param namesA The names of the original data
-#' @return An object of class \code{sgcca} or \code{rgcca}
+#' @return An object of class `sgcca` or `rgcca`
 #' @export
 #' @examples
 #' data("Russett", package = "RGCCA")

@@ -26,17 +26,17 @@ input blocks; and the AVE values, both inner, and outer
 }
 \description{
 Function to perform bootstrap on the samples. \code{boot_samples_sgcca}
-bootstrap given original data, while \code{boot_index_sgcca} given some
+bootstrap given original data, while \code{boot_index_sgcca()} given some
 index of samples it iterates over it.
 }
 \details{
 \code{boot_index_sgcca} Iterate over the index,
-which is a list of vectors with the position of samples to use and use [sgcca]
+which is a list of vectors with the position of samples to use and use \code{sgcca}
 with the arguments provided.
 \code{boot_samples_sgcca} Iterate over random samples without recording which samples where used.
 }
 \note{
-Recommended to provide scaled data and the argument [scale = FALSE]
+Recommended to provide scaled data and the argument \code{scale = FALSE}
 }
 \examples{
 data("Russett", package = "RGCCA")
@@ -53,5 +53,5 @@ index <- boot_index(nrow(A[[1]]), boots)
 boot_i <- boot_index_sgcca(index, A = A, C = C)
 }
 \seealso{
-[boot_index()]
+\code{boot_index()}
 }

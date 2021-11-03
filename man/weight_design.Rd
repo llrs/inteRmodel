@@ -12,7 +12,7 @@ weight_design(weights = 4, size, diff0 = NULL)
 \item{size}{A numeric value with the number of datasets on the design.}
 
 \item{diff0}{A Numeric vector of position which should be different from 0
-from the \code{lower.tri}. See examples}
+from the \code{lower.tri()}. See examples}
 }
 \value{
 A list of matrices with the designs with different weights.
@@ -37,8 +37,8 @@ d <- weight_design(weights = 11, size = 4, which(lower.tri(C) & C != 0))
 head(d)
 }
 \seealso{
-subSymm()
+\code{subSymm()}
 }
 \author{
-Flodel \url{https://codereview.stackexchange.com/a/203517/36067}
+Flodel: \url{https://codereview.stackexchange.com/a/203517/36067}
 }

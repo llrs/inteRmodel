@@ -12,7 +12,7 @@ boot_design(
 )
 }
 \arguments{
-\item{designs}{A list of designs such as that obtained with [weight_design()].}
+\item{designs}{A list of designs such as that obtained with \code{\link[=weight_design]{weight_design()}}.}
 
 \item{sample}{A numeric value with the number of samples to test.}
 
@@ -32,5 +32,5 @@ A data.frame with information about the models performance.
 Explore multiple designs
 }
 \seealso{
-[boot_index()]
+\code{\link[=boot_index]{boot_index()}}
 }

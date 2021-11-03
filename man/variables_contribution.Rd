@@ -9,7 +9,7 @@ variables_contribution(A, res, scale = TRUE, bias = TRUE)
 \arguments{
 \item{A}{The original data.}
 
-\item{res}{The results of [sgcca()] or [rgcca()].}
+\item{res}{The results of \code{\link[=sgcca]{sgcca()}} or \code{\link[=rgcca]{rgcca()}}.}
 
 \item{scale}{Logical value whether to scale or not the data.}
 

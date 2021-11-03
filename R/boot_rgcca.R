@@ -1,14 +1,14 @@
 #' Bootstrap sgcca
 #'
-#' Function to perform bootstrap on the samples. \code{boot_samples_sgcca}
-#' bootstrap given original data, while \code{boot_index_sgcca} given some
+#' Function to perform bootstrap on the samples. `boot_samples_sgcca`
+#' bootstrap given original data, while `boot_index_sgcca()` given some
 #' index of samples it iterates over it.
 #'
-#' \code{boot_index_sgcca} Iterate over the index,
-#' which is a list of vectors with the position of samples to use and use [sgcca]
+#' `boot_index_sgcca` Iterate over the index,
+#' which is a list of vectors with the position of samples to use and use `sgcca`
 #' with the arguments provided.
-#' \code{boot_samples_sgcca} Iterate over random samples without recording which samples where used.
-#' @note Recommended to provide scaled data and the argument [scale = FALSE]
+#' `boot_samples_sgcca` Iterate over random samples without recording which samples where used.
+#' @note Recommended to provide scaled data and the argument `scale = FALSE`
 #' @param ... Named arguments passed to sgcca.
 #' @param nb_boot Number of bootstraps to perform.
 #' @param verbose Logical, should it print a progress bar (default) or not?
@@ -88,9 +88,9 @@ boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
 #' Each element has the same number of samples.
 #' @param samples A numeric value of samples.
 #' @param boots A numeric value of bootstraps you want.
-#' @seealso [boot_index_sgcca()]
+#' @seealso `boot_index_sgcca()`
 #' @export
-#' @return A list of length [boots] with indices for the samples.
+#' @return A list of length `boots` with indices for the samples.
 #' @examples
 #' boot_index(10, 3)
 boot_index <- function(samples, boots) {
@@ -106,7 +106,7 @@ boot_index <- function(samples, boots) {
 #' @param index A list of numeric values for selecting values
 #' @inheritParams iterate_model
 #' @importFrom BiocParallel SerialParam bplapply
-#' @seealso [boot_index()]
+#' @seealso `boot_index()`
 #' @export
 #' @examples
 #' boots <- 10

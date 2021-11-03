@@ -12,7 +12,7 @@ boot_index(samples, boots)
 \item{boots}{A numeric value of bootstraps you want.}
 }
 \value{
-A list of length [boots] with indices for the samples.
+A list of length \code{boots} with indices for the samples.
 }
 \description{
 Helper function for the easy creation of an index to bootstrap.
@@ -22,5 +22,5 @@ Each element has the same number of samples.
 boot_index(10, 3)
 }
 \seealso{
-[boot_index_sgcca()]
+\code{boot_index_sgcca()}
 }
