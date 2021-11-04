@@ -6,11 +6,11 @@
 #' @param weights A numeric value with the number of weights to be used
 #' @param size A numeric value with the number of datasets on the design.
 #' @param diff0 A Numeric vector of position which should be different from 0
-#' from the \code{lower.tri}. See examples
+#' from the `lower.tri()`. See examples
 #' @return A list of matrices with the designs with different weights.
 #' @export
-#' @author Flodel \url{https://codereview.stackexchange.com/a/203517/36067}
-#' @seealso subSymm()
+#' @author Flodel: <https://codereview.stackexchange.com/a/203517/36067>
+#' @seealso `subSymm()`
 #' @examples
 #' out <- weight_design(4, 4)
 #' head(out)

@@ -5,10 +5,16 @@ test_that("cca works", {
   X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
                                     "dictator")])
   A <- list(X_agric, X_ind, X_polit)
-  A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+  A <- lapply(A, function(x) scale2(x, bias = TRUE))
   C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
-  out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
-                      scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
+  if (new_rgcca_version()) {
+    out <- RGCCA::rgcca(A, C, tau = rep(0, 3), scheme = "factorial", method = "rgcca",
+                        scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)), scale_block = TRUE)
+  } else {
+    out <- RGCCA::rgcca(A, C, tau = rep(0, 3), scheme = "factorial",
+                        scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
+  }
+
   out <- improve(out, c("Agric", "Ind", "Polit"))
   out <- cca_rgcca(out)
   expect_equal(nrow(out), 36L)

@@ -14,7 +14,7 @@
 #' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
 #'                                   "dictator")])
 #' A <- list(X_agric, X_ind, X_polit)
-#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' A <- lapply(A, function(x) scale2(x, bias = TRUE))
 #' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 #' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
 #'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
@@ -22,7 +22,11 @@
 #' ccas <- cca_rgcca(out)
 cca_rgcca <- function(rgcca) {
   vars <- names(rgcca$Y)
-  comp <- seq_along(rgcca$AVE$AVE_inner_model)
+  if (new_rgcca_version()) {
+    comp <- seq_along(rgcca$AVE$AVE_inner)
+  } else {
+    comp <- seq_along(rgcca$AVE$AVE_inner_model)
+  }
   df <- expand.grid(Var1 = vars, Var2 = vars,
                     Comp1 = comp, Comp2 = comp,
                     stringsAsFactors = FALSE)

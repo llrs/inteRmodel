@@ -1,7 +1,7 @@
 Type: Package
 Package: inteRmodel
 Title: Find Models of Interaction
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: 
     person(given = "Lluís",
            family = "Revilla Sancho",
@@ -31,4 +31,5 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)

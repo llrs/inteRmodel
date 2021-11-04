@@ -26,5 +26,5 @@ m <- matrix(0, ncol = 3, nrow = 3)
 subSymm(m, 1, 2, 1)
 }
 \seealso{
-\code{\link{symm}}, \code{\link{correct}}, \code{\link{weight_design}}
+\code{symm()}, \code{correct()}, \code{weight_design()}
 }

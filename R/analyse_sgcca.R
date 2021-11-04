@@ -19,13 +19,16 @@
 #' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
 #'                                   "dictator")])
 #' A <- list(X_agric, X_ind, X_polit)
-#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' A <- lapply(A, function(x) scale2(x, bias = TRUE))
 #' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 #' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
 #'                     scale = FALSE, verbose = TRUE)
 #' analyze(out)
 analyze <- function(sgcca) {
-  ind <- index(sgcca)
+
+  C <- connections(sgcca)
+  ind <- apply(which(upper.tri(C), arr.ind = TRUE), 1,
+        paste0, collapse = "")
 
   cY <- dimensions_correlation(sgcca)
   cc <- helper_cc(sgcca, cY)
@@ -35,7 +38,7 @@ analyze <- function(sgcca) {
   names(var) <- paste0("vs", ind)
 
   # Values of the design matrix
-  vars <- sgcca$C[upper.tri(sgcca$C)]
+  vars <- C[upper.tri(C)]
   names(vars) <- paste0("var", ind)
 
   # weights used
@@ -54,16 +57,11 @@ dimensions_correlation <- function(sgcca) {
 }
 
 helper_cc <- function(sgcca, cY) {
-  d <- cY * sgcca$C
-  switch(sgcca$scheme,
+  d <- cY * connections(sgcca)
+  switch(scheme(sgcca),
          centroid = sum(abs(d[upper.tri(d)])),
          horst = sum(d[upper.tri(d)]),
          factorial = sum(d[upper.tri(d)]^2))
-}
-
-index <- function(x) {
-  apply(which(upper.tri(x$C), arr.ind = TRUE), 1,
-        paste0, collapse = "")
 }
 
 #' Method to simplify AVE
@@ -81,7 +79,7 @@ index <- function(x) {
 #' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
 #'                                   "dictator")])
 #' A <- list(X_agric, X_ind, X_polit)
-#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' A <- lapply(A, function(x) scale2(x, bias = TRUE))
 #' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 #' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
 #'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
@@ -96,10 +94,10 @@ aves <- function(x){
 
 #' Improve the information on sgcca classes
 #'
-#' Add names to data returned by \code{rgcca} or \code{sgcca}, simplify AVE output
-#' @param sgcca An object of class \code{sgcca} or \code{rgcca}.
+#' Add names to data returned by `rgcca` or `sgcca`, simplify AVE output
+#' @param sgcca An object of class `sgcca` or `rgcca`.
 #' @param namesA The names of the original data
-#' @return An object of class \code{sgcca} or \code{rgcca}
+#' @return An object of class `sgcca` or `rgcca`
 #' @export
 #' @examples
 #' data("Russett", package = "RGCCA")
@@ -108,9 +106,9 @@ aves <- function(x){
 #' X_polit <- as.matrix(Russett[ , c("inst", "ecks",  "death", "demostab",
 #'                                   "dictator")])
 #' A <- list(X_agric, X_ind, X_polit)
-#' A <- lapply(A, function(x) RGCCA::scale2(x, bias = TRUE))
+#' A <- lapply(A, function(x) scale2(x, bias = TRUE))
 #' C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
-#' out <- RGCCA::rgcca(A, C, tau =rep(0, 3), scheme = "factorial",
+#' out <- RGCCA::rgcca(A, C, tau = rep(0, 3), scheme = "factorial",
 #'                     scale = FALSE, verbose = FALSE, ncomp = rep(2, length(A)))
 #' out$AVE
 #' out <- improve(out, c("Agric", "Ind", "Polit"))
@@ -125,7 +123,9 @@ improve <- function(sgcca, namesA) {
   names(sgcca$a) <- namesA
   names(sgcca$astar) <- namesA
   names(sgcca$AVE$AVE_X) <- namesA
-  colnames(sgcca$C) <- namesA
-  rownames(sgcca$C) <- namesA
+  if (!new_rgcca_version()) {
+    colnames(sgcca$C) <- namesA
+    rownames(sgcca$C) <- namesA
+  }
   aves(sgcca)
 }

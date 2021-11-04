@@ -87,7 +87,7 @@ Here we hypothesize that the Agriculture and the industry are linked and that th
 Now we look for the model that best relates these data.
 
 ```{r search_model}
-out_model <- search_model(A = A, c1 = c(.071,.2, 1), scheme = "horst",
+out_model <- search_model(A = A, c1 = c(.071, .2, 1), scheme = "horst",
                scale = FALSE, verbose = FALSE,
                ncomp = rep(1, length(A)),
                bias = TRUE)

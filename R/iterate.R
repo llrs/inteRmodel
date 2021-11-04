@@ -1,9 +1,8 @@
 testing <- function(x, ...) {
   try({
-    result.sgcca <- RGCCA::sgcca(C = x,
-                                 ...)
-    analyze(result.sgcca)},
-    silent = TRUE)
+    sgcca_result <- sgcca(C = x, ...)
+    analyze(sgcca_result)
+  }, silent = TRUE)
 }
 
 #' Functions related to finding models
@@ -13,7 +12,6 @@ testing <- function(x, ...) {
 #' @param nWeights The number of weights used to check the possible designs.
 #' @param BPPARAM Set up parallel backend (see BiocParallel documentation).
 #' @seealso \code{sgcca}
-#' @importFrom RGCCA scale2
 #' @return A matrix with the design of the model
 #' @examples
 #' data("Russett", package = "RGCCA")
@@ -29,8 +27,7 @@ testing <- function(x, ...) {
 #'                bias = TRUE, BPPARAM = BiocParallel::SerialParam())
 #' head(out)
 #' # From all the models, we select that with the higher inner AVE:
-#' columns <- grep("var", colnames(out))
-#' model <- symm(C, out[which.max(out$AVE_inner), columns])
+#' model <- extract_model(C, out, "inner")
 #' # We then look for a variation of the weights of this model
 #' out <- iterate_model(A = A, C = model, c1 =rep(1, 3), scheme = "factorial",
 #'                scale = FALSE, verbose = FALSE,
