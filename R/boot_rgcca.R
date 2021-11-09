@@ -115,7 +115,7 @@ boot_index <- function(samples, boots) {
 boot_index_sgcca <- function(index, ..., BPPARAM = BiocParallel::SerialParam()) {
   l <- BiocParallel::bplapply(index, base_boot, ... = ..., BPPARAM = BPPARAM)
   AVE <- sapply(l, function(x){x$AVE})
-  STAB <- sapply(seq_along(list(...)$A), function(y) {
+  STAB <- sapply(seq_len(length(l[[1]]$STAB)), function(y) {
     do.call(rbind, lapply(l, function(x){x$STAB[[y]]}))
   })
   list(AVE = t(AVE), STAB = STAB)
@@ -124,19 +124,27 @@ boot_index_sgcca <- function(index, ..., BPPARAM = BiocParallel::SerialParam()) 
 
 base_boot <- function(index, ...) {
   l <- list(...)
-  STAB <- vector("list", length = length(l$A))
   AVE <- vector("numeric", length = 2)
   names(AVE) <- c("inner", "outer")
-  names(STAB) <- names(l$A)
 
-  l$A <- subsetData(l$A, index)
+  if (new_rgcca_version()) {
+    STAB <- vector("list", length = length(l$blocks))
+    names(STAB) <- names(l$blocks)
+    l$blocks <- subsetData(l$blocks, index)
+  } else {
+    STAB <- vector("list", length = length(l$A))
+    names(STAB) <- names(l$A)
+    l$A <- subsetData(l$A, index)
+  }
+
+  l$BPPARAM <- NULL # Clean BPPARAM so that is not used by sgcca
   l$scale <- TRUE # force to scale
 
   try({
     res <- do.call(sgcca, l)
     AVE["inner"] <- res$AVE$AVE_inner
     AVE["outer"] <- res$AVE$AVE_outer
-    for (j in seq_along(l$A)) {
+    for (j in seq_len(length(res$a))) {
       STAB[[j]] <- res$a[[j]][, 1]
     }
 

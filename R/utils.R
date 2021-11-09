@@ -5,8 +5,10 @@ new_rgcca_version <- function() {
 
 
 repl_vec <- function(x, old, new){
-  x[[new]] <- x[[old]]
-  x[[old]] <- NULL
+  if (old %in% names(x)) {
+    x[[new]] <- x[[old]]
+    x[[old]] <- NULL
+  }
   x
 }
 

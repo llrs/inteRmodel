@@ -26,15 +26,17 @@ test_that("boot_index_sgcca works", {
   A <- list(X_agric, X_ind, X_polit)
   C <- matrix(c(0, 0, 1, 0, 0, 1, 1, 1, 0), 3, 3)
 
-  boots <- 10
-  index <- vector("list", length = boots)
-  for (i in seq_len(boots)) {
-    index[[i]] <- sample(nrow(A[[1]]), replace = TRUE)
+  index <- boot_index(nrow(A[[1]]), 10)
+  if (new_rgcca_version()) {
+    boot_i <- boot_index_sgcca(index, blocks = A, connection = C)
+  } else {
+    boot_i <- boot_index_sgcca(index, A = A, C = C)
   }
-  boot_i <- boot_index_sgcca(index, A = A, C = C)
-
+  expect_true(any(boot_i$AVE[, 1] != 0))
+  expect_true(any(boot_i$AVE[, 2] != 0))
   expect_equal(dim(boot_i$AVE), c(10L, 2L))
   expect_length(boot_i$STAB, 3L)
+  expect_true(!is.null(boot_i$STAB[[1]]))
   expect_equal(ncol(boot_i$STAB[[1]]), 3L)
   expect_equal(ncol(boot_i$STAB[[2]]), 2L)
   expect_equal(ncol(boot_i$STAB[[3]]), 5L)
