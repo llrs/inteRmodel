@@ -86,6 +86,12 @@ sgcca <- function(...) {
     l2 <- repl_vec(l2, "c1", "sparsity")
     l2 <- repl_vec(l2, "A", "blocks")
     l2 <- repl_vec(l2, "C", "connection")
+    n_blocks <- names(l2$blocks)
+    l2$blocks <- lapply(l2$blocks, function(x) {
+      rownames(x) <- seq_len(nrow(x))
+      x
+    })
+    names(l2$blocks) <- n_blocks
     do.call(RGCCA::rgcca, l2)
   } else {
     RGCCA::sgcca(...)
