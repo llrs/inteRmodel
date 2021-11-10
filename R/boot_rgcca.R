@@ -65,7 +65,8 @@ boot_samples_sgcca <- function(..., nb_boot = 1000, verbose = TRUE) {
     l$c1 <- shrinkage2
     l$A <- Bscr
 
-    try( # Prevents the error from LAPACK subroutine
+    try( # Handles the error from LAPACK subroutine
+      # Shouldn't be needed on the RGCCA 3.0 but left here just in case
       {
         res <- do.call(sgcca, l)
         AVE[i, "inner"] <- res$AVE$AVE_inner
@@ -140,6 +141,8 @@ base_boot <- function(index, ...) {
   l$BPPARAM <- NULL # Clean BPPARAM so that is not used by sgcca
   l$scale <- TRUE # force to scale
 
+  # Try: handles the error from LAPACK subroutine
+  # Shouldn't be needed on the RGCCA 3.0 but left here just in case
   try({
     res <- do.call(sgcca, l)
     AVE["inner"] <- res$AVE$AVE_inner

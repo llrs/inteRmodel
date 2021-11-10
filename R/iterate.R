@@ -1,4 +1,6 @@
 testing <- function(x, ...) {
+  # Handles the error from LAPACK subroutine
+  # Shouldn't be needed on the RGCCA 3.0 but left here just in case
   try({
     sgcca_result <- sgcca(C = x, ...)
     analyze(sgcca_result)
