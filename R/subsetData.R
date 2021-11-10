@@ -21,7 +21,9 @@ subsetData <- function(A, index) {
   l <- lapply(A, function(x, inde) {
     y <- x[inde, , drop = FALSE] # subset
     v <- apply(y, 2, var)
-    y[,  !is.na(v) & v != 0, drop = FALSE] # Remove variables that are constant.
+    y <- y[,  !is.na(v) & v != 0, drop = FALSE] # Remove variables that are constant.
+    rownames(y) <- seq_len(nrow(y)) # To have the same row names without duplicates
+    y
   }, inde = index)
   names(l) <- names(A)
   l
