@@ -52,7 +52,11 @@ iterate_model <- function(..., BPPARAM = BiocParallel::SerialParam()) {
 search_model <- function(..., nWeights = 3, BPPARAM = BiocParallel::SerialParam()) {
   l <- list(...)
   A <- lapply(l$A, scale2, bias = l$bias)
-  designs <- weight_design(weights = nWeights, size = length(l$A))
+  size <- length(l$A)
+  if (new_rgcca_version() && "blocks" %in% names(l)) {
+    size <- length(l$blocks)
+  }
+  designs <- weight_design(weights = nWeights, size = size)
   k <- BiocParallel::bplapply(designs, correct, BPPARAM = BPPARAM)
   designs <- designs[unlist(k)]
   l <- l[!names(l)  %in% c("A", "C", "scale")]
