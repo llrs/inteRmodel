@@ -1,3 +1,9 @@
 destination: docs
 development:
   mode: unreleased
+template:
+  bootstrap: 5
+  opengraph:
+    twitter:
+      creator: "@Lluis_Revilla"
+      card: summary_large_image
