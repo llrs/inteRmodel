@@ -4,111 +4,108 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="inteRmodel">
 <title>inteRmodel • inteRmodel</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="inteRmodel">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="inteRmodel">
 <meta property="og:description" content="inteRmodel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@Lluis_Revilla">
+<meta name="twitter:site" content="@Lluis_Revilla">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">inteRmodel</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">inteRmodel</a>
+
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.1.9001</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/inteRmodel.html">Get started</a>
 </li>
-<li>
-  <a href="../articles/inteRmodel.html">Get started</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/llrs/inteRmodel/">
-    <span class="fab fa-github fa-lg"></span>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/llrs/inteRmodel/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><script src="inteRmodel_files/jquery-1.11.3/jquery.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="inteRmodel_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-<script src="inteRmodel_files/bootstrap-3.3.5/js/bootstrap.min.js"></script><script src="inteRmodel_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script><script src="inteRmodel_files/bootstrap-3.3.5/shim/respond.min.js"></script><script src="inteRmodel_files/navigation-1.1/tabsets.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>inteRmodel</h1>
+<div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>inteRmodel</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/llrs/inteRmodel/blob/master/vignettes/inteRmodel.Rmd"><code>vignettes/inteRmodel.Rmd</code></a></small>
-      <div class="hidden name"><code>inteRmodel.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/llrs/inteRmodel/blob/HEAD/vignettes/inteRmodel.Rmd" class="external-link"><code>vignettes/inteRmodel.Rmd</code></a></small>
+      <div class="d-none name"><code>inteRmodel.Rmd</code></div>
     </div>
 
     
     
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a><span class="header-section-number">1</span> Introduction</h1>
-<p>The goal of inteRmodel is to provide the tools required to search for models in the generalized canonical correlations as provided by the <a href="https://cran.r-project.org/package=RGCCA">RGCCA</a> package.</p>
+<div class="section level2" number="1">
+<h2 id="introduction">
+<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>The goal of inteRmodel is to provide the tools required to search for models in the generalized canonical correlations as provided by the <a href="https://cran.r-project.org/package=RGCCA" class="external-link">RGCCA</a> package.</p>
 <p>You can read more about canonical correlation at <span class="citation">(Tenenhaus and Tenenhaus 2011)</span>.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/llrs/inteRmodel">inteRmodel</a></span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/llrs/inteRmodel" class="external-link">inteRmodel</a></span><span class="op">)</span></code></pre></div>
 <p>In this use case we want to find the best model to relate the gene expression on a glioma with some repetitions at the DNA level, taking into account that these tumors are at three different locations. Our idea is that the location might influence the tumor.</p>
 </div>
-<div id="data-format" class="section level1">
-<h1 class="hasAnchor">
-<a href="#data-format" class="anchor"></a><span class="header-section-number">2</span> Data format</h1>
-<p>We use the data used on the vignette of the <a href="https://cran.r-project.org/package=RGCCA">RGCCA</a> package. We need the samples in the rows and the variables in the columns:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"ge_cgh_locIGR"</span>)
-<span class="kw">A</span> <span class="op">&lt;-</span> <span class="kw">ge_cgh_locIGR</span><span class="op">$</span><span class="kw">multiblocks</span>
-<span class="kw">Loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="kw">ge_cgh_locIGR</span><span class="op">$</span><span class="kw">y</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="kw">Loc</span>) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="kw">ge_cgh_locIGR</span><span class="op">$</span><span class="kw">multiblocks</span><span class="op">$</span><span class="kw">y</span>)
-<span class="kw">A</span>[[<span class="fl">3</span>]] <span class="op">=</span> <span class="kw">A</span>[[<span class="fl">3</span>]][, <span class="op">-</span><span class="fl">3</span>]
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">A</span>)[<span class="fl">3</span>] <span class="op">&lt;-</span> <span class="st">"Loc"</span>
-</pre></div>
+<div class="section level2" number="2">
+<h2 id="data-format">
+<span class="header-section-number">2</span> Data format<a class="anchor" aria-label="anchor" href="#data-format"></a>
+</h2>
+<p>We use the data used on the vignette of the <a href="https://cran.r-project.org/package=RGCCA" class="external-link">RGCCA</a> package. We need the samples in the rows and the variables in the columns:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ge_cgh_locIGR"</span><span class="op">)</span>
+<span class="va">A</span> <span class="op">&lt;-</span> <span class="va">ge_cgh_locIGR</span><span class="op">$</span><span class="va">multiblocks</span>
+<span class="va">Loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">ge_cgh_locIGR</span><span class="op">$</span><span class="va">y</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Loc</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">ge_cgh_locIGR</span><span class="op">$</span><span class="va">multiblocks</span><span class="op">$</span><span class="va">y</span><span class="op">)</span>
+<span class="va">A</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="va">A</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="op">-</span><span class="fl">3</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Loc"</span></code></pre></div>
 <p>With these steps we read and prepare the data for the <code>sgcca</code> and <code>rgcca</code> function.</p>
 </div>
-<div id="workflow" class="section level1">
-<h1 class="hasAnchor">
-<a href="#workflow" class="anchor"></a><span class="header-section-number">3</span> Workflow</h1>
+<div class="section level2" number="3">
+<h2 id="workflow">
+<span class="header-section-number">3</span> Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
+</h2>
 <p>The workflow is as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Selecting the interaction-model</li>
@@ -117,32 +114,32 @@
 <li>Comparison of the different models after bootstrapping</li>
 </ol>
 <p>These steps are explained in detail in the next sections.</p>
-<div id="null-hypothesis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#null-hypothesis" class="anchor"></a><span class="header-section-number">3.1</span> Null hypothesis</h2>
+<div class="section level3" number="3.1">
+<h3 id="null-hypothesis">
+<span class="header-section-number">3.1</span> Null hypothesis<a class="anchor" aria-label="anchor" href="#null-hypothesis"></a>
+</h3>
 <p>Then we need to encode our hypothesis in a model, which takes the shape of a matrix. To ease the design of this model there are several functions available. The most important one is <code>subSymm</code>, which makes substitutions on symmetric matrices.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fl">0</span>, nrow = <span class="fl">3</span>, ncol = <span class="fl">3</span>, dimnames = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">A</span>), <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">A</span>)))
-<span class="kw">model0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subSymm.html">subSymm</a></span>(<span class="kw">C</span>, <span class="st">"GE"</span>, <span class="st">"CGH"</span>, <span class="fl">1</span>)
-<span class="kw">model0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subSymm.html">subSymm</a></span>(<span class="kw">model0</span>, <span class="st">"GE"</span>, <span class="st">"Loc"</span>, <span class="fl">1</span>)
-<span class="kw">model0</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">0</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span>, dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">model0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subSymm.html">subSymm</a></span><span class="op">(</span><span class="va">C</span>, <span class="st">"GE"</span>, <span class="st">"CGH"</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="va">model0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subSymm.html">subSymm</a></span><span class="op">(</span><span class="va">model0</span>, <span class="st">"GE"</span>, <span class="st">"Loc"</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="va">model0</span>
 <span class="co">#&gt;     GE CGH Loc</span>
 <span class="co">#&gt; GE   0   1   1</span>
 <span class="co">#&gt; CGH  1   0   0</span>
-<span class="co">#&gt; Loc  1   0   0</span>
-</pre></div>
+<span class="co">#&gt; Loc  1   0   0</span></code></pre></div>
 <p>Here we hypothesize that the Agriculture and the industry are linked and that the agriculture is linked with the political block.</p>
 </div>
-<div id="search-models" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search-models" class="anchor"></a><span class="header-section-number">3.2</span> Search models</h2>
+<div class="section level3" number="3.2">
+<h3 id="search-models">
+<span class="header-section-number">3.2</span> Search models<a class="anchor" aria-label="anchor" href="#search-models"></a>
+</h3>
 <p>Now we look for the model that best relates these data.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">out_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/iterate_model.html">search_model</a></span>(A = <span class="kw">A</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>), scheme = <span class="st">"horst"</span>,
-               scale = <span class="fl">FALSE</span>, verbose = <span class="fl">FALSE</span>,
-               ncomp = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">A</span>)),
-               bias = <span class="fl">TRUE</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">out_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/model.html">search_model</a></span><span class="op">(</span>A <span class="op">=</span> <span class="va">A</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>, <span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span>, scheme <span class="op">=</span> <span class="st">"horst"</span>,
+               scale <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+               ncomp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span>,
+               bias <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>This quickly explores over the 20 different models that could be the best ones. We can see that our hypothesis is in the upper middle:</p>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/hypotetical-1.png" alt="Figure 1: Histogram of the different inner AVE values of each model." width="672"><p class="caption">
@@ -150,28 +147,27 @@ Figure 1: Histogram of the different inner AVE values of each model.
 </p>
 </div>
 <p>According to this, a better model would then be:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"var"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="kw">out_model</span>))
-<span class="kw">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/symm.html">symm</a></span>(<span class="kw">C</span>, <span class="kw">out_model</span>[<span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span>(<span class="kw">out_model</span><span class="op">$</span><span class="kw">AVE_inner</span>), <span class="kw">columns</span>])
-<span class="kw">model</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"var"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">out_model</span><span class="op">)</span><span class="op">)</span>
+<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/symm.html">symm</a></span><span class="op">(</span><span class="va">C</span>, <span class="va">out_model</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.max</a></span><span class="op">(</span><span class="va">out_model</span><span class="op">$</span><span class="va">AVE_inner</span><span class="op">)</span>, <span class="va">columns</span><span class="op">]</span><span class="op">)</span>
+<span class="va">model</span>
 <span class="co">#&gt;     GE CGH Loc</span>
 <span class="co">#&gt; GE   0 0.0 1.0</span>
 <span class="co">#&gt; CGH  0 0.0 0.5</span>
-<span class="co">#&gt; Loc  1 0.5 0.0</span>
-</pre></div>
+<span class="co">#&gt; Loc  1 0.5 0.0</span></code></pre></div>
 <p>A model that instead of the expected relation between Agriculture and Industry block, they are both related to the Political block.</p>
 </div>
-<div id="refinement-of-the-model" class="section level2">
-<h2 class="hasAnchor">
-<a href="#refinement-of-the-model" class="anchor"></a><span class="header-section-number">3.3</span> Refinement of the model</h2>
+<div class="section level3" number="3.3">
+<h3 id="refinement-of-the-model">
+<span class="header-section-number">3.3</span> Refinement of the model<a class="anchor" aria-label="anchor" href="#refinement-of-the-model"></a>
+</h3>
 <p>We further explore the relationships in this model:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">out_best</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/iterate_model.html">iterate_model</a></span>(C = <span class="kw">model</span>, A = <span class="kw">A</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>), 
-                          scheme = <span class="st">"horst"</span>,
-                          scale = <span class="fl">FALSE</span>, verbose = <span class="fl">FALSE</span>,
-                          ncomp = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">A</span>)),
-                          bias = <span class="fl">TRUE</span>)
-</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">out_best</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/model.html">iterate_model</a></span><span class="op">(</span>C <span class="op">=</span> <span class="va">model</span>, A <span class="op">=</span> <span class="va">A</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span>, 
+                          scheme <span class="op">=</span> <span class="st">"horst"</span>,
+                          scale <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+                          ncomp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span>,
+                          bias <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>We can see that usually the model is around 0.4 inner AVE.</p>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/best_plot-1.png" alt="Figure 2: Histogram of the different inner AVE values of the same model but with different weights for those connections." width="672"><p class="caption">
@@ -179,45 +175,44 @@ Figure 2: Histogram of the different inner AVE values of the same model but with
 </p>
 </div>
 <p>The best model would then be:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">model2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/symm.html">symm</a></span>(<span class="kw">C</span>, <span class="kw">out_best</span>[<span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span>(<span class="kw">out_best</span><span class="op">$</span><span class="kw">AVE_inner</span>), <span class="kw">columns</span>])
-<span class="kw">model2</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">model2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/symm.html">symm</a></span><span class="op">(</span><span class="va">C</span>, <span class="va">out_best</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.max</a></span><span class="op">(</span><span class="va">out_best</span><span class="op">$</span><span class="va">AVE_inner</span><span class="op">)</span>, <span class="va">columns</span><span class="op">]</span><span class="op">)</span>
+<span class="va">model2</span>
 <span class="co">#&gt;     GE CGH Loc</span>
 <span class="co">#&gt; GE   0 0.0 1.0</span>
 <span class="co">#&gt; CGH  0 0.0 0.1</span>
-<span class="co">#&gt; Loc  1 0.1 0.0</span>
-</pre></div>
+<span class="co">#&gt; Loc  1 0.1 0.0</span></code></pre></div>
 </div>
-<div id="evaluate-stability" class="section level2">
-<h2 class="hasAnchor">
-<a href="#evaluate-stability" class="anchor"></a><span class="header-section-number">3.4</span> Evaluate stability</h2>
+<div class="section level3" number="3.4">
+<h3 id="evaluate-stability">
+<span class="header-section-number">3.4</span> Evaluate stability<a class="anchor" aria-label="anchor" href="#evaluate-stability"></a>
+</h3>
 <p>A next step would be to see if some models are better than the others, something along these lines but with more iterations.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_index.html">boot_index</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">A</span>[[<span class="fl">1</span>]]), <span class="fl">10</span>)
-<span class="kw">bs0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_samples_sgcca.html">boot_index_sgcca</a></span>(<span class="kw">index</span>, A = <span class="kw">A</span>, C = <span class="kw">model0</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>))
-<span class="kw">bs1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_samples_sgcca.html">boot_index_sgcca</a></span>(<span class="kw">index</span>, A = <span class="kw">A</span>, C = <span class="kw">model</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>))
-<span class="kw">bs2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_samples_sgcca.html">boot_index_sgcca</a></span>(<span class="kw">index</span>, A = <span class="kw">A</span>, C = <span class="kw">model2</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>))
-</pre></div>
-<div id="stability" class="section level3">
-<h3 class="hasAnchor">
-<a href="#stability" class="anchor"></a><span class="header-section-number">3.4.1</span> Stability</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot_index.html">boot_index</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">A</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>
+<span class="va">bs0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot.html">boot_index_sgcca</a></span><span class="op">(</span><span class="va">index</span>, A <span class="op">=</span> <span class="va">A</span>, C <span class="op">=</span> <span class="va">model0</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="va">bs1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot.html">boot_index_sgcca</a></span><span class="op">(</span><span class="va">index</span>, A <span class="op">=</span> <span class="va">A</span>, C <span class="op">=</span> <span class="va">model</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="va">bs2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/boot.html">boot_index_sgcca</a></span><span class="op">(</span><span class="va">index</span>, A <span class="op">=</span> <span class="va">A</span>, C <span class="op">=</span> <span class="va">model2</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="section level4" number="3.4.1">
+<h4 id="stability">
+<span class="header-section-number">3.4.1</span> Stability<a class="anchor" aria-label="anchor" href="#stability"></a>
+</h4>
 <p>We can see that they have different distributions:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.6</span>, <span class="fl">0.9</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.05</span>, <span class="fl">0.15</span>), type = <span class="st">"n"</span>, xlab = <span class="st">"inner AVE"</span>, ylab = <span class="st">"outer AVE"</span>,
-     main = <span class="st">"Bootstrap of models"</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(<span class="kw">bs0</span><span class="op">$</span><span class="kw">AVE</span>, pch = <span class="fl">16</span>, col = <span class="st">"red"</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(<span class="kw">bs1</span><span class="op">$</span><span class="kw">AVE</span>, pch = <span class="fl">16</span>, col = <span class="st">"green"</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(<span class="kw">bs2</span><span class="op">$</span><span class="kw">AVE</span>, pch = <span class="fl">16</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span>(<span class="st">"topright"</span>, legend = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"model2"</span>, <span class="st">"model"</span>, <span class="st">"model0"</span>), 
-       fill = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"black"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>))
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.6</span>, <span class="fl">0.9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.15</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"n"</span>, xlab <span class="op">=</span> <span class="st">"inner AVE"</span>, ylab <span class="op">=</span> <span class="st">"outer AVE"</span>,
+     main <span class="op">=</span> <span class="st">"Bootstrap of models"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">bs0</span><span class="op">$</span><span class="va">AVE</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">bs1</span><span class="op">$</span><span class="va">AVE</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">bs2</span><span class="op">$</span><span class="va">AVE</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"model2"</span>, <span class="st">"model"</span>, <span class="st">"model0"</span><span class="op">)</span>, 
+       fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"green"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span>(<span class="kw">bs0</span><span class="op">$</span><span class="kw">AVE</span>, Model = <span class="st">"model 0"</span>),
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span>(<span class="kw">bs1</span><span class="op">$</span><span class="kw">AVE</span>, Model = <span class="st">"model 1"</span>),
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span>(<span class="kw">bs2</span><span class="op">$</span><span class="kw">AVE</span>, Model = <span class="st">"model 2"</span>))
-<span class="kw">agg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span>(<span class="kw">df</span>[, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>], <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(Model = <span class="kw">df</span><span class="op">$</span><span class="kw">Model</span>), <span class="kw">mean</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(<span class="kw">agg</span>[, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>], pch = <span class="fl">17</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"black"</span>), cex = <span class="fl">1.5</span>)
-</pre></div>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span><span class="va">bs0</span><span class="op">$</span><span class="va">AVE</span>, Model <span class="op">=</span> <span class="st">"model 0"</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span><span class="va">bs1</span><span class="op">$</span><span class="va">AVE</span>, Model <span class="op">=</span> <span class="st">"model 1"</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span><span class="va">bs2</span><span class="op">$</span><span class="va">AVE</span>, Model <span class="op">=</span> <span class="st">"model 2"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">agg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">aggregate</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Model <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">Model</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">agg</span><span class="op">[</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, pch <span class="op">=</span> <span class="fl">17</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"black"</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/boot_plot-1.png" alt="Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group" width="672"><p class="caption">
 Figure 3: Comparison of the models, our null hypothesis along the model with higest inner AVE. Triangles show the centroid of each group
@@ -225,31 +220,30 @@ Figure 3: Comparison of the models, our null hypothesis along the model with hig
 </div>
 <p>This suggests that the model2 has a higher inner AVE than the model0. With more iterations we could see if there is a tendency of a model to be more centered than the others. So, indicating that the model can better find the relationship between the blocks regardless of the input data.</p>
 </div>
-<div id="features" class="section level3">
-<h3 class="hasAnchor">
-<a href="#features" class="anchor"></a><span class="header-section-number">3.4.2</span> Features</h3>
+<div class="section level4" number="3.4.2">
+<h4 id="features">
+<span class="header-section-number">3.4.2</span> Features<a class="anchor" aria-label="anchor" href="#features"></a>
+</h4>
 <p>We can now analyze the canonical correlation for the weight of each variable.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">m2</span> <span class="op">&lt;-</span> <span class="kw">RGCCA</span>::<span class="fu"><a href="https://rdrr.io/pkg/RGCCA/man/sgcca.html">sgcca</a></span>(<span class="kw">A</span>, <span class="kw">model2</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>), scheme = <span class="st">"horst"</span>,
-               scale = <span class="fl">TRUE</span>, verbose = <span class="fl">FALSE</span>, ncomp = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">A</span>)),
-               bias = <span class="fl">TRUE</span>)
-<span class="kw">m0</span> <span class="op">&lt;-</span> <span class="kw">RGCCA</span>::<span class="fu"><a href="https://rdrr.io/pkg/RGCCA/man/sgcca.html">sgcca</a></span>(<span class="kw">A</span>, <span class="kw">model0</span>, c1 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span>), scheme = <span class="st">"horst"</span>,
-               scale = <span class="fl">TRUE</span>, verbose = <span class="fl">FALSE</span>, ncomp = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">A</span>)),
-               bias = <span class="fl">TRUE</span>)
-</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu">RGCCA</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RGCCA/man/sgcca.html" class="external-link">sgcca</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">model2</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span>, scheme <span class="op">=</span> <span class="st">"horst"</span>,
+               scale <span class="op">=</span> <span class="cn">TRUE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, ncomp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span>,
+               bias <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">m0</span> <span class="op">&lt;-</span> <span class="fu">RGCCA</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RGCCA/man/sgcca.html" class="external-link">sgcca</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">model0</span>, c1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.071</span>,<span class="fl">.2</span>, <span class="fl">1</span><span class="op">)</span>, scheme <span class="op">=</span> <span class="st">"horst"</span>,
+               scale <span class="op">=</span> <span class="cn">TRUE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, ncomp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span>,
+               bias <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>We can now explore the position of each sample:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="kw">pars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(mfrow = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">2</span>))
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], type = <span class="st">"n"</span>, xlab = <span class="st">"Block1 Comp1"</span>, 
-     ylab = <span class="st">"Block2 Comp1"</span>, main = <span class="st">"Initial model"</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(h = <span class="fl">0</span>, v = <span class="fl">0</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(<span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m0</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], labels = <span class="kw">Loc</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">Loc</span>) <span class="op">+</span> <span class="fl">1</span>)
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">m0</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">m0</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"n"</span>, xlab <span class="op">=</span> <span class="st">"Block1 Comp1"</span>, 
+     ylab <span class="op">=</span> <span class="st">"Block2 Comp1"</span>, main <span class="op">=</span> <span class="st">"Initial model"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, v <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">m0</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">m0</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, labels <span class="op">=</span> <span class="va">Loc</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">Loc</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], type = <span class="st">"n"</span>, xlab = <span class="st">"Block1 Comp1"</span>, 
-     ylab = <span class="st">"Block2 Comp1"</span>, main = <span class="st">"Final model"</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(h = <span class="fl">0</span>, v = <span class="fl">0</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span>(<span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">1</span>]][, <span class="fl">1</span>], <span class="kw">m2</span><span class="op">$</span><span class="kw">Y</span>[[<span class="fl">2</span>]][, <span class="fl">1</span>], labels = <span class="kw">Loc</span>, col = <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">Loc</span>) <span class="op">+</span> <span class="fl">1</span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">m2</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">m2</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"n"</span>, xlab <span class="op">=</span> <span class="st">"Block1 Comp1"</span>, 
+     ylab <span class="op">=</span> <span class="st">"Block2 Comp1"</span>, main <span class="op">=</span> <span class="st">"Final model"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, v <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">m2</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">m2</span><span class="op">$</span><span class="va">Y</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, labels <span class="op">=</span> <span class="va">Loc</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">Loc</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/m1-1.png" alt="Figure 4: Differences on the canonical dimensions of the samples" width="672"><p class="caption">
 Figure 4: Differences on the canonical dimensions of the samples
@@ -257,11 +251,10 @@ Figure 4: Differences on the canonical dimensions of the samples
 </div>
 <!-- Change the sentence--->
 <p>Although there is a relative difference in the general outcome, what has changed more is the importance of each variable. As we can see here:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="kw">pars</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">m0</span><span class="op">$</span><span class="kw">a</span><span class="op">$</span><span class="kw">CGH</span>[, <span class="fl">1</span>], <span class="kw">m2</span><span class="op">$</span><span class="kw">a</span><span class="op">$</span><span class="kw">CGH</span>[, <span class="fl">1</span>], main = <span class="st">"CGH variables importance"</span>, 
-     xlab = <span class="st">"model0"</span>, ylab = <span class="st">"model2"</span>, pch = <span class="fl">16</span>)
-</pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">pars</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">m0</span><span class="op">$</span><span class="va">a</span><span class="op">$</span><span class="va">CGH</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">m2</span><span class="op">$</span><span class="va">a</span><span class="op">$</span><span class="va">CGH</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, main <span class="op">=</span> <span class="st">"CGH variables importance"</span>, 
+     xlab <span class="op">=</span> <span class="st">"model0"</span>, ylab <span class="op">=</span> <span class="st">"model2"</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="inteRmodel_files/figure-html/unnamed-chunk-1-1.png" alt="Figure 5: Comparison of the weights of the CGH variables" width="672"><p class="caption">
 Figure 5: Comparison of the weights of the CGH variables
@@ -271,80 +264,81 @@ Figure 5: Comparison of the weights of the CGH variables
 </div>
 </div>
 </div>
-<div id="conclusion" class="section level1">
-<h1 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a><span class="header-section-number">4</span> Conclusion</h1>
+<div class="section level2" number="4">
+<h2 id="conclusion">
+<span class="header-section-number">4</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
 <p>Finding a different model that explains your data better challenges the assumptions about the data. By comparing models, we can learn which blocks of variables are connected thus showing new relationships. These new relationships consider the same variables but with different importance, which, with the right model, should be more accurate.</p>
 </div>
-<div id="session-info" class="section level1">
-<h1 class="hasAnchor">
-<a href="#session-info" class="anchor"></a><span class="header-section-number">5</span> Session Info</h1>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()
-<span class="co">#&gt; R version 4.0.2 (2020-06-22)</span>
+<div class="section level2" number="5">
+<h2 id="session-info">
+<span class="header-section-number">5</span> Session Info<a class="anchor" aria-label="anchor" href="#session-info"></a>
+</h2>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; R version 4.1.2 (2021-11-01)</span>
 <span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span>
-<span class="co">#&gt; Running under: Ubuntu 16.04.6 LTS</span>
+<span class="co">#&gt; Running under: Ubuntu 20.04.3 LTS</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS:   /usr/lib/openblas-base/libblas.so.3</span>
-<span class="co">#&gt; LAPACK: /usr/lib/libopenblasp-r0.2.18.so</span>
+<span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0</span>
+<span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; locale:</span>
-<span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span>
-<span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span>
-<span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span>
-<span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span>
-<span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span>
-<span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span>
+<span class="co">#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       </span>
+<span class="co">#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span>
+<span class="co">#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          </span>
+<span class="co">#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; attached base packages:</span>
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] inteRmodel_0.1.1</span>
+<span class="co">#&gt; [1] inteRmodel_0.1.1.9001</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] lattice_0.20-41   digest_0.6.27     MASS_7.3-51.6     grid_4.0.2       </span>
-<span class="co">#&gt;  [5] magrittr_2.0.1    evaluate_0.14     highr_0.8         rlang_0.4.10     </span>
-<span class="co">#&gt;  [9] stringi_1.5.3     Matrix_1.2-18     rmarkdown_2.6     tools_4.0.2      </span>
-<span class="co">#&gt; [13] stringr_1.4.0     RGCCA_2.1.2       xfun_0.20         yaml_2.2.1       </span>
-<span class="co">#&gt; [17] compiler_4.0.2    htmltools_0.5.1.1 knitr_1.30</span>
-</pre></div>
+<span class="co">#&gt;  [1] knitr_1.37          magrittr_2.0.2      MASS_7.3-55        </span>
+<span class="co">#&gt;  [4] BiocParallel_1.28.3 lattice_0.20-45     R6_2.5.1           </span>
+<span class="co">#&gt;  [7] rlang_1.0.1         fastmap_1.1.0       stringr_1.4.0      </span>
+<span class="co">#&gt; [10] highr_0.9           tools_4.1.2         parallel_4.1.2     </span>
+<span class="co">#&gt; [13] grid_4.1.2          xfun_0.29           RGCCA_2.1.2        </span>
+<span class="co">#&gt; [16] cli_3.1.1           jquerylib_0.1.4     htmltools_0.5.2    </span>
+<span class="co">#&gt; [19] yaml_2.2.2          digest_0.6.29       Matrix_1.4-0       </span>
+<span class="co">#&gt; [22] sass_0.4.0          evaluate_0.14       rmarkdown_2.11     </span>
+<span class="co">#&gt; [25] stringi_1.7.6       compiler_4.1.2      bslib_0.3.1        </span>
+<span class="co">#&gt; [28] jsonlite_1.7.3</span></code></pre></div>
 </div>
-<div id="bibliography" class="section level1 unnumbered">
-<h1 class="hasAnchor">
-<a href="#bibliography" class="anchor"></a>Bibliography</h1>
-<div id="refs" class="references">
-<div id="ref-tenenhaus2011">
-<p>Tenenhaus, Arthur, and Michel Tenenhaus. 2011. “Regularized Generalized Canonical Correlation Analysis.” <em>Psychometrika</em> 76 (2): 257–84. <a href="https://doi.org/10.1007/s11336-011-9206-8" class="uri">https://doi.org/10.1007/s11336-011-9206-8</a>.</p>
+<div class="section level2">
+<h2 class="unnumbered" id="bibliography">Bibliography<a class="anchor" aria-label="anchor" href="#bibliography"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-tenenhaus2011" class="csl-entry">
+Tenenhaus, Arthur, and Michel Tenenhaus. 2011. <span>“Regularized Generalized Canonical Correlation Analysis.”</span> <em>Psychometrika</em> 76 (2): 257–84. <a href="https://doi.org/10.1007/s11336-011-9206-8" class="external-link">https://doi.org/10.1007/s11336-011-9206-8</a>.
 </div>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Lluís Revilla Sancho.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Lluís Revilla Sancho.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
